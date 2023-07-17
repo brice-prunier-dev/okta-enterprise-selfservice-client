@@ -1,0 +1,26 @@
+<div class="project-menu">
+
+  <button mat-icon-button
+          class="square-btn"
+          (click)="router.navigateByUrl( homeUrl )">
+    <mat-icon svgIcon="home"></mat-icon>
+  </button>
+  <mat-form-field id="myproject-selection"
+                  [floatLabel]="'always'"
+                  subscriptSizing="dynamic">
+    <mat-label>Project</mat-label>
+    <input matInput
+           id="myproject-selection-input"
+           [matAutocomplete]="auto"
+           [ngModel]="currentProject">
+
+    <mat-icon matSuffix [ngClass]="ux()">keyboard_arrow_down</mat-icon>
+    <mat-autocomplete #auto="matAutocomplete"
+                      (optionSelected)="onProjectSelection($event)">
+      <mat-option *ngFor="let projId of myViewNames"
+                  [value]="projId">
+        {{projId | pascalCase}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

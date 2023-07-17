@@ -1,0 +1,51 @@
+<div class="main-content">
+  <div class="main-content-title">
+    <iam-validation [element]="view"></iam-validation>
+    <div class="w-100 flex-row flex-gap-20">
+      <div class="flex-50">
+        <div class="header-box dialog-header flex-row">
+          <mat-icon
+                    class="header-icon">people</mat-icon>
+
+          <span class=" header">Admins Groups</span>
+        </div>
+
+
+
+        <div class="main-section">
+          <mat-selection-list (selectionChange)="adminsChanged($event)">
+            <mat-list-option *ngFor="let grp of viewGroups"
+                             [value]="grp.oid"
+                             [checkboxPosition]="'before'"
+                             [selected]="isSelected(grp.oid)"
+                             [disabled]="!editable">
+              {{grp.label}}
+            </mat-list-option>
+          </mat-selection-list>
+        </div>
+      </div>
+      <div class="flex-50" *ngIf="withServices()">
+        <div class="header-box dialog-header flex-row">
+          <mat-icon
+                    class="header-icon">donut_large</mat-icon>
+
+          <span class=" header">Admins Services</span>
+        </div>
+
+
+
+        <div class="main-section">
+          <mat-selection-list (selectionChange)="adminsChanged($event)">
+            <mat-list-option *ngFor="let svc of viewServices"
+                             [value]="svc.oid"
+                             [checkboxPosition]="'before'"
+                             [selected]="isSelected(svc.oid)"
+                             [disabled]="!editable">
+              {{svc.label}}
+            </mat-list-option>
+          </mat-selection-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

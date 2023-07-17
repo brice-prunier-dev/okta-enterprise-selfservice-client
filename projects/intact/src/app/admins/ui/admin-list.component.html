@@ -1,0 +1,18 @@
+<div class="running-flash"
+     *ngIf="running">
+  <mat-progress-bar [color]="'warn'"
+                    [mode]="'indeterminate'"
+                    [value]="50"
+                    [bufferValue]="75"> </mat-progress-bar>
+</div>
+<div class="tab-page">
+  <iam-error [value]="error"></iam-error>
+  <main>
+    <iam-item-admin-list [view]="view"
+                         [groups]="groups"
+                         [services]="services"
+                         [editable]="editable"
+                         (changes)="onchange($event)">
+    </iam-item-admin-list>
+  </main>
+</div>

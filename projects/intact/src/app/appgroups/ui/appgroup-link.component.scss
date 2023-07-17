@@ -1,0 +1,12 @@
+@import '../../../styles/colors.scss';
+
+.group-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.item-label-unselected {
+    font-weight: 500;
+    opacity: 0.7;
+}

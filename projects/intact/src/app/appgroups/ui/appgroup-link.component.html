@@ -1,0 +1,54 @@
+<div class="tab-page">
+  <div *ngIf="initialized"
+       class="main">
+
+    <main>
+      <div class="main-content">
+        <div *ngIf="!editable"
+             class="not-editable-info">
+          <p> You're not accredited to manage groups! </p>
+        </div>
+
+
+        <iam-error [value]="error"></iam-error>
+        <div class="item-title-row flex-row flex-center">
+
+          <div class="icon flex-no-grow flex-offset-15">
+          </div>
+          <div class="flex-30 flex-column">
+            <div class="item-column-title">Group Name</div>
+          </div>
+          <div class="flex-grow flex-row flex-align-center flex-basis-0">
+            <div class="item-column-title">Linked Applications...</div>
+          </div>
+          <div class="w-50-px">
+            <div class="item-column-title"> Count </div>
+          </div>
+        </div>
+
+        <div *ngFor="let grp of groups"
+             class="item-row flex-row flex-center">
+
+          <div class="icon top-offset-7 flex-offset-15 flex-no-grow">
+            <mat-slide-toggle [name]="grp.oid"
+                              [checked]="isSelected(grp.oid)"
+                              (change)="linkedGroupChanged($event)">
+            </mat-slide-toggle>
+          </div>
+          <div class="flex-30 flex-column">
+            <a [routerLink]="'/projects/'+ projVm.view.id + '/groups/' + grp.label + '/details' ">
+              <div class="item-label" [class.item-label-unselected]="!isSelected(grp.oid)">{{grp.label}}</div>
+            </a>
+          </div>
+          <div class="flex-grow flex-row flex-align-center flex-basis-0">
+            <div class="item-label">{{groupApps(grp)}}</div>
+          </div>
+          <div class="w-50-px">
+            <div class="row-data"> {{groupUserCount(grp)}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

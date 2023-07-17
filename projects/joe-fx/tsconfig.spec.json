@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/spec",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "module": "CommonJs",
+    "target": "es2020",
+    "types": [
+      "jest",
+      "node"
+    ],
+    "paths": {
+      "joe-fx": [
+        "./src"
+      ]
+    }
+  },
+  "include": [
+    "./src/lib/**/*.ts",
+    "./src/**/*.json",
+    "./test/*.ts"
+  ]
+}

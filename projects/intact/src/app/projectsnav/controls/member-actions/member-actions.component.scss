@@ -1,0 +1,176 @@
+@import '../../../../styles/colors';
+
+:host {
+    width: 100%;
+}
+
+mat-form-field {
+    min-width: 280px;
+}
+
+.DEBUG {
+    color: #f8f8fa;
+    background-color: #009fdc;
+}
+
+mat-form-field {
+    min-width: 280px;
+}
+
+.mat-mdc-option {
+    flex-direction: column;
+    padding: 5px 13px;
+    display: flex;
+    align-content: center;
+    align-items: flex-start;
+
+    .mat-icon {
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        margin-right: 0px !important;
+    }
+}
+
+.block {
+    display: flex !important;
+    flex-direction: column;
+    height: 48px !important;
+    width: 262px;
+    text-overflow: ellipsis;
+}
+
+div.search-option {
+    max-width: 199px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+div.grey {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.ng-star-inserter {
+    padding: 5px;
+}
+
+div.grey {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+div.provisionning-row {
+    height: 70px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom: $gray-300;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: space-between;
+
+    div.search-section {
+        display: flex;
+        margin: 0 30px;
+        flex-direction: row;
+        align-items: baseline;
+
+        .square-btn {
+            padding: 6px;
+            width: 36px !important;
+            height: 36px !important;
+            background: $dark-primary;
+            border-radius: 6px !important;
+            margin-left: 20px;
+
+            //.mat-icon {
+            //    width: 26px !important;
+            //    height: 32px !important;
+            //    color: white;
+            //}
+        }
+    }
+
+    div.account-section {
+        button.round {
+            border-radius: 5px;
+            border-width: 1.2px;
+            font-weight: 600;
+            width: 180px;
+            padding: 0 10px;
+            margin: 0 20px 0 0;
+
+            &.test {
+                color: #e62b87;
+                border-color: #e62b87;
+            }
+
+            &.service {
+                color: #f18f09;
+                border-color: #f18f09;
+            }
+
+        }
+    }
+}
+
+.mat-mdc-hint {
+    font-weight: 400;
+    line-height: 11px;
+    font-size: 12px;
+    color: $dark-primary;
+    margin-top: -2px;
+}
+
+.isB2E {
+    color: #076bb8;
+}
+
+.isIdp {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.account-title {
+    margin-top: 20px !important;
+}
+
+button.round {
+    border-radius: 5px;
+    border-width: 1.2px;
+    font-weight: 600;
+    width: 280px;
+    margin-top: 20px;
+
+    &.external {
+        color: #009934;
+        border-color: #009934;
+    }
+
+    &.test {
+        color: #e62b87;
+        border-color: #e62b87;
+    }
+
+    &.service {
+        color: #f18f09;
+        border-color: #f18f09;
+    }
+
+    &.bounty {
+        color: #269955;
+        border-color: #269955;
+    }
+
+   .mat-icon.left {
+        float: left;
+        margin-top: 2.5px;
+        margin-left: -10px;
+        color: inherit;
+        background-color: white;
+        border-color: white;
+        border-style: solid;
+        border-radius: 5px;
+    }
+}

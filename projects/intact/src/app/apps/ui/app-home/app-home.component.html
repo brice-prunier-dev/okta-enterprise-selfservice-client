@@ -1,0 +1,91 @@
+<div class="nav-page">
+    <div class="running-flash"
+         [ngStyle]="{'visibility': running ? 'visible' : 'hidden'  }">
+        <mat-progress-bar [color]="'warn'"
+                          [mode]="'indeterminate'"
+                          [value]="50"
+                          [bufferValue]="75"></mat-progress-bar>
+    </div>
+    <header *ngIf="initialized">
+        <img
+             class="header-icon"
+             src="{{appIcon}}">
+        <caption>Application</caption>
+        <h3>{{vm.app.label }}</h3>
+    </header>
+
+    <main *ngIf="initialized">
+        <nav mat-stretch-tabs="false"
+             mat-align-tabs="end"
+             mat-tab-nav-bar
+             [tabPanel]="tabPanel">
+            <a data-test-id="app-warnings-tab" mat-tab-link [routerLink]="'warnings'" routerLinkActive #warnings="routerLinkActive" class="warnings-tab"
+                [active]="warnings.isActive" *ngIf="hasWarning()">
+                Warnings
+            </a>
+
+            <a data-test-id="app-detail-tab"
+               mat-tab-link
+               [routerLink]="'details'"
+               routerLinkActive
+               #details="routerLinkActive"
+               [active]="details.isActive">
+                Detail
+            </a>
+            <a data-test-id="app-groups-tab"
+               *ngIf="isUserApp"
+               mat-tab-link
+               [routerLink]="'groups'"
+               routerLinkActive
+               #groups="routerLinkActive"
+               [active]="groups.isActive">
+                Groups
+            </a>
+            <a data-test-id="app-users-tab"
+               *ngIf="isUserApp"
+               mat-tab-link
+               [routerLink]="'users'"
+               routerLinkActive
+               #users="routerLinkActive"
+               [active]="users.isActive">
+                Users
+            </a>
+            <a *ngIf="!isSamlApp"
+               data-test-id="app-apis-tab"
+               mat-tab-link
+               [routerLink]="'apis'"
+               routerLinkActive
+               #apis="routerLinkActive"
+               [active]="apis.isActive">
+                Apis
+            </a>
+            <a data-test-id="app-usage-tab"
+               mat-tab-link
+               [routerLink]="'appusages'"
+               routerLinkActive
+               #usages="routerLinkActive"
+               [active]="usages.isActive">
+                Usages
+            </a>
+            <a data-test-id="app-definition-tab"
+               mat-tab-link
+               [routerLink]="'defs'"
+               routerLinkActive
+               #defs="routerLinkActive"
+               [active]="defs.isActive">
+                Definition
+            </a>
+            <a data-test-id="app-admins-tab"
+               mat-tab-link
+               [routerLink]="'admins'"
+               routerLinkActive
+               #admins="routerLinkActive"
+               [active]="admins.isActive">
+                Admins
+            </a>
+        </nav>
+        <mat-tab-nav-panel #tabPanel>
+            <router-outlet></router-outlet>
+        </mat-tab-nav-panel>
+    </main>
+</div>

@@ -1,0 +1,109 @@
+<header>
+    <mat-icon class="header"
+              svgIcon="prj"></mat-icon>
+    <h1 data-test-id="title">My Projects</h1>
+    <span class="toolbar-filler"></span>
+    <button mat-stroked-button
+            class="round right-offset"
+            [ngStyle]="{'visibility': isProjectAdmin ? 'visible' : 'hidden' }"
+            (click)="callNewProjectDialog()"
+            data-test-id="add-new-project-button">
+        <mat-icon class="left"
+                  aria-label="Create a Project">add</mat-icon>
+        Add New Project
+    </button>
+    <a [routerLink]='[ "/", { outlets: { help: ["guides", "my_projects"] } }]'
+       routerLinkActive="active">
+        <mat-icon class=".offset-5 font-white small"
+                  svgIcon="help"></mat-icon>
+    </a>
+
+</header>
+<div class="root-full">
+    <div class="running-flash"
+         *ngIf="running">
+        <mat-progress-bar [color]="'warn'"
+                          [mode]="'indeterminate'"
+                          [value]="50"
+                          [bufferValue]="75"> </mat-progress-bar>
+        <span class="mat-caption">{{runningOp}}</span>
+    </div>
+    <div class="frame">
+        <div>
+
+            <iam-error [value]="vm.error"></iam-error>
+        </div>
+
+        <main>
+
+            <div *ngFor="let proj of vm.myView"
+                 [ngClass]="uxCard()">
+
+                <div [ngClass]="uxCardHeader()">
+                    <span> {{ proj.id | pascalCase }} </span>
+                </div>
+                <div class="card-body">
+                    <div class="project-infos dark-reverse">
+                        <ng-container *ngIf="showKpis">
+                            <div class="project-info" *ngIf="noApplication(proj)">
+                                <label class="info-label" [class.unused-project]="noApplication(proj)">
+                                    No Application
+                                </label>
+                            </div>
+                            <div class="project-info" *ngIf="vmMyKpis.unusedApps(proj).length">
+                                <label class="info-label"[class.unused-project]="isUnusedProject(proj)">
+                                    Unused Applications:
+                                </label>
+                                <label [class.unused-project]="isUnusedProject(proj)" class="info-value">
+                                    {{isUnusedProject(proj) ? 'All' : vmMyKpis.unusedApps(proj).length}}
+                                </label>
+                            </div>
+                            <div class="project-info" *ngIf="vmMyKpis.uselessGroups(proj).length">
+                                <label class="info-label">Useless Groups:</label>
+                                <label class="info-value">{{vmMyKpis.uselessGroups(proj).length}}</label>
+                            </div>
+                            <div class="project-info" *ngIf="vmMyKpis.missingCmdbApps(proj).length">
+                                <label class="info-label">Missing Cmdbs:</label>
+                                <label class="info-value">{{vmMyKpis.missingCmdbApps(proj).length}}</label>
+                            </div>
+                            <div class="project-info" *ngIf="vmMyKpis.getDeprecatedAccounts(proj)?.length">
+                                <label class="info-label">Deprecated Accounts:</label>
+                                <label class="info-value">{{vmMyKpis.getDeprecatedAccounts(proj)!.length}}</label>
+                            </div>
+                            <div class="project-info" *ngIf="vmMyKpis.getSharedAccounts(proj)?.length">
+                                <label class="info-label">Shared Accounts:</label>
+                                <label class="info-value">{{vmMyKpis.getSharedAccounts(proj).length}}</label>
+                            </div>
+                            <div class="project-info" *ngIf="vmMyKpis.getSharedServices(proj)?.length">
+                                <label class="info-label">Shared Services:</label>
+                                <label class="info-value">{{vmMyKpis.getSharedServices(proj).length}}</label>
+                            </div>
+                            <div class="project-info" *ngIf="vmMyKpis.getUnusedScopes(proj, vm.view)?.length">
+                                <label class="info-label">Useless Scopes:</label>
+                                <label class="info-value">{{vmMyKpis.getUnusedScopes(proj, vm.view).length}}</label>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="showKpis === false">
+                            <div class="project-info">
+                                <mat-icon svgIcon="app"></mat-icon>
+                                <label class="info-label">Applications:</label>
+                                <label class="info-value">{{proj.apps.length}}</label>
+                            </div>
+                            <div class="project-info">
+                                <mat-icon svgIcon="grp"></mat-icon>
+                                <label class="info-label">Groups:</label>
+                                <label class="info-value">{{proj.groups.length}}</label>
+                            </div>
+                            <div class="project-info">
+                                <mat-icon svgIcon="scp"></mat-icon>
+                                <label class="info-label">Scopes:</label>
+                                <label class="info-value">{{proj.scopes.length}}</label>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <button mat-stroked-button color="primary" (click)="navigate2Project(proj.id)">Consult</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

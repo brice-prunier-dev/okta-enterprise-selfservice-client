@@ -1,0 +1,82 @@
+<div class="provisionning-row">
+  <div class="search-section">
+    <mat-form-field id="search-internal" subscriptSizing="dynamic">
+      <mat-autocomplete #auto1="matAutocomplete"
+                        [displayWith]='searchDisplayFn'
+                        (optionSelected)='onInternalSelection($event)'>
+        <mat-option *ngIf="searching"
+                    class="is-searching">
+          <mat-spinner diameter="20"></mat-spinner>
+        </mat-option>
+        <ng-container *ngIf="!searching">
+          <mat-option *ngFor="let usr of internalUsers"
+                      [value]='usr'>
+            <div [ngClass]="searchedUserLayout( usr )">
+              <div class="search-option mat-body">
+                <iam-user-label-matcher [label]="userLabel(usr)"
+                                        [searchText]="search.value">
+                </iam-user-label-matcher>
+              </div>
+              <div class="search-option mat-caption grey">{{usr.profile.login}}</div>
+            </div>
+            <mat-icon *ngIf="canBeAdded( usr )"
+                      class=".just-primary"
+                      matTooltip="{{usr.profile.login}}">
+              add_circle_outline</mat-icon>
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+      <mat-label>Add Internal User...</mat-label>
+      <input #search
+             matInput
+             type="text"
+             placeholder="firstname.lastname@domain.com"
+             [value]="internalSearchText"
+             [matAutocomplete]="auto1"
+             [disabled]="!editable"
+             (keyup)="onInternalSearchTextChanged($event)">
+      <button mat-icon-button
+              *ngIf="internalSearchText"
+              matIconSuffix
+              aria-label="Clear"
+              (click)="internalSearchTextChanged('');">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <!-- <mat-hint>{{addInternalTooltip}}</mat-hint> -->
+
+    </mat-form-field>
+    <button class="square-btn dark"
+            mat-icon-button
+            (click)="search.focus()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="account-section">
+    <button *ngIf="editable"
+            mat-stroked-button
+            class="round bounty"
+            (click)="addBounty()">
+      <mat-icon aria-label="New Bounty Account">add</mat-icon>
+      Add Bounty Account
+    </button>
+    <button *ngIf="editable"
+            mat-stroked-button
+            class="round test"
+            (click)="addTest()">
+      <mat-icon aria-label="New Test Account">add</mat-icon>
+      Add Test Account
+    </button>
+    <button *ngIf="editable"
+            class="round service"
+            mat-stroked-button
+            (click)="addService()">
+      <mat-icon aria-label="New Service Account">add</mat-icon>
+      Add Service Account
+    </button>
+  </div>
+
+
+
+</div>

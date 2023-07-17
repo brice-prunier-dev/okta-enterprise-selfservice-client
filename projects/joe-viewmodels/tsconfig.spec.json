@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/spec",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "types": [
+      "jest",
+      "node"
+    ]
+  },
+  "paths": {
+    "joe-fx": [
+      "../joe-fx/src"
+    ],
+    "joe-types": [
+      "../joe-types/src"
+    ],
+    "joe-viewmodels": [
+      "./src"
+    ]
+  },
+  "include": [
+    "**/*.spec.ts",
+    "**/*.d.ts",
+    "tests.*.ts"
+  ]
+}

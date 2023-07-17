@@ -1,0 +1,370 @@
+<div class="header-box dialog-header dialog-title flex-row">
+    <mat-icon svgIcon="api" class="header-icon"></mat-icon>
+    <span class="header">Api Detail ({{vm.view.id}})</span>
+</div>
+<div class="dialog-subheader-runtimeinfos dialog-content-offset">
+    <mat-progress-bar *ngIf="running"
+                      [color]="'warn'"
+                      [mode]="'indeterminate'"
+                      [value]="50"
+                      [bufferValue]="75">
+    </mat-progress-bar>
+    <span *ngIf="running"
+          class="mat-caption">{{runningOp}}</span>
+</div>
+<mat-dialog-content>
+
+    <main *ngIf="initialized">
+        <iam-error *ngIf="vm.error" [value]="vm.error"></iam-error>
+        <div *ngIf="vm.viewAsync | async" class="main-content">
+
+            <div class="w-100 flex-column flex-gap-10">
+                <div class="flex-50 flex-column flex-gap-20">
+                    <label class="caption">Scopes</label>
+                    <div class="flex-row flex-gap-20 flex-wrap flex-center">
+                        <mat-chip *ngFor="let scp of info.scopes">
+                            {{scp.oid}}
+                        </mat-chip>
+                    </div>
+                </div>
+
+                <mat-form-field class="flex-100">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput
+                              [(ngModel)]="info.description"></textarea>
+                    <mat-hint *ngIf="info.$validation.errors.description"
+                              class="error">
+                        {{info.$validation.errors.description|valmsg}}
+                    </mat-hint>
+                </mat-form-field>
+
+                <div class="flex-row flex-gap-20">
+                    <mat-form-field class="flex-50">
+                        <mat-label>Name</mat-label>
+                        <input matInput
+                               [(ngModel)]="info.name" />
+                        <mat-hint *ngIf="info.$validation.errors.name"
+                                  class="error">
+                            {{info.$validation.errors.name|valmsg}}
+                        </mat-hint>
+                    </mat-form-field>
+                    <mat-form-field class="flex-16">
+                        <mat-label>Nature</mat-label>
+                        <input matInput
+                               matTooltip="Api's data typology: ex. 'Digital' for INTACT."
+                               [(ngModel)]="info.nature" />
+                        <mat-hint *ngIf="info.$validation.errors.nature"
+                                  class="error">
+                            {{info.$validation.errors.nature|valmsg}}
+                        </mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field class="flex-16">
+                        <mat-label>Category</mat-label>
+                        <input matInput
+                               matTooltip="Api's data flavor: ex. 'Security' for INTACT."
+                               [(ngModel)]="info.category" />
+                        <mat-hint *ngIf="info.$validation.errors.category"
+                                  class="error">
+                            {{info.$validation.errors.category|valmsg}}
+                        </mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field class="flex-16">
+                        <mat-label>Horizon</mat-label>
+                        <input matInput
+                               [(ngModel)]="info.horizon" />
+                        <mat-hint *ngIf="info.$validation.errors.horizon"
+                                  class="error">
+                            {{info.$validation.errors.horizon|valmsg}}
+                        </mat-hint>
+                    </mat-form-field>
+
+                </div>
+                <div class="flex-row flex-gap-20">
+                    <div class="flex-50 flex-row flex-gap-10">
+                        <mat-form-field class="w-100">
+                            <mat-label>Wiki Link</mat-label>
+                            <input matInput
+                                   [(ngModel)]="info.links.wiki" />
+                            <mat-hint *ngIf="info.links.$validation.errors.wiki"
+                                      class="error">
+                                {{info.links.$validation.errors.wiki|valmsg}}
+                            </mat-hint>
+
+                            <button matSuffix
+                                    *ngIf="info.links.wiki != undefined && info.links.wiki.length > 0 && !info.links.$validation.errors.wiki"
+                                    mat-icon-button
+                                    color="primary"
+                                    class="space-left right">
+                                <a target="_blank"
+                                   href="{{info.links.wiki}}"
+                                   rel="noopener noreferrer">
+                                    <mat-icon
+                                              matTooltip="Go to url">launch</mat-icon>
+                                </a>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <div class="flex-50 flex-row flex-gap-10">
+                        <mat-form-field class="w-100">
+                            <mat-label>Wiki2 Link</mat-label>
+                            <input matInput
+                                   [(ngModel)]="info.links.wiki2" />
+                            <mat-hint *ngIf="info.links.$validation.errors.wiki2"
+                                      class="error">
+                                {{info.links.$validation.errors.wiki2|valmsg}}
+                            </mat-hint>
+                            <button matSuffix
+                                    *ngIf="info.links.wiki2 != undefined && info.links.wiki2.length > 0 && !info.links.$validation.errors.wiki2"
+                                    mat-icon-button
+                                    color="primary"
+                                    class="space-left right">
+                                <a target="_blank"
+                                   href="{{info.links.wiki2}}"
+                                   rel="noopener noreferrer">
+                                    <mat-icon
+                                              matTooltip="Go to url">launch</mat-icon>
+                                </a>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="flex-row flex-gap-20">
+
+                    <div class="flex-50 flex-row flex-gap-10">
+                        <mat-form-field class="w-100">
+                            <mat-label>Teams Link</mat-label>
+                            <input matInput
+                                   [(ngModel)]="info.links.teams" />
+                            <mat-hint *ngIf="info.links.$validation.errors.teams"
+                                      class="error">
+                                {{info.links.$validation.errors.teams|valmsg}}
+                            </mat-hint>
+                            <button matSuffix
+                                    *ngIf="info.links.teams != undefined && info.links.teams.length > 0 && !info.links.$validation.errors.teams"
+                                    mat-icon-button
+                                    color="primary"
+                                    class="space-left right">
+                                <a target="_blank"
+                                   href="{{info.links.teams}}"
+                                   rel="noopener noreferrer">
+                                    <mat-icon
+                                              matTooltip="Go to url">launch</mat-icon>
+                                </a>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <div class="flex-50 flex-row flex-gap-10">
+                        <mat-form-field class="w-100">
+                            <mat-label>Backlog Link</mat-label>
+                            <input matInput
+                                   [(ngModel)]="info.links.backlog" />
+                            <mat-hint *ngIf="info.links.$validation.errors.backlog"
+                                      class="error">
+                                {{info.links.$validation.errors.backlog|valmsg}}
+                            </mat-hint>
+                            <button matSuffix
+                                    *ngIf="info.links.backlog != undefined && info.links.backlog.length > 0 && !info.links.$validation.errors.backlog"
+                                    mat-icon-button
+                                    color="primary"
+                                    class="space-left right">
+                                <a target="_blank"
+                                   href="{{info.links.backlog}}"
+                                   rel="noopener noreferrer">
+                                    <mat-icon
+                                              matTooltip="Go to url">launch</mat-icon>
+                                </a>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="flex-row flex-gap-20">
+                    <div class="flex-50 flex-column">
+                        <mat-form-field class="w-100">
+                            <mat-chip-grid #contactChips aria-label="Business Contact">
+                                <mat-chip-row
+                                    *ngFor="let contact of info.businessContacts"
+                                    [removable]="true"
+                                    (removed)="info.businessContacts.remove( contact )">
+                                    {{contact}}
+                                    <mat-icon matChipRemove>cancel</mat-icon>
+                                </mat-chip-row>
+                                <input
+                                       placeholder="Business Contacts for the Api..."
+                                       #contactInput
+                                       [formControl]="contactControl"
+                                       [matAutocomplete]="contactAuto"
+                                       [matChipInputFor]="contactChips">
+                            </mat-chip-grid>
+                            <mat-autocomplete #contactAuto="matAutocomplete"
+                                              (optionSelected)="selectedContact($event)">
+
+                                <mat-option *ngFor="let usr of filteredContacts | async"
+                                            [value]='usr.profile.email'>
+                                    <div [ngClass]="searchedUserLayout( usr )">
+                                        <div class="search-option mat-body">
+                                            <iam-user-label-matcher [label]="userLabel(usr)"
+                                                                    [searchText]="contactInput.value">
+                                            </iam-user-label-matcher>
+                                        </div>
+                                        <div class="search-option mat-caption grey">{{usr.profile.email}}</div>
+                                    </div>
+
+                                </mat-option>
+
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <iam-validation [element]="info.businessContacts"></iam-validation>
+                    </div>
+                    <div class="flex-50 flex-column">
+                        <mat-form-field class="w-100">
+                            <mat-chip-grid #ownerChips aria-label="Product Owners">
+                                <mat-chip-row
+                                    *ngFor="let owner of info.productOwners"
+                                    [removable]="true"
+                                    (removed)="info.productOwners.remove( owner )">
+                                    {{owner}}
+                                    <mat-icon matChipRemove>cancel</mat-icon>
+                                </mat-chip-row>
+                                <input
+                                       placeholder="Product Owners for the Api..."
+                                       #ownerInput
+                                       [formControl]="ownerControl"
+                                       [matAutocomplete]="ownerAuto"
+                                       [matChipInputFor]="ownerChips">
+                                <!-- [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            (matChipInputTokenEnd)="addOwner($event)"> -->
+                            </mat-chip-grid>
+                            <mat-autocomplete #ownerAuto="matAutocomplete"
+                                              (optionSelected)="selectedOwner($event)">
+                                <mat-option *ngFor="let usr of filteredOwners | async"
+                                            [value]='usr.profile.email'>
+                                    <div [ngClass]="searchedUserLayout( usr )">
+                                        <div class="search-option mat-body">
+                                            <iam-user-label-matcher [label]="userLabel(usr)"
+                                                                    [searchText]="ownerInput.value">
+                                            </iam-user-label-matcher>
+                                        </div>
+                                        <div class="search-option mat-caption grey">{{usr.profile.email}}</div>
+                                    </div>
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <iam-validation [element]="info.productOwners"></iam-validation>
+
+                    </div>
+
+                </div>
+                <div class="flex-row flex-gap-20">
+                    <div class="flex-column flex-grow">
+                        <mat-form-field class="w-100">
+                            <mat-chip-grid #tagChips aria-label="Tag selection">
+                                <mat-chip-row
+                                    *ngFor="let tag of info.tags"
+                                    [removable]="true"
+                                    (removed)="info.tags.remove( tag )">
+                                    {{tag}}
+                                    <mat-icon matChipRemove>cancel</mat-icon>
+                                </mat-chip-row>
+                                <input
+                                       placeholder="Tags related to Api data..."
+                                       #tagInput
+                                       [formControl]="tagControl"
+                                       [matAutocomplete]="tagAuto"
+                                       [matChipInputFor]="tagChips"
+                                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                       (matChipInputTokenEnd)="addTag($event)">
+                            </mat-chip-grid>
+                            <mat-autocomplete #tagAuto="matAutocomplete"
+                                              (optionSelected)="selectedTag($event)">
+                                <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+                                    {{tag}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <iam-validation [element]="info.tags"></iam-validation>
+
+                    </div>
+                    <div class="flex-column flex-grow">
+                        <mat-form-field class="w-100">
+                            <mat-chip-grid #countryChips aria-label="Fruit selection">
+                                <mat-chip-row
+                                    *ngFor="let country of info.countries"
+                                    [removable]="true"
+                                    (removed)="info.countries.remove( country )">
+                                    {{country}}
+                                    <mat-icon matChipRemove>cancel</mat-icon>
+                                </mat-chip-row>
+                                <input
+                                       placeholder="Countries related to Api data..."
+                                       #countryInput
+                                       [formControl]="countryControl"
+                                       [matAutocomplete]="countryAuto"
+                                       [matChipInputFor]="countryChips"
+                                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                       (matChipInputTokenEnd)="addCountry($event)">
+                            </mat-chip-grid>
+                            <mat-autocomplete #countryAuto="matAutocomplete"
+                                              (optionSelected)="selectedCountry($event)">
+                                <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+                                    {{country}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <iam-validation [element]="info.countries"></iam-validation>
+
+                    </div>
+                    <div class="flex-column flex-grow">
+                        <mat-form-field class="w-100">
+                            <mat-chip-grid #commodityChips aria-label="Commodity selection">
+                                <mat-chip-row
+                                  *ngFor="let commodity of info.commodities"
+                                  [removable]="true"
+                                  (removed)="info.commodities.remove( commodity )">
+                                  {{commodity}}
+                                  <mat-icon matChipRemove>cancel</mat-icon>
+                                </mat-chip-row>
+                                <input
+                                       placeholder="Api data typology..."
+                                       #commodityInput
+                                       [formControl]="commodityControl"
+                                       [matAutocomplete]="commodityAuto"
+                                       [matChipInputFor]="commodityChips"
+                                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                       (matChipInputTokenEnd)="addCommodity($event)">
+                            </mat-chip-grid>
+                            <mat-autocomplete #commodityAuto="matAutocomplete"
+                                              (optionSelected)="selectedCommodity($event)">
+                                <mat-option *ngFor="let commodity of filteredCommodities | async"
+                                            [value]="commodity">
+                                    {{commodity}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <iam-validation [element]="info.commodities"></iam-validation>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</mat-dialog-content>
+<mat-dialog-actions style="justify-content: end;">
+
+    <div class="action-buttons top-offset right-offset right flex-row">
+        <button mat-stroked-button
+                class="flex-row flex-center"
+                color="primary"
+                (click)="cmdCancel()">Cancel</button>
+        <button [disabled]="!(vm.view.info.$isEditing && vm.view.info.$editor!.isTouched())"
+                mat-raised-button
+                class="flex-row flex-center"
+                color="primary"
+                (click)="cmdSave()">Save</button>
+
+    </div>
+</mat-dialog-actions>

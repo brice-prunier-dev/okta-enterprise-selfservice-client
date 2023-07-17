@@ -1,0 +1,100 @@
+<div class="nav-page">
+    <div class="running-flash" [ngStyle]="{ visibility: usrCdhCtx.running ? 'visible' : 'hidden' }">
+        <mat-progress-bar
+                          [color]="'warn'"
+                          [mode]="'indeterminate'"
+                          [value]="50"
+                          [bufferValue]="75"></mat-progress-bar>
+    </div>
+    <main *ngIf="usrCdhCtx.loaded">
+        <div class="w-100" class="flex-row flex-align-end flex-gap-20">
+            <mat-form-field class="w-350-px">
+                <mat-label>User</mat-label>
+                <input matInput
+                       [ngModel]="email"
+                       (ngModelChange)="emailChanged($event)"
+
+                       placeholder="Email"
+                       [matAutocomplete]="auto">
+                <mat-hint>{{userName}}</mat-hint>
+
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                                  (optionSelected)='onUserSelection($event)'>
+                    <mat-option *ngFor="let user of usrCdhCtx.matchingUsers| async" [value]="user">
+                        {{user.profile.firstName + ' ' + user.profile.lastName + ' (' + user.profile.login.split('@')[0] +')'}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+
+            <mat-form-field class="w-125-px">
+                <mat-label>On Month of Year</mat-label>
+                <input matInput [matDatepicker]="dpd" [(ngModel)]="momentDate">
+                <mat-datepicker-toggle matSuffix [for]="dpd"></mat-datepicker-toggle>
+                <mat-datepicker #dpd
+                                startView="multi-year"
+                                (monthSelected)="chosenMonthHandler($event, dpd)"
+                                panelClass="month-picker">
+                </mat-datepicker>
+            </mat-form-field>
+
+            <div class="toggle-field flex-row flex-align-center">
+                <button
+                        [disabled]="!cmdRunQueryEnabled()"
+                        mat-mini-fab
+                        class="flex-row flex-center"
+                        color="accent"
+                        matTooltip="Load current query"
+                        (click)="cmdRunQuery()">
+                    <mat-icon>input</mat-icon>
+                </button>
+
+                <button
+                        [disabled]="!graphWithDatasets()"
+                        mat-mini-fab
+                        class="flex-row flex-center"
+                        color="accent"
+                        matTooltip="Hide all curves"
+                        (click)="cmdHideAll()">
+
+                    <mat-icon>layers_clear</mat-icon>
+                </button>
+
+                <button
+                        [disabled]="!graphWithDatasets()"
+                        mat-mini-fab
+                        class="flex-row flex-center"
+                        color="warn"
+                        matTooltip="Clear graph"
+                        (click)="cmdClear()">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+            <mat-paginator [length]="datasetCount"
+                           [pageSize]="pageSize"
+                           [hidePageSize]="true"
+                           [showFirstLastButtons]="false"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPageChanged($event)"
+                           aria-label="Select page">
+            </mat-paginator>
+
+        </div>
+        <div class="w-100">
+            <iam-error *ngIf="usrCdhCtx.error" [value]="usrCdhCtx.error"></iam-error>
+
+            <div class="chart">
+                <canvas
+                        baseChart
+                        width="{{ canvasWidth }}"
+                        height="450"
+                        [data]="lineChartData"
+                        [options]="lineChartOptions"
+                        [type]="lineChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+            </div>
+
+        </div>
+    </main>
+</div>

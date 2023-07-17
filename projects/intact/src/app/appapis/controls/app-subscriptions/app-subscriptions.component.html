@@ -1,0 +1,124 @@
+<div class="running-flash"
+     *ngIf="running">
+    <mat-progress-bar [color]="'warn'"
+                      [mode]="'indeterminate'"
+                      [value]="50"
+                      [bufferValue]="75"> </mat-progress-bar>
+</div>
+
+<div *ngIf="initialized"
+     class="tab-page">
+    <div class="tab-page-toolbar">
+        <button mat-stroked-button
+                class="round"
+                matTooltip="Click to edit application's scopes."
+                (click)="editDependencies()"
+                data-test-id="app-manage-scopes-button">
+            <mat-icon class="left right-offset"
+                      aria-label="Add a scope">edit</mat-icon>
+            Manage Scopes
+        </button>
+    </div>
+    <main>
+        <div class="main-content">
+            <div>
+                <iam-error [value]="vm.error"></iam-error>
+            </div>
+            <h2 *ngIf="vm?.withData !== true">No API subscription</h2>
+            <mat-accordion *ngIf="vm.withData">
+                <mat-expansion-panel *ngFor="let api of vm.view"
+                                     class="mat-elevation-z0">
+                    <mat-expansion-panel-header class="group-row"
+                                                collapsedHeight="48px"
+                                                expandedHeight="48px">
+                        <mat-panel-title>
+                            <mat-icon svgIcon="api"></mat-icon>{{api.id}}
+
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <mat-icon svgIcon="id" class="icon-desc"></mat-icon>{{api.info.name}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div class="api-box">
+                        <div class="api-box-content-column">
+                            <div class="api-section">
+                                <h4>DESCRIPTION</h4>
+                                <div class="api-section">{{api.info.description}}</div>
+                            </div>
+                            <div class="api-section">
+                                <h4>SCOPES</h4>
+                                <mat-chip-set>
+                                    <mat-chip *ngFor="let scope of api.info.scopes"
+                                              [ngClass]="apiColor(scope.oid)"
+                                              (click)="editDependencies()">
+                                        {{scope.oid}}
+                                    </mat-chip>
+                                </mat-chip-set>
+                            </div>
+                            <div *ngIf="api.info.links" class="api-section">
+                                <h4>LINKS</h4>
+                                <div class="api-section-content">
+                                    <div class="section-content flex-column">
+                                        <a *ngIf="api.info.links.app"
+                                           href="{{api.info.links.app}}"
+                                           target="_blank"
+                                           rel="noopener noreferrer">Application</a>
+                                        <a *ngIf="api.info.links.wiki"
+                                           href="{{api.info.links.wiki}}"
+                                           target="_blank"
+                                           rel="noopener noreferrer">Wiki</a>
+                                        <a *ngIf="api.info.links.wiki2"
+                                           href="{{api.info.links.wiki2}}"
+                                           target="_blank"
+                                           rel="noopener noreferrer">Wiki2</a>
+                                        <a *ngIf="api.info.links.swagger"
+                                           href="{{api.info.links.swagger}}"
+                                           target="_blank"
+                                           rel="noopener noreferrer">Swagger</a>
+                                        <a *ngIf="api.info.links.backlog"
+                                           href="{{api.info.links.backlog}}"
+                                           target="_blank"
+                                           rel="noopener noreferrer">Backlog</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="api-box-content-column">
+                            <div class="api-section">
+                                <h4>TAGS</h4>
+                                <mat-chip-set>
+                                    <mat-chip *ngFor="let tag of api.info.tags">
+                                        {{tag}}
+                                    </mat-chip>
+                                </mat-chip-set>
+                            </div>
+                            <div class="api-section">
+                                <h4>API MANAGERS</h4>
+                                <div class="api-section-content">
+                                    <div class="section-header">Business Owner :</div>
+                                    <div class="section-content">
+                                        <span *ngFor="let usr of api.info.businessContacts">{{usr + ' '}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="api-section-content">
+                                    <div class="section-header">IT Owner :</div>
+                                    <div class="section-content">
+                                        <span *ngFor="let usr of api.info.productOwners">{{usr + ' '}}</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+        </div>
+    </main>
+</div>

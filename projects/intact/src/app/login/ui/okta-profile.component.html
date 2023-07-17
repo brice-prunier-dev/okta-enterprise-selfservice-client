@@ -1,0 +1,56 @@
+<div class="main  mat-typography flex-column">
+    <h1>
+        INTACT runtime versions
+    </h1>
+    <p>
+        UI: {{uiVersion}}
+    </p>
+    <p>
+        API: {{apiVersion}}
+    </p>
+    <p>
+        This route is protected with the <code>OktaAuthGuard</code> component, which will ensure that this page
+        cannot be
+        accessed until you have authenticated.
+    </p>
+    <p>
+        <mat-slide-toggle [labelPosition]="'before'"
+                          [(ngModel)]="withDebug">With debug log</mat-slide-toggle>
+    </p>
+    <h1>
+        <i aria-hidden="true"
+           class="drivers license outline icon"></i> My User Profile (ID Token Claims)
+    </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Claim</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>Intact Admin</b></td>
+                <td id="claim-intact-admin">{{isIntactAdmin}}</td>
+            </tr>
+            <tr *ngFor="let claim of claims">
+                <td><b>{{claim.claim}}</b></td>
+                <td>{{claim.value}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <mat-divider></mat-divider>
+    <table>
+        <tbody>
+            <tr>
+                <td class="w130"><b>Access Token</b></td>
+                <td>
+                    <button mat-icon-button
+                            [cdkCopyToClipboard]="accessToken!">
+                        <mat-icon>content_copy</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

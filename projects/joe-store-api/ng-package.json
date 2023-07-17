@@ -1,0 +1,8 @@
+{
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "../../dist/joe-store-api",
+    "lib": {
+        "entryFile": "src/index.ts"
+    },
+    "allowedNonPeerDependencies": ["rxjs", "joe-fx", "joe-types"]
+}

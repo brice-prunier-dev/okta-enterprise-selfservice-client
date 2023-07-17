@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/lib",
+    "declaration": true,
+    "inlineSources": true,
+    "forceConsistentCasingInFileNames": false,
+    "strict": true,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false,
+    "types": []
+  },
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": false,
+    "enableResourceInlining": true
+  },
+  "include": [
+    "src/lib/**/*"
+  ],
+  "exclude": [
+    "test.ts",
+    "test/**/*"
+  ]
+}

@@ -1,0 +1,63 @@
+@import '../../../../styles/colors.scss';
+
+:host {
+    position: absolute;
+    top: 48px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: $dark-primary;
+    overflow: hidden;
+    border-top: 2px solid white;
+}
+
+.sync-h2 {
+    margin: 10px;
+}
+
+.sync-margin {
+    margin: 10px;
+}
+
+div.root-full {
+    background: $dark-primary;
+    color: white;
+}
+
+div.home {
+    overflow: hidden;
+    color: white;
+    overflow: hidden;
+    height: 100%;
+    .primary {
+        background: -moz-linear-gradient(top, $primary 0%, $primary-darker 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, $primary 0%, $primary-darker 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, $primary 0%, $primary-darker 100%);
+    }
+    .dark {
+        background: -moz-linear-gradient(top, $dark-primary 0%, $dark-primary-darker 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, $dark-primary 0%, $dark-primary-darker 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, $dark-primary 0%, $dark-primary-darker 100%);
+    }
+}
+
+div.title {
+    margin: 50px 50px 30px 150px;
+    float: left;
+}
+
+.title-1 {
+    font-size: 4.75rem;
+    line-height: 70px;
+    font-weight: 700;
+}
+
+p.auth-ok {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: 300;
+}

@@ -1,0 +1,41 @@
+@import '../../../../styles/colors.scss';
+
+div.graphAdminHeader {
+    height: 28px;
+    display: inline-flex;
+    color: $primary;
+    background: white;
+    border-top: 1px solid $gray-300;
+    border-bottom: 1px solid $gray-300;
+    font: 600 12px/22px Lato;
+
+    .graph-item {
+        display: flex;
+        min-width: 230px;
+        align-items: center;
+
+        span {
+            text-align: center;
+            width: 100%;
+        }
+
+        &:nth-child(2) {
+            min-width: 320px;
+        }
+
+        &:nth-child(3) {
+            min-width: 125px;
+        }
+
+        &:last-child {
+            flex: 100%;
+        }
+    }
+}
+
+div.graphAdminContainer {
+    place-content: initial;
+    display: flex;
+    background-color: white;
+    padding: 10px 0px;
+}

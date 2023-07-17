@@ -1,0 +1,109 @@
+<div class="running-flash"
+     *ngIf="running">
+  <mat-progress-bar [color]="'warn'"
+                    [mode]="'indeterminate'"
+                    [value]="50"
+                    [bufferValue]="75"> </mat-progress-bar>
+  <span class="mat-caption">{{runningOp}}</span>
+</div>
+
+<div *ngIf="initialized"
+     class="main">
+  <main>
+    <div class="main-content">
+
+      <div>
+        <iam-error [value]="vm.error"></iam-error>
+      </div>
+      <div class="main-content-title">
+        <label class="mat-h2">Setup New Scope</label>
+      </div>
+      <div class="full-width">
+        <mat-stepper [linear]="true"
+                     #stepper>
+          <mat-step>
+            <div>
+              <ng-template matStepLabel>Fill out your data</ng-template>
+              <div class="main-content-title">
+                <label>Scope detail</label>
+              </div>
+              <div class="app-content">
+                <div class="flex-row flex-column-lt-sm flex-wrap flex-gap-20 flex-gap-10-lt-md">
+                  <mat-form-field class="flex-grow">
+                    <mat-label>Name</mat-label>
+                    <input matInput
+                           data-test-id="scope-name"
+                           disabled="{{!editable}}"
+                           required
+                           [(ngModel)]="vm.view.oid" />
+                    <mat-hint *ngIf="vm.view.$validation.errors?.oid"
+                              class="error">
+                      {{vm.view.$validation.errors.oid|valmsg}}
+                    </mat-hint>
+                  </mat-form-field>
+                </div>
+                <div class="flex-align-end flex-row flex-column-lt-sm flex-wrap flex-gap-20 flex-gap-10-lt-md">
+                  <mat-form-field class="flex-grow">
+                    <mat-label>Description</mat-label>
+                    <input matInput
+                           data-test-id="scope-description"
+                           disabled="{{!editable}}"
+                           required
+                           [(ngModel)]="vm.view.description" />
+                    <mat-hint *ngIf="vm.view.$validation.errors?.description"
+                              class="error">
+                      {{vm.view.$validation.errors.description|valmsg}}
+                    </mat-hint>
+                  </mat-form-field>
+                </div>
+                <iam-validation [element]="vm.view"></iam-validation>
+              </div>
+
+              <div class="top-offset full-width">
+                <button *ngIf="!vm.view.$validation.withError()"
+                        data-test-id="scope-data-next-button"
+                        class="right"
+                        mat-raised-button
+                        color="primary"
+                        matStepperNext>
+                  Next
+                </button>
+                <button mat-stroked-button
+                        color="primary"
+                        class="space-left right"
+                        matStepperPrevious>Back</button>
+
+              </div>
+            </div>
+          </mat-step>
+
+          <mat-step>
+            <div>
+              <ng-template matStepLabel>Select admins's groups</ng-template>
+              <iam-item-admin-list [view]="vm.view"
+                                   [groups]="vm.projectGroups()"
+                                   [editable]="editable">
+              </iam-item-admin-list>
+              <iam-validation [element]="vm.view"></iam-validation>
+              <div class="top-offset right-offset right">
+                <button *ngIf="editable"
+                        data-test-id="new-scope-save-button"
+                        mat-raised-button
+                        matStepperNext
+                        color="primary"
+                        class="space-left right"
+                        [disabled]="vm.view.$validation.withError()"
+                        (click)="saveAsync()">Save</button>
+                <button mat-stroked-button
+                        color="primary"
+                        class="space-left right"
+                        matStepperPrevious>Back</button>
+
+              </div>
+            </div>
+          </mat-step>
+        </mat-stepper>
+      </div>
+    </div>
+  </main>
+</div>

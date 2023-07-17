@@ -1,0 +1,121 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "command": "npm start",
+            "name": "Run npm start",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "command": "npm run cypress:open:beta",
+            "name": "Cpryess dev",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "name": "launch",
+            "type": "chrome",
+            "request": "launch",
+            "preLaunchTask": "npm: start",
+            "url": "http://localhost:4200/me",
+            "webRoot": "${workspaceFolder}"
+            
+        },
+        {
+            "name": "launch dev",
+            "type": "chrome",
+            "request": "launch",
+            "preLaunchTask": "npm: start",
+            "url": "https://localhost:4201/me",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "attach",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}",
+            "sourceMapPathOverrides": {
+                "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
+                "webpack:///./*": "${workspaceFolder}/projects/intact/*",
+                "webpack:///*": "${workspaceFolder}/*",
+                "webpack:///src/*": "${workspaceFolder}/projects/intact/src/*",
+                "webpack:///ng://intact/app/*": "${workspaceFolder}/projects/intact/src/app/*",
+                "webpack:///ng://intact-models/lib/*": "${workspaceFolder}/projects/intact-models/src/lib/*",
+                "webpack:///ng://joe-fx/lib/*": "${workspaceFolder}/projects/joe-fx/src/lib/*",
+                "webpack:///ng://joe-ng/lib/*": "${workspaceFolder}/projects/joe-ng/src/lib/*",
+                "webpack:///ng://joe-types/lib/*": "${workspaceFolder}/projects/joe-types/src/lib/*",
+                "webpack:///ng://joe-models/lib/*": "${workspaceFolder}/projects/joe-models/src/lib/*",
+                "webpack:///ng://joe-viewmodels/lib/*": "${workspaceFolder}/projects/joe-viewmodels/src/lib/*",
+                "webpack:///ng://joe-store-api/lib/*": "${workspaceFolder}/projects/joe-store-api/src/lib/*"
+            }
+        },
+        {
+            "name": "ng test",
+            "type": "chrome",
+            "request": "launch",
+            "url": "${workspaceFolder}/coverage/intact/index.html"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "test: joe-fx (jest)",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--config",
+                "./projects/joe-fx/jest.config.js",
+                "--runInBand"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "test: joe-viewmodels (jest)",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--config",
+                "./projects/joe-viewmodels/jest.config.js",
+                "--runInBand"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true
+        }
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "test: intact-models (jest)",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--config",
+                "./projects/intact-models/jest.config.js",
+                "--runInBand"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "test: intact (jest)",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest.js",
+            "cwd": "${workspaceFolder}",
+            "args": [
+                "--config",
+                "./projects/intact/jest.config.js",
+                "--runInBand"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true
+        }
+    ]
+}

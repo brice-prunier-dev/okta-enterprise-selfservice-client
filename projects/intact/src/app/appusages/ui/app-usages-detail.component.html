@@ -1,0 +1,62 @@
+<div class="nav-page">
+    <div class="running-flash" *ngIf="running">
+        <mat-progress-bar
+                          [color]="'warn'"
+                          [mode]="'indeterminate'"
+                          [value]="50"
+                          [bufferValue]="75"></mat-progress-bar>
+        <span class="mat-caption"> {{ runningOp }} </span>
+    </div>
+
+    <main>
+        <iam-error *ngIf="appVm?.error" [value]="appVm.error"></iam-error>
+        <mat-tab-group class="root-tabs" #tabs>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="right-offset" svgIcon="app" matTooltip="Application"></mat-icon>
+                    by Year
+                </ng-template>
+                <iam-app-usages-monthly [appCdhCtx]="appCdhCtx"></iam-app-usages-monthly>
+            </mat-tab>
+            <mat-tab label="App by Month">
+                <ng-template mat-tab-label>
+                    <mat-icon class="right-offset" svgIcon="app" matTooltip="Application"></mat-icon>
+                    by Month
+                </ng-template>
+                <iam-app-usages-daily [appCdhCtx]="appCdhCtx"></iam-app-usages-daily>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="right-offset" svgIcon="app" matTooltip="Application"></mat-icon>
+                    by Day
+                </ng-template>
+                <iam-app-usages-hourly [appCdhCtx]="appCdhCtx"></iam-app-usages-hourly>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="right-offset" svgIcon="user" matTooltip="User"></mat-icon>
+                    by Year
+                </ng-template>
+                <iam-user-usages-monthly [usrCdhCtx]="usrCdhCtx"></iam-user-usages-monthly>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="right-offset" svgIcon="user" matTooltip="User"></mat-icon>
+                    by Month
+                </ng-template>
+                <iam-user-usages-daily [usrCdhCtx]="usrCdhCtx"></iam-user-usages-daily>
+            </mat-tab>
+            <mat-tab label="by Day">
+                <ng-template mat-tab-label>
+                    <mat-icon class="right-offset" svgIcon="user" matTooltip="User"></mat-icon>
+                    by Day
+                </ng-template>
+                <iam-user-usages-hourly [usrCdhCtx]="usrCdhCtx"></iam-user-usages-hourly>
+            </mat-tab>
+
+        </mat-tab-group>
+    </main>
+</div>

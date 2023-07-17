@@ -1,0 +1,285 @@
+_colors {
+    activitybar_background: #3c75aa;
+    activitybar_foreground: #fff;
+    activitybar_dropbackground: #fff;
+    activitybarbadge_background: #cbd62a;
+    activitybarbadge_foreground: #ffffff;
+
+    badge_background: #cbd62a;
+    badge_foreground: #fff;
+
+    banner_background: #cfd39a;
+    banner_foreground: #fff;
+    banner_iconforeground: #cbd62a;
+
+    breadcrumb_foreground: #192e5c;
+    breadcrumb_focusforeground: #cbd62a;
+
+    button_background: #cbd62a;
+    button_foreground: #fff;
+    button_hoverbackground: #cfd39a;
+    button_secondaryforeground: #fff;
+    button_secondarybackground: #7e0202;
+    button_secondaryhoverbackground: #fff;
+
+    checkbox_background: #7e0202;
+    checkbox_foreground: #fff;
+    checkbox_border: #192e5c;
+
+    commandCenter_foreground:  #fff;
+    debugexceptionwidget_background: #cfd39a;
+    debugexceptionwidget_border: #192e5c;
+    debugtoolbar_background: #f3f3f3;
+
+    debugtokenexpression_name: #023f63;
+    debugtokenexpression_value: #0f6a9e;
+    debugtokenexpression_string: #6e6d6d;
+    debugtokenexpression_boolean: #08f14e;
+    debugtokenexpression_number: #83ca00;
+    debugtokenexpression_error: #f80677;
+    descriptionforeground: #36373b;
+
+    dropdown_background: #f3f3f3;
+    dropdown_listbackground: #f3f3f3;
+    dropdown_border: #192e5c;
+    dropdown_foreground: #192e5c;
+
+    editor_background: #fff;
+    editor_foreground: #10294e;
+    editor_findmatchbackground: #aed4fb;
+    editor_linehighlightbackground: #dffde9;
+    editor_wordhighlightstrongbackground: #b1c8fdbb;
+    editor_selectionbackground: #e2eafdb0;
+    editor_wordhighlightbackground: #56f392bb;
+
+    editoractivelinenumber_foreground: #0c4bd4;
+    editorerror_foreground: #f8a306;
+
+    editorgroup_emptybackground: #e2e2db;
+    editorgroup_focusedemptyborder: #76c5c5;
+    editorgroupheader_tabsbackground: #f9f9f9;
+
+    editorgutter_background: #ffffff;
+    editorgutter_modifiedbackground: #015458;
+    editorgutter_addedbackground: #19c203;
+    editorgutter_deletedbackground: #bb54a1d7;
+    editorgutter_commentrangeforeground: #f9f9f9;
+    editorgutter_foldingcontrolforeground: #01c7d1;
+
+    editorhint_foreground: #f9f9f9;
+    editorhint_border: #f9f9f9;
+
+    editorhoverwidget_border: #c8c8c8;
+    editorhoverwidget_background: #f3f3f3;
+    editorhoverwidget_foreground: #192e5c;
+
+    editorindentguide_background: #88c4fd;
+    editorindentguide_activebackground: #dbdbdb;
+
+    editorlinenumber_foreground: #00bb22;
+
+    editormarkernavigation_background: #f9f9f9;
+    editormarkernavigationinfo_background: #6182b8;
+    editormarkernavigationerror_background: #fe041d;
+    editormarkernavigationwarning_background: f9f9f9;
+
+    editorpane_background: #57b1b1;
+
+    editorsuggestwidget_border: #6c9bc7;
+    editorsuggestwidget_background: #f3f3f3;
+    editorsuggestwidget_foreground: #192e5c;
+    editorsuggestwidget_focushighlightforeground: #02b245;
+    editorsuggestwidget_highlightforeground: #52fc93;
+    editorsuggestwidget_selectedbackground: #9acdfa;
+
+    editorwidget_background: #f3f3f3;
+    editorwidget_border: #192e5c;
+
+    extensionbutton_prominentbackground: #cbd62a;
+    extensionbutton_prominentforeground: #6182b8;
+    extensionbutton_prominenthoverbackground: #dddbdb;
+    test: rgba(15, 122, 44, 1);
+
+    foreground: #175a86;
+    focusborder: #cbd62a;
+
+    icon_foreground: #64a7ff;
+
+    input_background: #eeeeee;
+    input_border: #192e5c;
+    input_foreground: #000;
+    input_placeholderforeground: #a0a0a0;
+    inputoption_activeborder: #3e313c;
+    inputvalidation_errorbackground: #8f000e;
+    inputvalidation_errorforeground: #fff;
+    inputvalidation_infobackground: #6182b8;
+    inputvalidation_infoforeground: #fff;
+    inputvalidation_warningbackground: #6c3072;
+    inputvalidation_warningforeground: #000;
+
+    gitdecoration_modifiedresourceforeground: #47555f;
+    gitdecoration_deletedresourceforeground: #c027c0;
+    gitdecoration_untrackedresourceforeground: #640130;
+    gitdecoration_ignoredresourceforeground: #662859;
+    gitdecoration_addedresourceforeground: #154463;
+    gitdecoration_conflictingresourceforeground: #3e4614;
+
+    list_activeselectionbackground: #f9fafa;
+    list_activeselectionforeground: #1b5381;
+    list_errorforeground: #8b351b;
+    list_warningforeground: #946000;
+    list_hoverbackground: #cbd62a;
+    list_hoverforeground: #1b5381;
+    list_focusbackground: #cbd62a;
+    list_focusforeground: #192e5c;
+    list_focushighlightforeground: #afd6fa;
+    list_focusoutline: #d5ebff;
+    list_inactiveselectionbackground: #f9fafa;
+    list_inactiveselectionforeground: #1b5381;
+    list_highlightforeground: #3a792a;
+    list_inactivefocusbackground: #192e5c;
+    list_invaliditemforeground: #88c4fd;
+    list_filtermatchbackground: #cfd39a;
+    list_filtermatchborder: #cbd62a;
+    list_deemphasizedforeground: #a06101;
+
+    menu_separatorbackground: #88c4fd;
+    menu_background: #f9f9f9;
+    menu_foreground: #192e5c;
+
+    notificationcenter_border: #192e5c;
+    notificationtoast_border: #192e5c;
+    notificationtoast_foreground: #192e5c;
+    notifications_foreground: #192e5c;
+    notifications_background: #cfd39a;
+    notifications_border: #192e5c;
+    notificationcenterheader_foreground: #fff;
+    notificationlink_foreground: #34acd1;
+
+    panel_border: #88c4fd;
+
+    paneltitle_activeforeground: #192e5c;
+    panelsectionheader_foreground: #ffb62c;
+
+    peekviewtitledescription_foreground: #685c66;
+    peekvieweditor_matchhighlightborder: #192e5c;
+    peekviewtitlelabel_foreground: #fafafa;
+
+    peekview_border: #34acd1;
+    peekvieweditor_background: #fafafa;
+    peekvieweditorgutter_background: #e0e9ee;
+    peekvieweditor_matchhighlightbackground: #f5d80256;
+    peekvieweditor_matchhighlightborder: #ffe102;
+    peekviewresult_background: #cafdff;
+    peekviewresult_fileforeground: #192e5c;
+    peekviewresult_lineforeground: #192e5c;
+    peekviewresult_matchhighlightbackground: #103ac4af;
+    peekviewresult_selectionbackground: #c0dfff;
+    peekviewresult_selectionforeground: #0e07e8;
+    peekviewtitle_background: #e7edfb;
+    peekviewtitledescription_foreground: #333333;
+    peekviewtitlelabel_foreground: #333333;
+
+    problemserroricon_foreground: #c48003;
+    problemswarningicon_foreground: #b67805;
+    problemsinfoicon_foreground: #42a302;
+    progressbar_background: #929c01;
+
+    settings_headerforeground: #192e5c;
+    settings_dropdownforeground: #192e5c;
+    settings_dropdownborder: #192e5c;
+
+    sidebar_background: #e2e2db;
+    sidebar_foreground: #215381;
+    sidebartitle_foreground: #215381;
+    sidebarsectionheader_foreground: #fff;
+    sidebarsectionheader_background: #0072be;
+
+    scrollbar_shadow: #d5d7e9;
+    scrollbarslider_activebackground: #a5a8be;
+    scrollbarslider_background: #999ec2;
+    scrollbarslider_hoverbackground: #9294a7;
+
+    statusbar_foreground: #fff;
+    statusbar_background: #cfd39a;
+    statusbar_debuggingbackground: #cbd62a;
+    statusbar_nofolderbackground: #192e5c;
+
+    symbolicon_arrayforeground: #192e5c;
+    symbolicon_booleanforeground: #192e5c;
+    symbolicon_classforeground: #192e5c;
+    symbolicon_colorforeground: #192e5c;
+    symbolicon_constantforeground: #192e5c;
+    symbolicon_constructorforeground: #192e5c;
+    symbolicon_enumeratorforeground: #192e5c;
+    symbolicon_enumeratormemberforeground: #192e5c;
+    symbolicon_eventforeground: #192e5c;
+    symbolicon_fieldforeground: #192e5c;
+    symbolicon_fileforeground: #192e5c;
+    symbolicon_folderforeground: #192e5c;
+    symbolicon_functionforeground: #192e5c;
+    symbolicon_interfaceforeground: #192e5c;
+    symbolicon_keyforeground: #192e5c;
+    symbolicon_keywordforeground: #192e5c;
+    symbolicon_methodforeground: #192e5c;
+    symbolicon_moduleforeground: #192e5c;
+    symbolicon_namespaceforeground: #192e5c;
+    symbolicon_nullforeground: #192e5c;
+    symbolicon_numberforeground: #192e5c;
+    symbolicon_objectforeground: #192e5c;
+    symbolicon_operatorforeground: #192e5c;
+    symbolicon_packageforeground: #192e5c;
+    symbolicon_propertyforeground: #000;
+    symbolicon_referenceforeground: #192e5c;
+    symbolicon_snippetforeground: #192e5c;
+    symbolicon_stringforeground: #192e5c;
+    symbolicon_structforeground: #192e5c;
+    symbolicon_textforeground: #192e5c;
+    symbolicon_typeparameterforeground: #192e5c;
+    symbolicon_unitforeground: #192e5c;
+    symbolicon_variableforeground: #192e5c;
+
+    tab_border: #f3f3f3;
+    tab_activeforeground: #718f47;
+    tab_activebackground: #fff;
+    tab_inactiveforeground: #69a2c9;
+    tab_inactivebackground: #f3f3f3;
+
+    terminal_border: #76c5c5;
+    terminal_foreground: #192e5c;
+    terminal_ansiblack: #000000;
+    terminal_ansiblue: #6182b8;
+    terminal_ansibrightblack: #90a4ae;
+    terminal_ansibrightblue: #6182b8;
+    terminal_ansibrightcyan: #39adb5;
+    terminal_ansibrightgreen: #91b859;
+    terminal_ansibrightmagenta: #7c4dff;
+    terminal_ansibrightred: #751d1b;
+    terminal_ansibrightwhite: #cfd39a;
+    terminal_ansibrightyellow: #ffb62c;
+    terminal_ansicyan: #39adb5;
+    terminal_ansigreen: #91b859;
+    terminal_ansimagenta: #7c4dff;
+    terminal_ansired: #e53935;
+    terminal_ansiwhite: #ffffff;
+    terminal_ansiyellow: #ffb62c;
+
+    textpreformat_foreground: #261c25;
+
+    titlebar_activebackground: #e2e4cf;
+    titlebar_activeforeground: #3c75aa;
+    titlebar_inactivebackground: #3c75aa;
+    titlebar_inactiveforeground: #fff;
+    titlebar_border: #3c75aa;
+
+    tree_indentguidesstroke: #6182b8;
+    tree_tablecolumnsborder: #f7faca;
+
+    welcomepage_buttonbackground: #f3f3f3;
+    welcomepage_buttonhoverbackground: #ececec;
+    welcomepage_tileshadow: #626c6d85;
+    widget_shadow: #192e5c94;
+
+    string: #dc3eb7;
+    string2: #ff7de1;
+}

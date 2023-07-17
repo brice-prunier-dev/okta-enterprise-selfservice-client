@@ -1,0 +1,24 @@
+<div *ngIf="initialized" class="tab-page">
+    <main>
+        <div class="warnings">
+            <p *ngIf="getWarnings().uselessGroup">
+                This group is <strong>not used</strong> anywhere
+            </p>
+            <ng-container *ngFor="let deprecated of getWarnings().deprecatedAccounts">
+                <p>
+                    This group contains that account <strong>{{ deprecated.account }}</strong
+                    >, but it is owned by <strong>{{ deprecated.owner.login }}</strong
+                    >, who is <strong>{{ deprecated.owner.status ?? 'Not Found' }}</strong>
+                </p>
+            </ng-container>
+            <ng-container *ngFor="let account of getWarnings().sharedAccounts">
+                <p>
+                    The account <strong>{{ account.login }}</strong> has been used from
+                    <strong>{{ account.ipCount }}</strong> different ip addresses for the
+                    application <strong>{{ account.clientId }}</strong> the
+                    <strong>{{ account.date | date: 'longDate' }}</strong>
+                </p>
+            </ng-container>
+        </div>
+    </main>
+</div>

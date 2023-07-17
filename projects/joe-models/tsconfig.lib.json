@@ -1,0 +1,30 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/lib",
+    "target": "es2022",
+    "declaration": true,
+    "inlineSources": true,
+    "forceConsistentCasingInFileNames": false,
+    "strict": true,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false,
+    "types": [],
+    "lib": [
+      "dom",
+      "es2022"
+    ]
+  },
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": false,
+    "enableResourceInlining": true,
+    "flatModuleOutFile": "joe-models",
+    "flatModuleId": "joe-models"
+  },
+  "exclude": [
+    "src/tests.*.ts",
+    "**/*.spec.ts"
+  ]
+}

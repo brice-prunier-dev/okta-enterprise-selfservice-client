@@ -1,0 +1,290 @@
+<div [ngClass]="ux_root()">
+    <div class="running-flash"
+         [ngStyle]="{'visibility': running ? 'visible' : 'hidden'  }">
+        <mat-progress-bar [color]="'warn'"
+                          [mode]="'indeterminate'"
+                          [value]="50"
+                          [bufferValue]="75">
+        </mat-progress-bar>
+    </div>
+    <div *ngIf="initialized"
+         class="main-nav">
+
+        <iam-project-selector [vm]="vm" [projListVm]="projListVm"></iam-project-selector>
+        <nav>
+            <mat-accordion class="example-headers-align"
+                           displayMode="flat"
+                           multi="true">
+
+                <mat-expansion-panel #apps
+                                     data-test-id="applications-title"
+                                     hideToggle="true"
+                                     [ngClass]="ux_menu()"
+                                     [expanded]="appsOpenned"
+
+                                     (opened)="opennedTab(PROJECTITEM_TYPE.application)">
+                    <mat-expansion-panel-header>
+
+                        <mat-panel-title class="app">
+                            <mat-icon class="app"
+                                      svgIcon="app"></mat-icon>Applications
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <mat-icon *ngIf="apps.expanded"
+                                      matSuffix>keyboard_arrow_down</mat-icon>
+                            <mat-icon *ngIf="!apps.expanded"
+                                      matSuffix>keyboard_arrow_right</mat-icon>
+                            <button *ngIf="isAdmin"
+                                    data-test-id="new-application-button"
+                                    [ngClass]="newAppStateStyle()"
+                                    mat-icon-button
+                                    matTooltip="New Application"
+                                    (click)="newItem($event, PROJECTITEM_TYPE.newApp)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-nav-list>
+                        <div class="item-container">
+                            <mat-list-item *ngFor="let app of vm.view.apps"
+                                           [ngClass]="appStateStyle(app.label, app.inactive, app)">
+                                <caption matListItemLine
+                                         class="flex-row flex-align-center"
+                                         (click)="select(app.label, PROJECTITEM_TYPE.application)">
+                                    {{app.label}}
+                                </caption>
+
+                                <mat-menu matMenuContent
+                                          #appMenu="matMenu">
+                                    <ng-template matMenuContent>
+                                        <button mat-menu-item
+                                                [cdkCopyToClipboard]="app.label">Copy</button>
+                                        <button *ngIf="isAdmin" mat-menu-item
+                                                (click)="menu_rename(PROJECTITEM_TYPE.application,app )">Rename</button>
+                                        <button *ngIf="isAdmin" mat-menu-item
+                                                (click)="menu_app_toggleStatus( app )">{{ app.inactive ? 'Activate' : 'Deactivate' }}</button>
+                                        <button *ngIf="isAdmin" mat-menu-item
+                                                (click)="menu_app_delete( app )">Delete</button>
+                                    </ng-template>
+                                </mat-menu>
+                                <button class="item-menu"
+                                        matListItemMeta
+                                        mat-icon-button
+                                        [matMenuTriggerFor]="appMenu"
+                                        [matMenuTriggerData]="app">
+                                    <mat-icon class="white-fg">more_vert</mat-icon>
+                                </button>
+                            </mat-list-item>
+                        </div>
+                    </mat-nav-list>
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel #grps
+                                     hideToggle="true"
+                                     [ngClass]="ux_menu()"
+                                     [expanded]="groupsOpenned"
+                                     (opened)="opennedTab(PROJECTITEM_TYPE.group)">
+                    <mat-expansion-panel-header>
+
+                        <mat-panel-title class="grp">
+                            <mat-icon class="grp"
+                                      svgIcon="grp"></mat-icon>Groups
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <mat-icon *ngIf="grps.expanded"
+                                      matSuffix>keyboard_arrow_down</mat-icon>
+                            <mat-icon *ngIf="!grps.expanded"
+                                      matSuffix>keyboard_arrow_right</mat-icon>
+                            <button *ngIf="isAdmin"
+                                    id="new-group-button"
+                                    [ngClass]="newGrpStateStyle()"
+                                    matTooltip="New Group"
+                                    mat-icon-button
+                                    (click)="newItem($event, PROJECTITEM_TYPE.newGroup)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-nav-list>
+                        <div class="item-container">
+                            <mat-list-item *ngFor="let grp of vm.view.groups"
+                                           [ngClass]="itemStateStyle(grp.label, PROJECTITEM_TYPE.group, grp)">
+                                <caption matListItemLine
+                                         class="flex-row"
+                                         (click)="select( grp.label, PROJECTITEM_TYPE.group)">
+                                    {{grp.label}}
+                                </caption>
+                                <mat-menu #merge="matMenu">
+                                    <ng-template matMenuContent>
+                                        <button mat-menu-item
+                                                *ngFor="let grp2 of otherGroup(grp.label)"
+                                                (click)="menu_group_copyto( grp.oid, grp.label, grp2.oid, grp2.label )">{{grp2.label}}</button>
+                                    </ng-template>
+                                </mat-menu>
+                                <mat-menu matMenuContent
+                                          #groupMenu="matMenu">
+                                    <ng-template matMenuContent>
+                                        <button mat-menu-item
+                                                [cdkCopyToClipboard]="grp.label">Copy</button>
+                                        <button *ngIf="isAdmin" mat-menu-item
+                                                (click)="menu_rename(PROJECTITEM_TYPE.group,grp )">Rename</button>
+                                        <button *ngIf="isAdmin" mat-menu-item
+                                                (click)="menu_group_toggleLock( grp )">{{ grp.fixed ? 'Unlock' : 'Lock' }}</button>
+                                        <button *ngIf="isAdmin" mat-menu-item
+                                                (click)="menu_group_asAdmin( grp.oid )">As Global
+                                            Admin</button>
+                                        <button *ngIf="isAdmin" mat-menu-item
+                                                [matMenuTriggerData]="grp"
+                                                [matMenuTriggerFor]="merge">Copy
+                                            To</button>
+
+                                        <button mat-menu-item
+                                                (click)="menu_group_mailto( grp.oid )">Mail
+                                            To</button>
+                                        <button *ngIf="isAdmin" mat-menu-item
+                                                (click)="menu_group_delete( grp )">Delete</button>
+
+                                    </ng-template>
+                                </mat-menu>
+                              <span matListItemMeta>
+                                <mat-icon *ngIf="grp.fixed">lock-light</mat-icon>
+                                <button class="item-menu"
+                                        mat-icon-button
+                                        [matMenuTriggerFor]="groupMenu"
+                                        [matMenuTriggerData]="grp">
+                                    <mat-icon class="white-fg">more_vert</mat-icon>
+                                </button>
+                              </span>
+
+                            </mat-list-item>
+                        </div>
+                    </mat-nav-list>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel data-test-id="scopes-title"
+                                     #scps
+                                     hideToggle="true"
+                                     [ngClass]="ux_menu()"
+                                     [expanded]="scopesOpenned"
+                                     (opened)="opennedTab(PROJECTITEM_TYPE.scope)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="scp">
+                            <mat-icon class="scp"
+                                      svgIcon="scp"></mat-icon>Scopes
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <mat-icon *ngIf="scps.expanded"
+                                      matSuffix>keyboard_arrow_down</mat-icon>
+                            <mat-icon *ngIf="!scps.expanded"
+                                      matSuffix>keyboard_arrow_right</mat-icon>
+                            <button *ngIf="isAdmin"
+                                    data-test-id="new-scope-button"
+                                    [ngClass]="newScpStateStyle()"
+                                    matTooltip="New Scope"
+                                    mat-icon-button
+                                    (click)="newItem($event, PROJECTITEM_TYPE.newScope)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-nav-list>
+                        <div class="item-container">
+                            <mat-list-item  *ngFor="let scp of vm.view.scopes"
+                                           [ngClass]="itemStateStyle(scp.oid, PROJECTITEM_TYPE.scope, scp)">
+
+                                <caption class="flex-row flex-align-center" matListItemLine (click)="select(scp.oid, PROJECTITEM_TYPE.scope)">
+                                    <span *ngIf="!scp.withSubs">{{scp.oid}}</span>
+                                    <span *ngIf="scp.withSubs"
+                                          matBadge="{{scp.subsCount}}" matBadgeOverlap="false">{{scp.oid}}</span>
+                                </caption>
+
+
+
+
+                                <mat-menu
+                                          #scpMenu="matMenu">
+                                    <ng-template matMenuContent>
+                                        <button mat-menu-item
+                                                [cdkCopyToClipboard]="scp.oid">Copy</button>
+                                        <button *ngIf="isAdmin" mat-menu-item
+                                                (click)="menu_scope_delete( scp )">Delete</button>
+                                    </ng-template>
+                                </mat-menu>
+                                <button class="item-menu"
+                                        matListItemMeta
+                                        mat-icon-button
+                                        [matMenuTriggerFor]="scpMenu"
+                                        [matMenuTriggerData]="scp">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                            </mat-list-item>
+                        </div>
+                    </mat-nav-list>
+
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel #apis *ngIf="vm.view.hasApis()"
+                                     hideToggle="true"
+                                     [ngClass]="ux_menu()"
+                                     [expanded]="apisOpenned"
+                                     (opened)="opennedTab(PROJECTITEM_TYPE.api)">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="api">
+                            <mat-icon class="api"
+                                      svgIcon="ws"></mat-icon>Api
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <mat-icon *ngIf="apis.expanded"
+                                      matSuffix>keyboard_arrow_down</mat-icon>
+                            <mat-icon *ngIf="!apis.expanded"
+                                      matSuffix>keyboard_arrow_right</mat-icon>
+                            <!-- <button [ngClass]="newApiStateStyle()"
+                                    matTooltip="New Api"
+                                    mat-icon-button
+                                    (click)="newItem($event, PROJECTITEM_TYPE.newApi)">
+                                <mat-icon>add</mat-icon>
+                            </button> -->
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-nav-list>
+                        <div class="item-container">
+                            <mat-list-item *ngFor="let api of vm.view.apis()"
+                                           [ngClass]="itemStateStyle(api, PROJECTITEM_TYPE.newScope)">
+                                <a href="{{apiUrl(api)}}" target="_blank" class="standard-link" style="">
+                                    <caption class="togo-light">{{api}}</caption>
+                                </a>
+
+
+
+                                <!-- <mat-menu matMenuContent
+                                          #scpMenu="matMenu">
+                                    <ng-template matMenuContent>
+                                        <button mat-menu-item
+                                                (click)="menu_scope_delete( api )">Delete</button>
+                                    </ng-template>
+                                </mat-menu>
+                                <button class="item-menu"
+                                        mat-icon-button
+                                        [matMenuTriggerFor]="scpMenu"
+                                        [matMenuTriggerData]="api">
+                                    <mat-icon
+                                              [ngClass]="isActive(api)?'dark-fg':'white-fg'">
+                                        more_vert</mat-icon>
+                                </button> -->
+                            </mat-list-item>
+                        </div>
+                    </mat-nav-list>
+
+
+                </mat-expansion-panel>
+
+            </mat-accordion>
+        </nav>
+    </div>
+</div>

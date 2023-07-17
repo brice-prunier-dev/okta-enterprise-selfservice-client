@@ -1,0 +1,67 @@
+@import '../../../../styles/colors.scss';
+
+h2 {
+    color: $primary;
+}
+
+div.root-full {
+    position: fixed;
+    bottom: 0px;
+    top: 126px;
+    z-index: 0;
+    overflow-y: auto;
+    margin-top: 2px;
+
+    div.frame {
+        margin-top: 10px;
+        flex-direction: column;
+
+        div.graphContainer {
+            display: flex;
+            width: 100%;
+            place-content: center;
+            // height: 100%;
+            // padding: 0 75px;
+            // box-sizing: content-box;
+
+            #linkedprojectsGraph {
+                width: 1400px;
+                height: 700px;
+            }
+        }
+    }
+}
+
+.kpis {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.kpi {
+    border: #DEDEDE solid 1px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #DEDEDE;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+}
+
+.kpi .lastUpdated {
+    font-style: italic;
+    color:darkgray;
+}
+
+.kpi .performance {
+    font-size: xx-large;
+}
+
+.kpi .label {
+    font-weight: bold;
+}
+
+.kpi-header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}

@@ -1,0 +1,43 @@
+@import '../../../../styles/colors.scss';
+
+.mat-mdc-dialog-content {
+    overflow-y: hidden;
+}
+
+mat-form-field {
+    min-width: 250px;
+}
+
+.mat-mdc-chip.mat-mdc-standard-chip {
+    font-size: 14px;
+    display: inline-block;
+    opacity: 0.8;
+    border-color: $gray-200;
+    border-style: solid;
+    border-width: 1px;
+    background-color: $gray-200;
+    color: $primary;
+
+    padding: 1px 10px;
+    line-height: 14px;
+    align-content: center;
+    display: flex;
+}
+
+.mat-mdc-chip.mat-icon {
+    align-content: flex-end;
+    margin-top: -1px;
+}
+
+.mat-mdc-chip.mat-mdc-standard-chip .mat-mdc-chip-remove {
+    color: $gray-600;
+    opacity: 0.8;
+}
+
+div.mat-mdc-chip-set-wrapper {
+    max-width: 280px;
+
+    @media (min-width: 1024px) {
+        max-width: 500px;
+    }
+}

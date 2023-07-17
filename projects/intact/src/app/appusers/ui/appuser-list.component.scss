@@ -1,0 +1,40 @@
+@import '../../../../src/styles/colors';
+
+.mat-mdc-dialog-container {
+    padding: 15px;
+}
+
+.user-list-container {
+    width: 100%;
+    min-height: 520px;
+    overflow-x: auto;
+
+    @include media-breakpoint-down(sm) {
+        //    min-width: 300px;
+        min-height: 400px;
+    }
+
+    @include media-breakpoint-down(md) {
+        //     min-width: 600px;
+        min-height: 400px;
+    }
+
+    @include media-breakpoint-down(lg) {
+        //     min-width: 700px;
+        min-height: 520px;
+    }
+
+    @include media-breakpoint-down(xl) {
+        //    min-width: 850px;
+        min-height: 520px;
+    }
+
+    @include media-breakpoint-down(x2) {
+        //    min-width: 1110px;
+        min-height: 712px;
+    }
+}
+
+div.main-content-title {
+    margin-top: 0px;
+}

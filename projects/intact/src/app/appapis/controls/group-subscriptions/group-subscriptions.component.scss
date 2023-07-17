@@ -1,0 +1,79 @@
+@import '../../../../styles/colors';
+
+div.tab-page {
+    height: unset;
+}
+
+div.main-content-title {
+    margin: 20px 0 0px 10px;
+}
+
+.mat-mdc-chip {
+    margin: 2px;
+    padding: 0px 10px;
+    min-height: 29px;
+    &.subscribed {
+        background: $primary !important;
+        --mdc-chip-label-text-color: white;
+    }
+}
+
+.swagger {
+    font-size: unset !important;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap:20px
+}
+
+.mat-mdc-card {
+    min-width: 200px;
+    max-width: 250px;
+    min-height: 108px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    .mat-mdc-card-title {
+        //color: white;
+        font-size: 20px;
+        line-height: 26px;
+        & > .mat-icon {
+            margin-top: 10px;
+        }
+    }
+
+    .mat-mdc-card-actions {
+        margin: 16px;
+        padding: 0;
+    }
+}
+
+.mat-mdc-card-title-group {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.mat-mdc-card-title-group > .mat-icon {
+    margin: 5px;
+
+    font-size: 45px;
+}
+
+.mat-mdc-title {
+    color: white;
+    background: $dark-primary;
+    padding: 4px 16px;
+    display: flex;
+    align-items: center;
+    overflow-wrap: anywhere;
+    font-size: 24px !important;
+}

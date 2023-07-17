@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+
+@import './colors';
+
+$my-typography: mat.define-typography-config($font-family: 'Lato' );
+
+$my-app-primary: mat.define-palette($primary-palette, 500, 200, A400);
+$my-app-accent: mat.define-palette($accent-palette, A100, A100, A400);
+$my-app-warn: mat.define-palette($warn-palette, A400, 100, 900);
+
+$my-app-theme: mat.define-light-theme((
+  color: (
+    primary: $my-app-primary,
+    accent: $my-app-accent,
+    warn: $my-app-warn
+  ),
+));
+
+@include mat.core();
+@include mat.typography-hierarchy($my-typography);
+@include mat.all-component-themes($my-app-theme);

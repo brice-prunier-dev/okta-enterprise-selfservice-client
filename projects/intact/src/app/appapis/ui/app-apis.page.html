@@ -1,0 +1,31 @@
+<div class="running-flash"
+     *ngIf="running">
+  <mat-progress-bar [color]="'warn'"
+                    [mode]="'indeterminate'"
+                    [value]="50"
+                    [bufferValue]="75"> </mat-progress-bar>
+</div>
+<iam-app-subscriptions *ngIf="!isSwagger"
+                       [projListVm]="projListVm"
+                       [projVm]="projVm"
+                       [appVm]="appVm"></iam-app-subscriptions>
+<mat-tab-group  *ngIf="isSwagger" mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab label="Groups scopes">
+    <iam-group-subscriptions
+                             [projListVm]="projListVm"
+                             [projVm]="projVm"
+                             [appVm]="appVm"></iam-group-subscriptions>
+  </mat-tab>
+  <mat-tab label="Client scopes">
+    <iam-app-subscriptions
+                           [projListVm]="projListVm"
+                           [projVm]="projVm"
+                           [appVm]="appVm"></iam-app-subscriptions>
+  </mat-tab>
+  <mat-tab label="APIs">
+    <iam-swagger-apis
+                      [projListVm]="projListVm"
+                      [projVm]="projVm"
+                      [appVm]="appVm"></iam-swagger-apis>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,27 @@
+@import '../../../styles/colors.scss';
+
+div.root-main {
+    display: flex;
+    flex-direction: column;
+    .nav-outlet{
+        max-width: 450px;
+        background: $dark-primary;
+        color: $primary-fg;
+        top: 48px;
+        bottom: 0px;
+        height: 100%;
+        box-sizing: content-box;
+    }
+    .main-outlet{
+        // background: $dark-primary;
+        // color: $primary-fg;
+        top: 48px;
+        bottom: 0px;
+        height: 100%;
+    }
+    .side-nav-outlet{
+        box-sizing: content-box;
+        margin-left: 450px;
+    }
+    
+}

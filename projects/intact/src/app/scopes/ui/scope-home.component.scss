@@ -1,0 +1,16 @@
+@import '../../../styles/colors.scss';
+:host {
+    position: absolute;
+    top: 48px;
+    left: 450px;
+    bottom: 0px;
+    right: 0px;
+}
+
+.warnings-tab.mat-mdc-tab-label-active {
+    color: orange;
+}
+
+mat-tab-nav-panel {
+    overflow: auto;
+}

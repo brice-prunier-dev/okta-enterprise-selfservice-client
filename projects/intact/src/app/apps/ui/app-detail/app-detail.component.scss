@@ -1,0 +1,28 @@
+@import '../../../../styles/colors';
+
+mat-form-field {
+    min-width: 250px;
+}
+
+div.main {
+    main {
+        overflow-y: auto;
+        max-height: 620px;
+
+        @media (min-height: 900px) {
+            max-height: 820px;
+        }
+    }
+}
+
+div.action-buttons {
+    margin: 20px 0;
+    button {
+        margin-left: 10px;
+        min-width: 75px;
+    }
+}
+
+.mat-mdc-tab-label-active {
+    color: $primary;
+}

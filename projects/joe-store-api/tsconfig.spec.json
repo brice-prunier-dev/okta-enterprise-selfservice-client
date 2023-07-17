@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/spec",
+    "types": [
+      "jest",
+      "node"
+    ],
+    "paths": {
+      "joe-fx": [
+        "../joe-fx/src"
+      ],
+      "joe-types": [
+        "../joe-types/src"
+      ],
+      "joe-store-api": [
+        "./src"
+      ]
+    }
+  },
+  "include": [
+    "**/*.spec.ts",
+    "**/*.d.ts",
+    "tests.*.ts"
+  ]
+}

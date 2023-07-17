@@ -1,0 +1,110 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+    - master
+    - features/kpis
+
+pool:
+    vmImage: 'Ubuntu-20.04'
+
+steps:
+    - task: PublishPipelineArtifact@1
+      inputs:
+          targetPath: '$(Build.SourcesDirectory)'
+          artifact: 'SourceCode'
+
+    - task: NodeTool@0
+      inputs:
+          versionSpec: '16.x'
+      displayName: 'Install Node.js'
+
+    - task: Npm@1
+      displayName: install dependencies
+      inputs:
+          command: ci
+
+    - task: Npm@1
+      displayName: build joe
+      inputs:
+          command: custom
+          customCommand: run build-fx
+
+    - task: Npm@1
+      displayName: build intact models
+      inputs:
+          command: custom
+          customCommand: run build-intact-models
+
+    - task: Npm@1
+      displayName: test
+      inputs:
+          command: custom
+          customCommand: test
+
+    - task: PublishCodeCoverageResults@1
+      displayName: publish report
+      inputs:
+          codeCoverageTool: 'Cobertura'
+          summaryFileLocation: $(Build.SourcesDirectory)/coverage/**/cobertura-coverage.xml
+
+    - task: Npm@1
+      displayName: build intact beta-next
+      inputs:
+          command: custom
+          customCommand: run build-intact -- --configuration=next --delete-output-path=false --output-path=dist/intact-betanext
+
+    - task: Npm@1
+      displayName: build intact prod-next
+      inputs:
+          command: custom
+          customCommand: run build-intact -- --configuration=nextprod --delete-output-path=false --output-path=dist/intact-prodnext
+
+    - task: Npm@1
+      displayName: build intact prod
+      inputs:
+          command: custom
+          customCommand: run build-intact -- --configuration=production --delete-output-path=false --output-path=dist/intact-prod
+
+    - task: Npm@1
+      displayName: rename beta
+      inputs:
+          command: custom
+          customCommand: run rename-beta
+
+    - task: Npm@1
+      displayName: build intact beta
+      inputs:
+          command: custom
+          customCommand: run build-intact -- --configuration=beta --delete-output-path=false --output-path=dist/intact-beta
+
+    - task: CopyFiles@2
+      inputs:
+          sourceFolder: '$(Build.SourcesDirectory)/dist'
+          contents: '**/*'
+          targetFolder: $(Build.ArtifactStagingDirectory)/dist
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+          pathtoPublish: '$(Build.ArtifactStagingDirectory)/dist'
+          artifactName: dist
+
+    # - script: |
+    #       npm run cypress:run:beta
+    #       npm run merge-reports
+    #   displayName: 'Run test'
+
+    # - task: PublishTestResults@2
+    #   inputs:
+    #     testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit, cTest
+    #     testResultsFiles: '**/combined.xml'
+    #     #searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
+    #     #mergeTestResults: false # Optional
+    #     #failTaskOnFailedTests: false # Optional
+    #     #testRunTitle: # Optional
+    #     #buildPlatform: # Optional
+    #     #buildConfiguration: # Optional
+    #     #publishRunAttachments: true # Optional
+    #   displayName: 'Publish E2E test'

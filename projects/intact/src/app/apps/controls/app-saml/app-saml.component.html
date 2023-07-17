@@ -1,0 +1,107 @@
+<div class="main-content-title">
+   <label>SAML V2 Application</label>
+</div>
+<div *ngIf="isAssigned" class="app-content">
+
+       <div class="section-data">
+              <div class="column-50">
+                     <mat-form-field
+                            class="flex-grow"
+                            [floatLabel]="labelBehaviour()"
+                            color="accent">
+
+                            <input matInput
+                            [ngModel]="app.client_id"
+                            readonly />
+                            <mat-label>Client ID</mat-label>
+                     </mat-form-field>
+
+                     <mat-form-field
+                            class="flex-grow"
+                            [floatLabel]="labelBehaviour()"
+                            color="accent">
+
+                            <input matInput
+                            [ngModel]="app.saml_app_info!.sso_url"
+                            readonly />
+                            <mat-label>SSO URL</mat-label>
+                     </mat-form-field>
+
+                     <mat-form-field
+                           class="flex-grow"
+                            [floatLabel]="labelBehaviour()"
+                            color="accent">
+
+                            <input matInput
+                            [ngModel]="app.saml_app_info!.audience"
+                            readonly />
+                            <mat-label>Audience</mat-label>
+                     </mat-form-field>
+
+              </div>
+
+              <div class="column-50">
+
+                     <mat-form-field
+                           class="flex-grow"
+                           [floatLabel]="labelBehaviour()"
+                            color="accent">
+
+                            <input matInput
+                            [ngModel]="app.saml_app_info!.certificate!.issuer"
+                            readonly />
+                            <mat-label>Certificate issuer</mat-label>
+                     </mat-form-field>
+
+                     <div class="section-data">
+                            <div class="column-50">
+                                   <mat-form-field
+                                         class="flex-grow"
+                                          [floatLabel]="labelBehaviour()"
+                                          color="accent">
+
+                                          <input matInput
+                                          [ngModel]="certificateValidFrom"
+                                          readonly date />
+                                          <mat-label>Valid from</mat-label>
+                                   </mat-form-field>
+                            </div>
+                            <div class="column-50">
+                                   <mat-form-field
+                                         class="flex-grow"
+                                         [floatLabel]="labelBehaviour()"
+                                          color="accent">
+
+                                          <input matInput
+                                          [ngModel]="certificateValidTo"
+                                          readonly />
+                                          <mat-label>Valid to</mat-label>
+                                   </mat-form-field>
+                            </div>
+                     </div>
+
+                     <mat-form-field
+                           class="flex-grow"
+                            [floatLabel]="labelBehaviour()"
+                            color="accent">
+
+                            <input matInput
+                            [ngModel]="app.saml_app_info!.certificate!.version"
+                            readonly />
+                            <mat-label>Version</mat-label>
+                     </mat-form-field>
+
+
+                     <mat-form-field
+                            class="flex-grow"
+                            [floatLabel]="labelBehaviour()"
+                            color="accent">
+
+                            <input matInput
+                            [ngModel]="app.saml_app_info!.certificate!.thumbprint"
+                            readonly />
+                            <mat-label>Thumbprint</mat-label>
+                     </mat-form-field>
+              </div>
+       </div>
+</div>

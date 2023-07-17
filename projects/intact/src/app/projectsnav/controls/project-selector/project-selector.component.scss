@@ -1,0 +1,22 @@
+@import '../../../../styles/colors.scss';
+
+$intact-frame-margin: 75px;
+
+div.project-menu {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+
+    .mat-mdc-form-field {
+        width: 280px;
+    }
+
+    .mat-mdc-input-element {
+        font-size: 24px;
+    }
+
+    .square-btn {
+        margin: 0 10px 0 7px;
+    }
+}

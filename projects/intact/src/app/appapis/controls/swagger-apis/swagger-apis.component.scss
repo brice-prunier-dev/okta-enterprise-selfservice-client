@@ -1,0 +1,61 @@
+.tab-page {
+    height: unset;
+}
+
+.mat-mdc-option {
+    flex-direction: column;
+    padding: 5px 13px;
+    display: flex;
+    align-content: center;
+    align-items: flex-start;
+
+    .mat-icon {
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        margin-right: 0px !important;
+    }
+}
+
+.block {
+    display: flex !important;
+    flex-direction: column;
+    height: 48px !important;
+    width: 262px;
+    text-overflow: ellipsis;
+}
+
+div.search-option {
+    max-width: 199px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+div.main-content-title {
+    margin: 30px 0 30px 10px;
+}
+
+div.registration-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    column-gap: 50px;
+
+    .mat-mdc-form-field {
+        flex: none !important;
+        margin-bottom: 10px;
+        min-width: 200px;
+    }
+
+    div.url-container {
+        height: 100%;
+        max-height: 210px;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+    }
+
+}
+

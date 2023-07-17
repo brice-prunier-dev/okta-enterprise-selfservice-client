@@ -1,0 +1,44 @@
+@import '../../../../styles/colors';
+
+mat-form-field {
+    min-width: 250px;
+}
+
+div.tab-page {
+    padding: 0px;
+}
+
+div.main {
+    main {
+        overflow-y: auto;
+        max-height: 620px;
+
+        @media (min-height: 900px) {
+            max-height: 820px;
+        }
+    }
+}
+
+div.action-buttons {
+    margin: 20px 0;
+
+    button {
+        margin-left: 10px;
+        min-width: 75px;
+    }
+}
+
+.mat-mdc-tab-label-active {
+    color: $primary;
+}
+
+.warnings p {
+    padding: 20px 45px;
+    margin-bottom: 0px;
+    width: 100%;
+    cursor: default;
+}
+
+.warnings p:not(:last-child) {
+    border-bottom: solid $gray-300 1px;
+}

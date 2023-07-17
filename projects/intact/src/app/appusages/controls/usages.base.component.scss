@@ -1,0 +1,32 @@
+main {
+    height: 105px;
+    margin-top: 10px;
+}
+
+.mat-mdc-paginator {
+    background: transparent;
+}
+
+div.toggle-field {
+    height: 65.5px;
+    button {
+        margin: 0 5px;
+    }
+}
+
+.month-picker .mat-mdc-calendar-period-button {
+    pointer-events: none;
+}
+
+.month-picker .mat-mdc-calendar-arrow {
+    display: none;
+}
+
+div.nav-page {
+    padding-top: 0px;
+}
+
+div.chart {
+    display: block;
+    height: 450px;
+}

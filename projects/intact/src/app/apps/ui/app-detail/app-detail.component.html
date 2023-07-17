@@ -1,0 +1,59 @@
+<!-- <div class="running-flash"
+     *ngIf="running">
+    <mat-progress-bar [color]="'warn'"
+                      [mode]="'indeterminate'"
+                      [value]="50"
+                      [bufferValue]="75"> </mat-progress-bar>
+    <span class="mat-caption">{{runningOp}}</span>
+</div> -->
+<div *ngIf="initialized"
+     class="tab-page">
+    <main>
+        <div class="main-content">
+            <div>
+                <iam-error [value]="vm.error"></iam-error>
+            </div>
+
+            <iam-app-browser *ngIf="vm.appType==='browser'"
+                             class="full-width"
+                             [app]="viewAsUserApp"
+                             [editable]="editable">
+            </iam-app-browser>
+            <iam-app-service *ngIf="vm.appType==='service'"
+                             class="full-width"
+                             [app]="viewAsService"
+                             [editable]="editable && vm.appType ==='service'"></iam-app-service>
+            <iam-app-saml *ngIf="vm.appType==='saml_2_0'"
+                             class="full-width"
+                             [app]="viewAsSaml"
+                             [editable]="false"></iam-app-saml>                             
+            <iam-app-native *ngIf="vm.appType==='native'"
+                            class="full-width"
+                            [app]="viewAsUserApp"
+                            [editable]="editable">
+            </iam-app-native>
+            <iam-app-web *ngIf="vm.appType==='web'"
+                         class="full-width"
+                         [app]="viewAsUserApp"
+                         [editable]="editable"></iam-app-web>
+
+            <div *ngIf="editable && !running && vm.appType!=='saml_2_0'"
+                 class="action-buttons top-offset right-offset right">
+                <button *ngIf="!vm.editing"
+                        mat-raised-button
+                        color="primary"
+                        (click)="edit()">Edit</button>
+                <button *ngIf="vm.editing"
+                        mat-stroked-button
+                        color="primary"
+                        (click)="cancel()">Cancel</button>
+                <button *ngIf="vm.editing"
+                        mat-raised-button
+                        color="primary"
+                        [disabled]="vm.view.$validation.withError()"
+                        (click)="saveAsync()">Save</button>
+            </div>
+
+        </div>
+    </main>
+</div>

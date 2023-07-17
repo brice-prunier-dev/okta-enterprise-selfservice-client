@@ -1,0 +1,111 @@
+@import '../../../../styles/colors';
+
+.is-searching ::ng-deep .mat-mdc-option-text {
+    display: flex;
+    justify-content: center;
+}
+
+mat-form-field {
+    min-width: 280px;
+    background: white;
+}
+
+.mat-mdc-option {
+    padding: 0 0 0 13px;
+
+    .mat-icon {
+        margin-right: 10px;
+        vertical-align: middle;
+        margin-top: 13px;
+    }
+
+    span {
+        max-width: 199px;
+        text-overflow: ellipsis;
+    }
+}
+
+div.block {
+    display: inline-table;
+    /* comportement visuel de cellule */
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+div.search-option {
+    max-width: 199px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+div.grey {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.ng-star-inserter {
+    padding: 5px;
+}
+
+.content-width {
+    min-width: 1110px;
+
+    @include media-breakpoint-down(sm) {
+        min-width: 300px;
+    }
+
+    @include media-breakpoint-down(md) {
+        min-width: 600px;
+    }
+
+    @include media-breakpoint-down(lg) {
+        min-width: 700px;
+    }
+
+    @include media-breakpoint-down(xl) {
+        min-width: 850px;
+    }
+
+    @include media-breakpoint-down(x2) {
+        min-width: 1110px;
+    }
+}
+
+.user-list-container {
+    width: 100%;
+    min-height: 520px;
+    overflow-x: auto;
+
+    @include media-breakpoint-down(sm) {
+        //    min-width: 300px;
+        min-height: 400px;
+    }
+
+    @include media-breakpoint-down(md) {
+        //     min-width: 600px;
+        min-height: 400px;
+    }
+
+    @include media-breakpoint-down(lg) {
+        //     min-width: 700px;
+        min-height: 520px;
+    }
+
+    @include media-breakpoint-down(xl) {
+        //    min-width: 850px;
+        min-height: 520px;
+    }
+
+    @include media-breakpoint-down(x2) {
+        //    min-width: 1110px;
+        min-height: 712px;
+    }
+}
+
+.mat-mdc-hint {
+    font-weight: 500;
+    line-height: 1.5;
+    font-size: 14px;
+    color: $primary;
+}

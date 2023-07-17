@@ -1,0 +1,136 @@
+<div class="main-content-title">
+    <label>Browser Application</label>
+</div>
+<div *ngIf="isAssigned"
+     class="app-content">
+    <div *ngIf="isUpdate" class="okta-url">
+        <label>Okta endpoint:</label>
+        <p>{{tokenUrl}}</p>
+        <button *ngIf="editable"
+                mat-icon-button
+                [cdkCopyToClipboard]="tokenUrl">
+            <mat-icon>content_copy</mat-icon>
+        </button>
+    </div>
+    <div class="section-data">
+        <div class="column-50">
+            <mat-form-field *ngIf="isUpdate"
+                            class="flex-grow"
+                            [floatLabel]="labelBehaviour()"
+                            color="accent">
+                <input matInput
+                       [(ngModel)]="app.client_id"
+                       readonly />
+                <mat-label>Client ID</mat-label>
+            </mat-form-field>
+            <mat-form-field *ngIf="!isUpdate"
+                            class="flex-grow"
+                            [floatLabel]="labelBehaviour()"
+                            color="accent">
+                <input matInput
+                       data-test-id="application-name"
+                       [disabled]="isUpdate || !editable"
+                       [(ngModel)]="app.client_name"
+                       required
+                       (blur)="app.validateAsync(propertyValidation, 'client_name')" />
+                <mat-hint *ngIf="app.$validation.errors.client_name"
+                          class="error">{{app.$validation.errors.client_name |valmsg}}</mat-hint>
+                <mat-label>Application Name</mat-label>
+                <mat-progress-spinner matPrefix
+                                      diameter="16"
+                                      *ngIf="app.$validation.checking(app.$validation.errors.client_name)"
+                                      mode="indeterminate">
+                </mat-progress-spinner>
+            </mat-form-field>
+            <mat-form-field class="flex-grow"
+                            [floatLabel]="labelBehaviour()"
+                            color="accent">
+                <mat-label>Login Url</mat-label>
+                <input matInput
+                       data-test-id="login-url"
+                       [(ngModel)]="app.initiate_login_uri"
+                       required
+                       readonly="{{!editable}}" />
+                <mat-hint *ngIf="app.$validation.errors.initiate_login_uri"
+                          class="error">{{app.$validation.errors.initiate_login_uri |valmsg}}</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="column-50">
+
+            <mat-label class="app-label">Grant Types</mat-label>
+            <mat-selection-list class="granttype-selection"
+                                (selectionChange)="onGrantTypeChanged($event)">
+                <mat-list-option *ngFor="let gt of GRANT_TYPES"
+                                 [value]="gt"
+                                 [checkboxPosition]="'before'"
+                                 [selected]="isAppGrantType(gt)"
+                                 [disabled]="gt=='refresh_token'">
+                    {{gt}}
+                </mat-list-option>
+            </mat-selection-list>
+            <mat-hint *ngIf="app.$validation.errors.grant_type"
+                      class="error">{{app.$validation.errors.grant_type |valmsg}}</mat-hint>
+        </div>
+    </div>
+    <div class="section-data">
+        <div class="column-50">
+            <mat-form-field  class="flex-grow"
+                            [floatLabel]="'always'"
+                            color="accent">
+                <mat-label>Redirect urls</mat-label>
+                <input matInput
+                       data-test-id="redirect-urls"
+                       placeholder="Type your Url + ENTER"
+                       (keydown.enter)="addRedirect($event)"
+                       disabled={{!editable}}
+                       (blur)="addRedirect($event)"/>
+                <mat-hint>Please try to end your url by '/callback'</mat-hint>
+
+            </mat-form-field>
+            <div class="url-container">
+                <mat-chip-set #redirectList
+                               class="mat-mdc-chip-set-stacked"
+                               aria-orientation="vertical">
+                    <mat-chip *ngFor="let url of app.redirect_uris"
+                              [removable]="true"
+                              (removed)="removeRedirect(url)">
+                        {{url}}
+                        <mat-icon *ngIf="editable"
+                                  matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                </mat-chip-set>
+            </div>
+            <iam-validation [element]="app.redirect_uris"></iam-validation>
+        </div>
+        <div class="column-50">
+            <mat-form-field class="flex-grow"
+                            [floatLabel]="'always'"
+                            color="accent">
+                <mat-label>Logout urls</mat-label>
+                <input matInput
+                       placeholder="Type your Url + ENTER"
+                       (keydown.enter)="addLogout($event)"
+                       disabled={{!editable}}
+                       (blur)="addLogout($event)" />
+                <mat-hint>Please try to end your url by '/logout'</mat-hint>
+            </mat-form-field>
+            <div class="url-container">
+                <mat-chip-set #logoutList
+                               class="mat-mdc-chip-set-stacked"
+                               aria-orientation="vertical">
+                    <mat-chip *ngFor="let url of app.logout_uris"
+                              [removable]="true"
+                              (removed)="removeLogout(url)">
+                        {{url}}
+                        <mat-icon *ngIf="editable"
+                                  matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                </mat-chip-set>
+            </div>
+            <iam-validation [element]="app.logout_uris"></iam-validation>
+        </div>
+    </div>
+    <div class="section-action">
+
+    </div>
+</div>

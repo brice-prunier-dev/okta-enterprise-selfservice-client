@@ -1,0 +1,38 @@
+{
+    "chromeWebSecurity": false,
+    "integrationFolder": "projects/intact/cypress/integration",
+    "supportFile": "projects/intact/cypress/support/index.ts",
+    "videosFolder": "projects/intact/cypress/videos",
+    "screenshotsFolder": "projects/intact/cypress/screenshots",
+    "pluginsFile": "projects/intact/cypress/plugins/index.ts",
+    "fixturesFolder": "projects/intact/cypress/fixtures",
+    "baseUrl": "https://iamapi-client-beta.ase.ncd.infrasys16.com",
+    "defaultCommandTimeout": 10000,
+    "viewportWidth": 1400,
+    "viewportHeight": 800,
+    "reporter": "junit",
+    "reporterOptions": {
+        "mochaFile": "projects/intact/cypress/results/output-[hash].xml",
+        "toConsole": true
+    },
+    "env": {
+        "auth_username": "intact.e2e@gem.test.account.fr",
+        "auth_password": "=End2End!",
+        "okta_domain": "https://gem-beta.oktapreview.com",
+        "okta_issuer_id": "aus3v6rg3e9zNHMxe0x6",
+        "okta_client_id": "2-b-intact-client-NTFBHCDNKPAJAKP",
+        "okta_scopes": [
+            "openid",
+            "email",
+            "profile",
+            "api.iam",
+            "api.iam.admin.commands",
+            "api.iam.apps.commands",
+            "api.iam.projects.commands",
+            "api.iam.projects.commands",
+            "api.iam.kpis"
+        ],
+        "base_url": "https://iamapi-client-beta.ase.ncd.infrasys16.com",
+        "base_api_url": "https://iamapi-beta.ase.ncd.infrasys16.com"
+    }
+}

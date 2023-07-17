@@ -1,0 +1,31 @@
+<div id="help">
+  <div class="main-content-title">
+    <a [routerLink]="[ '/', { outlets: { help: null } } ]">
+      <mat-icon class="left-offset right-offset font-white small">cancel</mat-icon>
+      <label>Close</label>
+    </a>
+  </div>
+
+
+  <div class="table-of-contents" *ngIf="'getting_started'==filename">
+    <h3>Table of Contents</h3>
+    <ul>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'getting_started'] } } ]">Getting Started</a></li>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'my_projects'] } } ]">My Projects</a></li>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'gem_projects'] } } ]">GEM's Projects</a></li>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'project'] } } ]">Project</a></li>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'project_application'] } } ]">Application</a>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'project_group'] } } ]">Group</a>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'project_scope'] } } ]">Scope</a>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'project_new'] } } ]">New Project</a></li>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'project_new_application'] } } ]">New Application</a>
+      </li>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'project_new_group'] } } ]">New Group</a></li>
+      <li><a [routerLink]="[ '/', { outlets: { help: ['guides', 'project_new_scope'] } } ]">New Scope</a></li>
+    </ul>
+  </div>
+
+  <div class="guide">
+    <div markdown [src]="filepath" (load)="onLoad($event)" (error)="onError($event)"></div>
+  </div>
+</div>

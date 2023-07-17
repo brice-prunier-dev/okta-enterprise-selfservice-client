@@ -1,0 +1,20 @@
+@import '../../../../styles/colors.scss';
+
+.mat-mdc-dialog-content {
+    overflow-y: hidden;
+}
+
+mat-form-field {
+    min-width: 250px;
+}
+
+h3 {
+    margin-top: 20px!important;
+}
+p {
+    font: 500 13px/15px Lato;
+}
+
+.mdc-dialog__title {
+  padding-bottom: 0!important;
+}

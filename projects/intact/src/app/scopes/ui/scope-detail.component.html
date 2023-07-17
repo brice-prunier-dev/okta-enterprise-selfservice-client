@@ -1,0 +1,208 @@
+<div *ngIf="initialized"
+     class="main">
+  <main>
+    <div class="main-content">
+      <div
+           class="item-title-row flex-row flex-center">
+
+        <div class="icon">
+        </div>
+        <div class="flex-column flex-30">
+          <div class="item-column-title">Project</div>
+        </div>
+        <div class="flex-column flex-grow">
+          <div class="item-column-title">Application</div>
+        </div>
+
+      </div>
+      <div class="w-100 flex-row flex-center">
+        <mat-accordion class="w-100">
+          <mat-expansion-panel *ngFor="let sub of list" data-test-id="subscription-row" (opened)="cmdCheckClaim(sub)">
+            <mat-expansion-panel-header class="group-row"
+                                        collapsedHeight="48px"
+                                        expandedHeight="48px">
+              <mat-panel-title class="item-label">
+                <div class="icon">
+                  <mat-icon *ngIf="sub.status==='active'" color="accent">autorenew</mat-icon>
+                  <mat-icon *ngIf="sub.status==='validated'" class="just-primary">done</mat-icon>
+                  <mat-icon *ngIf="sub.status==='rejected'" color="warn">close</mat-icon>
+                  <mat-icon *ngIf="sub.status==='canceled'" color="warn">close</mat-icon>
+                </div>
+                {{sub.target.project | pascalCase }}
+
+              </mat-panel-title>
+              <mat-panel-description class="item-label">
+                <div class="item-label">
+                  {{sub.target.item.label | pascalCase}}
+                </div>
+                <span class="toolbar-filler"></span>
+                <div class="chip"
+                     [ngStyle]="{'background': isInternal(sub.target.project) ? '#add4ff' : '#adf8fd' }">
+                  <span>{{chipLabel(sub.target.project)}}</span>
+                </div>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class=" full-width"
+                 [ngStyle]="{'visibility': running == sub.id  ? 'visible' : 'hidden' }">
+              <mat-progress-bar class="full-width"
+                                [color]="'warn'"
+                                [mode]="'indeterminate'"
+                                [value]="50"
+                                [bufferValue]="75"> </mat-progress-bar>
+            </div>
+            <div class="api-box">
+
+              <div class="api-box-content-column">
+                <div class="api-section">
+                  <h4>STATUS</h4>
+                  <div *ngIf="sub.status==='active'"
+                       class="api-section-content offset-20">
+                    <mat-icon class="just-primary right-offset">autorenew</mat-icon>
+                    <span>SUBSCRIPTION IN
+                      PROGRESS</span>
+                  </div>
+                  <div *ngIf="sub.status==='validated'"
+                       class="api-section-content offset-20">
+                    <mat-icon class="just-primary right-offset">check_circle</mat-icon>
+                    <span>VALIDATED</span>
+                  </div>
+                  <div *ngIf="sub.status==='rejected'"
+                       class="api-section-content offset-20">
+                    <mat-icon class="just-primary right-offset">highlight_off</mat-icon>
+                    <div class="flex-column">
+                      <span>REJECTED</span>
+                      <p>{{ sub.responses[0].comment }}</p>
+                    </div>
+                  </div>
+                  <div *ngIf="sub.status==='canceled'"
+                       class="api-section-content offset-20">
+                    <mat-icon class="just-primary right-offset">highlight_off</mat-icon>
+                    <div class="flex-column">
+                      <span><b>CANCELED</b></span>
+                      <p>{{ sub.responses[0].comment }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="api-section">
+                  <h4><span>PROJECT DESCRIPTION</span>
+                    <mat-icon
+                              matTooltip="Go to project"
+                              [routerLink]="'/projects/'+ sub.target.project + '/home' ">launch</mat-icon>
+
+                  </h4>
+                  <div class="api-section-content">{{sub.target.description}}</div>
+                </div>
+                <div class="api-section">
+                  <h4>APPLICATION DESCRIPTION
+                    <mat-icon
+                              matTooltip="Go to application"
+                              [routerLink]="'/projects/'+ sub.target.project + '/apps/' + sub.target.item.label + '/details' ">
+                      launch</mat-icon>
+
+
+                  </h4>
+                  <div class="api-section-content">{{sub.target.item.description}}</div>
+                </div>
+                <div *ngIf="editable && withClaim && sub.claim" class="api-section">
+                  <h4>CLAIM</h4>
+
+                </div>
+                <mat-form-field *ngIf="editable && withClaim && sub.claim"
+                                class="flex-grow"
+                                [floatLabel]="'always'"
+                                color="accent">
+                  <mat-label>Api Key</mat-label>
+                  <input matInput
+                         [(ngModel)]="sub.claim.key"
+                         readonly
+                         required />
+                  <mat-hint *ngIf="sub.claim.key=== undefined || sub.claim.key.length===0"
+                            class="error">Required</mat-hint>
+                  <mat-icon matSuffix
+                            matTooltip="Click to reset the value."
+                            class="action"
+                            (click)="cmdResetClaim(sub)">autorenew</mat-icon>
+                  <mat-progress-spinner matSuffix
+                                        diameter="16"
+                                        *ngIf="running == sub.id + '-claim-loading'"
+                                        mode="indeterminate">
+                  </mat-progress-spinner>
+                </mat-form-field>
+              </div>
+              <mat-divider class="m-20" [vertical]="true"></mat-divider>
+              <div class="api-box-content-column">
+                <div class="api-section">
+                  <h4>REQUESTS HISTORY</h4>
+
+                  <div class="flex-row flex-center item-title-row">
+                    <div class="flex-40">
+                      <div class="item-column-title">Date</div>
+                    </div>
+                    <div class="flex-45">
+                      <div class="item-column-title">Issuer</div>
+                    </div>
+                    <div class="flex-15">
+                      <div class="item-column-title"> Action </div>
+                    </div>
+                  </div>
+
+                  <div *ngFor="let subevent of subHistory(sub)" class="item-row flex-column">
+                    <div class="flex-row flex-center">
+                      <div class="item-small-label flex-40">
+                        {{subevent.date === '2000-01-01 00:00:00Z' ? 'N/A: Historical' : subevent.date }}
+                      </div>
+                      <div class="item-small-label flex-45">
+                        {{subevent.user.firstName + ' ' + subevent.user.lastName}}
+                      </div>
+                      <div class="item-small-label flex-15">
+                        {{( asResponse(subevent).action || 'demand') | pascalCase}}
+                      </div>
+                    </div>
+                    <div *ngIf="!!asResponse(subevent).comment" class="item-small-label flex-100">
+                      <span class="item-label item-comment">Reason:</span>
+                      <span class="offset-5"> {{ asResponse(subevent).comment}}</span>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="api-section">
+                  <h4>ACTIONS</h4>
+                  <div class="api-section-content">
+                    <div class="section-content">
+                      <button *ngIf="sub.status=='active'"
+                              mat-stroked-button
+                              disabled="{{!editable}}"
+                              color="primary"
+                              (click)="cmdValidate(sub)">Validate</button>
+                      <button *ngIf="sub.status=='active'"
+                              mat-stroked-button
+                              disabled="{{!editable}}"
+                              color="warn"
+                              (click)="cmdReject(sub)">Reject</button>
+
+                      <button *ngIf="sub.status=='canceled' || sub.status=='rejected'"
+                              mat-stroked-button
+                              disabled="{{!editable}}"
+                              color="primary"
+                              (click)="cmdRenew(sub)">Renew</button>
+                      <button class="cancel-scope-subscription"
+                              *ngIf="sub.status=='validated'"
+                              mat-stroked-button
+                              disabled="{{!editable}}"
+                              color="warn"
+                              (click)="cmdCancel(sub)">Cancel</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="18px" viewBox="0 0 27 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>TR Copy</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="25.2" height="18" rx="2"></rect>
+        <rect id="path-3" x="0.6" y="0.6" width="24" height="16.8" rx="1"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-13" transform="translate(-278.000000, 0.000000)">
+            <g id="TR-Copy" transform="translate(278.400000, 0.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="background" fill="#E82E2E" xlink:href="#path-1"></use>
+                <path d="M10.2,3.6 C11.9333284,3.6 13.4759145,4.41666458 14.4639737,5.68620899 C13.7016498,5.13067559 12.7421999,4.8 11.7,4.8 C9.21471863,4.8 7.2,6.68040405 7.2,9 C7.2,11.3195959 9.21471863,13.2 11.7,13.2 C12.7421999,13.2 13.7016498,12.8693244 14.4644774,12.3142539 C13.4759145,13.5833354 11.9333284,14.4 10.2,14.4 C7.21766235,14.4 4.8,11.9823376 4.8,9 C4.8,6.01766235 7.21766235,3.6 10.2,3.6 Z" id="circle" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <path d="" id="star" stroke="#E6B6B7" mask="url(#mask-2)"></path>
+                <rect id="star" fill="#FFFFFF" mask="url(#mask-2)" x="15.6" y="8.4" width="1.2" height="1.2"></rect>
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <use id="overlay" stroke-opacity="0.156646286" stroke="#2F343A" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>

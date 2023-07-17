@@ -1,0 +1,28 @@
+div.tab-page {
+    height: unset;
+}
+
+mat-tab-group {
+    background-color: white
+}
+
+mat-tab-label {
+    background-color: white
+}
+
+mat-tab-label-active {
+    background-color: white
+}
+
+
+
+.mat-mdc-tab-body-content {
+    height: auto;
+}
+.main-content {
+    min-height: 100px;
+    overflow-y: hidden;
+    .main-content-title {
+        margin-top: 20px;
+    }
+}

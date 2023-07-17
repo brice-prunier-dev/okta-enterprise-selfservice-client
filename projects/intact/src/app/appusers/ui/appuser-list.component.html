@@ -1,0 +1,85 @@
+<div class="running-flash"
+     *ngIf="running">
+    <mat-progress-bar [color]="'warn'"
+                      [mode]="'indeterminate'"
+                      [value]="50"
+                      [bufferValue]="75"> </mat-progress-bar>
+    <span class="mat-caption">{{runningOp}}</span>
+</div>
+<div *ngIf="initialized"
+     class="tab-page">
+    <div class="tab-page-toolbar">
+        <iam-member-actions [editable]="userEditable"
+                            [userExists]="userExists.bind(this)"
+                            [displayUser]="displayUser.bind(this)"
+                            [projectAccounts]="projVm.accountUsers!"
+                            (searchChanged)="onSearchChanged($event)">
+        </iam-member-actions>
+    </div>
+    <main>
+        <div class="main-content">
+            <div>
+                <iam-error [value]="error"></iam-error>
+            </div>
+            <div class="main-content-title">
+                <label *ngIf="appVm.app.hasAudience()">Global access for any
+                    <span class="offset-10 highlith mat-h1">{{appVm.app.audienceLabel()}}.</span>
+                </label>
+            </div>
+
+            <div class="item-title-row flex-row flex-center">
+                <div class="icon flex-offset-15 flex-no-grow">
+                </div>
+                <div class="flex-25 flex-column flex-grow">
+                    <div class="item-column-title">User Name</div>
+                </div>
+                <div class="flex-25 flex-column flex-grow">
+                    <div class="item-column-title">Mail</div>
+                </div>
+                <div class="flex-15 flex-column flex-grow">
+                    <div class="item-column-title">User Type</div>
+                </div>
+                <div class="flex-row flex-align-center flex-grow flex-basis-0">
+                    <div class="item-column-title">Membership</div>
+                </div>
+                <div class="icon-edit flex-no-grow">
+                </div>
+            </div>
+            <cdk-virtual-scroll-viewport *ngIf="withProjectUsers()"
+                                         class="user-list-container flex-column flex-gap-7"
+                                         [itemSize]="20">
+                <div *cdkVirtualFor="let usr of appMembers | filter:matchingUser:filterStmt"
+                     class="item-row flex-row flex-center">
+
+                    <div class="icon flex-offset-15 flex-no-grow">
+                        <mat-icon
+                                  class="icon-l"
+                                  matTooltip="{{usr.status}}"
+                                  [style.color]="ux_userColor(usr)"
+                                  svgIcon="{{usr.status==='ACTIVE' ? 'usr' : usr.status==='PROVISIONED' ? 'usr-provisioned' : 'usr-inactive'}}">
+                        </mat-icon>
+                    </div>
+                    <div class="flex-25 flex-column">
+                        <div class="{{ux_userLabelStyle(usr)}}">{{ux_userLabel(usr)}}</div>
+                    </div>
+                    <div class="flex-25 flex-column">
+                        <div class="user-type">{{usr.profile.email}}</div>
+                    </div>
+                    <div class="flex-15 flex-column">
+                        <div class="user-type">{{usr.profile.userType | usrtyp}}</div>
+                    </div>
+                    <div class="flex-row flex-align-center flex-grow flex-basis-0">
+                        <div class="item-label"> {{usr.groupNames | listlabel : 90}}</div>
+                    </div>
+                    <div class="icon-edit flex-no-grow">
+                        <button mat-icon-button
+                                (click)="displayUser( usr );"
+                                matTooltip="Click to edit user's detail">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </cdk-virtual-scroll-viewport>
+        </div>
+    </main>
+</div>

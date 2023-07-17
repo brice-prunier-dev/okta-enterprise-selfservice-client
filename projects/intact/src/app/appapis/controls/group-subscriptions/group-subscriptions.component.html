@@ -1,0 +1,43 @@
+<div class="running-flash"
+     *ngIf="running">
+    <mat-progress-bar [color]="'warn'"
+                      [mode]="'indeterminate'"
+                      [value]="50"
+                      [bufferValue]="75"> </mat-progress-bar>
+</div>
+<div *ngIf="initialized"
+     class="tab-page">
+    <div class="main-content-title">
+        <label>Swagger's groups.</label>
+    </div>
+
+    <div class="cards-container w-100">
+        <mat-card *ngFor="let link of groupLinks">
+            <mat-card-header class="mat-title">
+                <mat-card-title>{{link.label |pascalCase}}</mat-card-title>
+                <mat-icon mat-card-avatar>people</mat-icon>
+            </mat-card-header>
+
+            <mat-card-content>
+                <mat-chip-set aria-label="Group scopes">
+                    <mat-chip *ngFor="let scp of link.scopes"
+                              class="subscribed"
+                              matTooltip="{{scp}}">
+                        {{scp}}
+                    </mat-chip>
+                </mat-chip-set>
+            </mat-card-content>
+
+            <mat-card-actions align="end">
+                <button mat-stroked-button
+                        class="round"
+                        matTooltip="Click to edit group's scopes."
+                        (click)="editScopes( link.oid );">
+                    <mat-icon class="right-offset">edit</mat-icon>
+                    Manage Scopes
+                </button>
+
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+
+
+table {
+    border-collapse: initial;
+    border-spacing: 5px;
+}
+
+div.main {
+    margin: 0 100px;
+}
+.w130  {
+    width: 130px;
+}

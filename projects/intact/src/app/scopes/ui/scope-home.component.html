@@ -1,0 +1,48 @@
+<div class="nav-page">
+    <div class="running-flash"
+         *ngIf="running">
+        <mat-progress-bar [color]="'warn'"
+                          [mode]="'indeterminate'"
+                          [value]="50"
+                          [bufferValue]="75"></mat-progress-bar>
+        <span class="mat-caption"> {{runningOp}} </span>
+    </div>
+    <header *ngIf="initialized">
+        <caption>Scope</caption>
+        <h3>{{ scopeId }}</h3>
+    </header>
+    <main *ngIf="initialized">
+        <nav mat-align-tabs="end"
+             mat-tab-nav-bar
+             [tabPanel]="tabPanel">
+            <a *ngIf="hasWarning()" mat-tab-link [routerLink]="'warnings'" routerLinkActive #warnings="routerLinkActive" [active]="warnings.isActive" class="warnings-tab">
+                Warnings
+            </a>
+            <a mat-tab-link
+               [routerLink]="'details'"
+               routerLinkActive
+               #details="routerLinkActive"
+               [active]="details.isActive">
+                Detail
+            </a>
+            <a mat-tab-link
+               [routerLink]="'defs'"
+               routerLinkActive
+               #defs="routerLinkActive"
+               [active]="defs.isActive">
+                Definition
+            </a>
+            <a mat-tab-link
+               [routerLink]="'admins'"
+               routerLinkActive
+               #admins="routerLinkActive"
+               [active]="admins.isActive">
+                Admins
+            </a>
+
+        </nav>
+        <mat-tab-nav-panel #tabPanel>
+            <router-outlet></router-outlet>
+        </mat-tab-nav-panel>
+    </main>
+</div>

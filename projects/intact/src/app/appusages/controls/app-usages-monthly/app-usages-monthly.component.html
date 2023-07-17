@@ -1,0 +1,87 @@
+<div class="nav-page">
+    <div class="running-flash" [ngStyle]="{ visibility: appCdhCtx.running ? 'visible' : 'hidden' }">
+        <mat-progress-bar
+                          [color]="'warn'"
+                          [mode]="'indeterminate'"
+                          [value]="50"
+                          [bufferValue]="75"></mat-progress-bar>
+    </div>
+    <main *ngIf="appCdhCtx.loaded">
+        <div class="w-100 flex-row flex-align-end flex-gap-20">
+            <mat-form-field class="w-350-px" id="header-field">
+                <mat-label>App</mat-label>
+                <input matInput
+                       readonly="true"
+                       [(ngModel)]="appCdhCtx.query.label" />
+            </mat-form-field>
+
+            <div class="toggle-field flex-row flex-align-center">
+                <mat-slide-toggle [labelPosition]="'before'" [(ngModel)]="appCdhCtx.query.byUsers">
+                    By User
+                </mat-slide-toggle>
+            </div>
+
+            <mat-form-field class="w-125-px">
+                <mat-label>On Year</mat-label>
+                <input matInput [matDatepicker]="dp" [(ngModel)]="momentDate">
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp
+                                startView="multi-year"
+                                (yearSelected)="chosenYearHandler($event, dp)"
+                                panelClass="month-picker">
+                </mat-datepicker>
+            </mat-form-field>
+            <div class="toggle-field flex-row flex-align-center">
+                <button
+                        [disabled]="!cmdRunQueryEnabled()"
+                        mat-mini-fab
+                        class="flex-row flex-center"
+                        color="accent"
+                        matTooltip="Load current query"
+                        (click)="cmdRunQuery()">
+                    <mat-icon>input</mat-icon>
+                </button>
+                <button
+                        [disabled]="!graphWithDatasets()"
+                        mat-mini-fab
+                        class="flex-row flex-center"
+                        color="accent"
+                        matTooltip="Hide all curves"
+                        (click)="cmdHideAll()">
+
+                    <mat-icon>layers_clear</mat-icon>
+                </button>
+                <button
+                        [disabled]="!graphWithDatasets()"
+                        mat-mini-fab
+                        class="flex-row flex-center"
+                        color="warn"
+                        matTooltip="Clear graph"
+                        (click)="cmdClear()">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+            <mat-paginator [length]="datasetCount"
+                           [pageSize]="pageSize"
+                           [hidePageSize]="true"
+                           [showFirstLastButtons]="false"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPageChanged($event)"
+                           aria-label="Select page">
+            </mat-paginator>
+        </div>
+        <div class="w-100">
+            <div class="chart">
+                <canvas
+                        baseChart
+                        width="{{ canvasWidth }}"
+                        height="450"
+                        [data]="lineChartData"
+                        [options]="lineChartOptions"
+                        [type]="lineChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+            </div>
+        </div>
+    </main>
+</div>

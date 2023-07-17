@@ -1,0 +1,159 @@
+<div class="header-box dialog-header dialog-title flex-row">
+    <img mat-card-avatar
+         class="header-icon"
+         src="/assets/user.svg">
+    <span class="header">User Detail</span>
+    <span class="toolbar-filler"></span>
+    <span class="header flex-align-center flex-justify-end flex-row"
+          [ngClass]="isInternalAsClass">Internal</span>
+</div>
+<div class="dialog-subheader-runtimeinfos dialog-content-offset">
+    <mat-progress-bar *ngIf="running"
+                      [color]="'warn'"
+                      [mode]="'indeterminate'"
+                      [value]="50"
+                      [bufferValue]="75">
+    </mat-progress-bar>
+    <span *ngIf="running"
+          class="mat-caption">{{runningOp}}</span>
+    <iam-error [value]="error"></iam-error>
+</div>
+<mat-dialog-content *ngIf="!running && !error">
+    <div class="flex-align-end flex-row flex-column-lt-sm flex-wrap flex-gap-20 flex-gap-10-lt-md">
+        <mat-form-field class="flex-no-grow flex-no-shrink" style="flex-basis: 367px">
+            <mat-label>Login</mat-label>
+            <input matInput
+                   [(ngModel)]="profileLogin"
+                   required
+                   disabled="{{!canEdit || isUpdate}}" />
+            <span *ngIf="isAccount"
+                  matSuffix>{{accountSuffix}}</span>
+
+            <mat-hint *ngIf="profile.$validation.errors.login"
+                      class="error">{{profile.$validation.errors.login|valmsg}}
+            </mat-hint>
+        </mat-form-field>
+        <mat-form-field style="flex-basis: 188px" class="flex-no-grow flex-no-shrink">
+            <mat-label>User Type</mat-label>
+            <mat-select [(value)]="profile.userType"
+                        disabled="true">
+                <mat-option *ngFor="let l of userTypes"
+                            [value]="l.id">
+                    {{l.label}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="flex-align-center flex-row flex-column-lt-sm flex-wrap flex-gap-20 flex-gap-10-lt-md">
+        <mat-form-field class="flex-grow" style="max-width: 367px; min-width: 367px; flex-basis: 367px">
+            <mat-label>Email</mat-label>
+            <input matInput
+                    #search
+                    [(ngModel)]="profileEmail"
+                    required
+                    disabled="{{!canEdit || isUpdate || !canBeEdit}}"
+                    [matAutocomplete]="auto1" />
+                <mat-autocomplete #auto1="matAutocomplete" autoActiveFirstOption>
+                    <ng-container *ngIf="internalUsers$ | async as internalUsers; else autoCompleteLoading">
+                        <mat-option *ngFor="let usr of internalUsers" [value]='usr.profile.login'>
+                            <div class="block">
+                                <div class="search-option mat-body">
+                                    <iam-user-label-matcher [label]="userLabel(usr)" [searchText]="search.value">
+                                    </iam-user-label-matcher>
+                                </div>
+                                <div class="search-option mat-caption grey">{{usr.profile.login}}</div>
+                            </div>
+                        </mat-option>
+                    </ng-container>
+                </mat-autocomplete>
+                <ng-template #autoCompleteLoading>
+                    <mat-option class="is-searching">
+                        <mat-spinner diameter="20"></mat-spinner>
+                    </mat-option>
+                </ng-template>
+            <mat-hint *ngIf="profileEmailError"
+                      class="error">{{profileEmailError|valmsg}}
+            </mat-hint>
+        </mat-form-field>
+
+
+        <mat-form-field class="flex-grow" style="max-width: 188px; min-width: 188px; flex-basis: 188px;">
+            <mat-label>Language</mat-label>
+            <mat-select [(value)]="profile.lang"
+                        required="profile.$editor.isRequired('locale')"
+                        [disabled]="!canEdit">
+                <mat-option *ngFor=" let l of langs"
+                            [value]="l.id">
+                    {{l.label}}
+                </mat-option>
+            </mat-select>
+            <mat-hint *ngIf="profile.$validation.errors.locale"
+                      class="error">
+                {{profile.$validation.errors.locale|valmsg}}
+            </mat-hint>
+        </mat-form-field>
+
+    </div>
+    <div class="flex-row flex-column-lt-sm flex-wrap flex-gap-20 flex-gap-10-lt-md">
+        <mat-form-field class="flex-no-shrink flex-no-grow" style="flex-basis: 277px">
+            <mat-label>First Name</mat-label>
+            <input matInput
+                   [(ngModel)]="profile.firstName"
+                   required
+                   disabled="{{!canEdit || !canBeEdit }}" />
+            <mat-hint *ngIf="profile.$validation.errors.firstName"
+                      class="error">
+                {{profile.$validation.errors.firstName|valmsg}}
+            </mat-hint>
+        </mat-form-field>
+        <mat-form-field class="flex-grow" style="max-width: 277px; min-width: 277px; flex-basis: 277px;">
+            <mat-label>Last Name</mat-label>
+            <input matInput
+                   [(ngModel)]="profile.lastName"
+                   required
+                   disabled="{{!canEdit || !canBeEdit }}" />
+            <mat-hint *ngIf="profile.$validation.errors.lastName"
+                      class="error">
+                {{profile.$validation.errors.lastName|valmsg}}
+            </mat-hint>
+        </mat-form-field>
+    </div>
+    <iam-validation [element]="profile"></iam-validation>
+    <div class="header-box dialog-header flex-row">
+        <img mat-card-avatar
+             class="header-icon"
+             src="/assets/group-36.png">
+        <span class="header">User Groups</span>
+        <span class="toolbar-filler"></span>
+        <mat-slide-toggle
+                          [checked]="displayAllGroups"
+                          (change)="displayAllGroupsChanged($event)">Display All
+        </mat-slide-toggle>
+    </div>
+    <mat-selection-list (selectionChange)="groupsChanged($event)">
+        <mat-list-option *ngFor="let grp of groupList"
+                         [value]="grp.label"
+                         [selected]="isGroupSelected(grp.label)"
+                         [disabled]="!isGroupOptionEnabled( grp.oid )">
+            {{grp.label}}
+        </mat-list-option>
+    </mat-selection-list>
+</mat-dialog-content>
+<mat-divider [inset]="true"></mat-divider>
+
+<mat-dialog-actions *ngIf="!running"
+                    align="end">
+    <button mat-stroked-button *ngIf="isActiveAccount"
+            color="warn"
+            (click)="cmdSuspend()">Suspend</button>
+    <button mat-stroked-button *ngIf="isSuspendAccount"
+            color="warn"
+            (click)="cmdUnsuspend()">Unsuspend</button>
+    <button mat-stroked-button
+            (click)="cmdCancel()">Cancel</button>
+    <button *ngIf="canBeSave"
+            mat-stroked-button
+            color="primary"
+            class="space-left"
+            (click)="cmdSave()">Save</button>
+</mat-dialog-actions>

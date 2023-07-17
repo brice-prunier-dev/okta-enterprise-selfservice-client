@@ -1,0 +1,75 @@
+<div class="header-box dialog-header dialog-title flex-row">
+  <mat-icon svgIcon="api" class="header-icon"></mat-icon>
+  <span class="header">Api Detail</span>
+</div>
+<div class="dialog-subheader-runtimeinfos dialog-content-offset">
+  <mat-progress-bar *ngIf="running"
+                    [color]="'warn'"
+                    [mode]="'indeterminate'"
+                    [value]="50"
+                    [bufferValue]="75">
+  </mat-progress-bar>
+  <span *ngIf="running"
+        class="mat-caption">{{runningOp}}</span>
+</div>
+<mat-dialog-content>
+  <iam-error [value]="error"></iam-error>
+  <div class="flex-column flex-gap-20">
+    <div>
+      <h3>Scope subscriptions</h3>
+      <mat-chip-set>
+        <mat-chip *ngFor="let s of resScopes"
+                  [ngClass]="scopeColor(s)"
+                  [removable]="true"
+                  (removed)="removeScope(s)">
+          {{s}}
+          <mat-icon *ngIf="editable"
+                    matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-set>
+    </div>
+    <div class="flex-48 flex-column flex-gap-20 flex-90-lt-md">
+      <mat-autocomplete #auto="matAutocomplete"
+                        [displayWith]='searchDisplayFn'
+                        (optionSelected)='onScopeSelection($event)'>
+        <mat-option *ngFor="let scope of searchScopes | async"
+                    [value]="scope.name">
+          <span>{{scope.name}}</span>
+        </mat-option>
+      </mat-autocomplete>
+      <mat-form-field class="flex-grow"
+                      [floatLabel]="'always'">
+
+        <mat-label>New Scope</mat-label>
+        <input #api_input matInput cdkFocusInitial
+               data-test-id="new-scope-name"
+               placeholder="Type the scope name + ENTER"
+               [value]="searchText"
+               [matAutocomplete]="auto"
+               (keyup)="onSearchTextChanged($event)" />
+        <mat-hint *ngIf="inputError"
+                  class="error">{{inputError}}</mat-hint>
+        <mat-icon matSuffix (click)="resetSearchInput()">clear</mat-icon>
+      </mat-form-field>
+    </div>
+
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions style="justify-content: space-between;">
+  <ul>
+    <li class="just-primary"><small>SUBSCRIBED</small></li>
+    <li class="just-warn">WAITING FOR VALIDATION</li>
+    <li class="just-new">NEW DEMAND</li>
+  </ul>
+  <div>
+    <button mat-stroked-button
+            class="space-left"
+            (click)="cancel()">Cancel</button>
+    <button data-test-id="save-new-scope"
+            *ngIf="editable && isDirty"
+            mat-stroked-button
+            color="primary"
+            class="space-left"
+            (click)="ok()">Save</button>
+  </div>
+</mat-dialog-actions>

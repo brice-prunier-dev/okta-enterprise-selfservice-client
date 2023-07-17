@@ -1,0 +1,66 @@
+@import '../../../styles/colors.scss';
+
+:host {
+    position: absolute;
+    top: 48px;
+    left: 450px;
+    bottom: 0px;
+    right: 0px;
+}
+article {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-mdc-button-toggle-group-appearance-standard {
+    border: solid 1px $primary;
+    border-color: $primary;
+    margin: 0px;
+    border-radius: 4px;
+    font: 500 13px/24px Lato;
+    color: $primary;
+}
+
+#description-field textarea {
+  min-height: calc(100px - 16px * 2);
+  line-height: 24px;
+}
+
+
+#cmdbs-field.mat-mdc-form-field {
+
+    input {
+        width: 98%;
+    }
+}
+
+.mat-mdc-tab-group {
+    width: 100%;
+    overflow-y: auto;
+}
+
+.topright {
+    position: absolute;
+    top: 2px;
+    right: -14px;
+}
+
+div.mat-mdc-chip-set-wrapper {
+    margin: 0px !important;
+    transform: translateY(-20px);
+}
+
+.mat-mdc-chip {
+    margin: 2px;
+    min-height: 24px;
+    border-radius: 14px;
+    border: 1px solid $primary;
+    --mdc-chip-label-text-color:$primary;
+    --mdc-chip-elevated-container-color:white;
+    font: 500 14px/14px Lato;
+}
+
+
+.mat-mdc-input-element {
+  height: max-content;
+}

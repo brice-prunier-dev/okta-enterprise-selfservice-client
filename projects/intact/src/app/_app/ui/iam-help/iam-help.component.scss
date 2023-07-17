@@ -1,0 +1,59 @@
+@import '../../../../styles/colors.scss';
+
+:host {
+    position: absolute;
+    top: 48px;
+    right: 0px;
+    bottom: 0px;
+    width: 670px;
+    border: 1px lightgrey solid;
+    z-index: 300;
+    background: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 3px;
+    box-shadow: -5px 0px 19px -12px rgba(0, 0, 0, 0.28);
+}
+
+#help {
+    margin-left: 20px;
+}
+
+div.main-content-title {
+    // margin: 0px 0px 0px -20px;
+    margin: -2px 0px -3px -22px;
+    /* padding: 3px; */
+    padding: 3px;
+    background: $gray-100;
+    border-bottom: 1px solid $gray-200;
+    align-content: center;
+    display: flex;
+    height: 32px;
+    text-align: center;
+    align-items: center;
+    width: calc(100% + 25px);
+
+    a {
+       .mat-icon.small {
+            height: 22px;
+            width: 22px;
+            color: $primary;
+        }
+
+        label {
+            margin: 0;
+            font: 700 16px/16px Lato;
+        }
+
+        height: 22px;
+
+        display: flex;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+}
+
+div.table-of-contents {
+    margin: 20px 0 0 0;
+}

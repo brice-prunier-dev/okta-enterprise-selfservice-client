@@ -1,0 +1,448 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "intact": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss",
+                    "skipTests": true
+                },
+                "@schematics/angular:class": {
+                    "skipTests": true
+                },
+                "@schematics/angular:directive": {
+                    "skipTests": true
+                },
+                "@schematics/angular:guard": {
+                    "skipTests": true
+                },
+                "@schematics/angular:interceptor": {
+                    "skipTests": true
+                },
+                "@schematics/angular:module": {
+                    "skipTests": true
+                },
+                "@schematics/angular:pipe": {
+                    "skipTests": true
+                },
+                "@schematics/angular:service": {
+                    "skipTests": true
+                }
+            },
+            "root": "projects/intact",
+            "sourceRoot": "projects/intact/src",
+            "prefix": "iam",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "allowedCommonJsDependencies": [
+                            "babel",
+                            "lodash",
+                            "antv",
+                            "insert-css",
+                            "moment'"
+                        ],
+                        "outputPath": "dist/intact",
+                        "index": "projects/intact/src/index.html",
+                        "main": "projects/intact/src/main.ts",
+                        "polyfills": "projects/intact/src/polyfills.ts",
+                        "tsConfig": "projects/intact/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "projects/intact/src/favicon.ico",
+                            "projects/intact/src/assets",
+                            "projects/intact/src/assets/countries",
+                            "projects/intact/src/assets/commodities",
+                            "projects/intact/src/web.config",
+                            "projects/intact/src/ngsw-config.json",
+                            "projects/intact/src/manifest.webmanifest",
+                            {
+                                "glob": "**/*",
+                                "input": "guides",
+                                "output": "guides/"
+                            }
+                        ],
+                        "styles": [
+                            "projects/intact/src/styles/colors.scss",
+                            "projects/intact/src/styles/app-theme.scss",
+                            "projects/intact/src/styles/styles.scss"
+                        ],
+                        "scripts": ["node_modules/marked/lib/marked.cjs"],
+                        "serviceWorker": true
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/intact/src/environments/environment.ts",
+                                    "with": "projects/intact/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": {
+                                "fonts": false
+                            },
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": false,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "10kb",
+                                    "maximumError": "20kb"
+                                }
+                            ],
+                            "serviceWorker": true,
+                            "ngswConfigPath": "projects/intact/ngsw-config.json"
+                        },
+                        "beta": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/intact/src/environments/environment.ts",
+                                    "with": "projects/intact/src/environments/environment.beta.ts"
+                                }
+                            ],
+                            "optimization": {
+                                "fonts": false
+                            },
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": false,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "4mb",
+                                    "maximumError": "9mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "10kb",
+                                    "maximumError": "20kb"
+                                }
+                            ],
+                            "serviceWorker": true,
+                            "ngswConfigPath": "projects/intact/ngsw-config.json"
+                        },
+                        "next": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/intact/src/environments/environment.ts",
+                                    "with": "projects/intact/src/environments/environment.next.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": true,
+                            "vendorChunk": true,
+                            "buildOptimizer": false,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "4mb",
+                                    "maximumError": "11mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "10kb",
+                                    "maximumError": "21kb"
+                                }
+                            ]
+                        },
+                        "nextprod": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/intact/src/environments/environment.ts",
+                                    "with": "projects/intact/src/environments/environment.nextprod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "vendorChunk": false,
+                            "buildOptimizer": false,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "10kb",
+                                    "maximumError": "20kb"
+                                }
+                            ]
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "intact:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "intact:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "intact:build:development"
+                        },
+                        "next": {
+                            "browserTarget": "easyapi:build:next"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "intact:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-builders/jest:run",
+                    "options": {
+                        "tsConfig": "tsconfig.spec.json",
+                        "rootDir": "projects/intact",
+                        "verbose": true
+                    }
+                },
+                "cypress-run": {
+                    "builder": "@cypress/schematic:cypress",
+                    "options": {
+                        "devServerTarget": "intact:serve",
+                        "configFile": "projects/intact/cypress/config/cypress.config.ts"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "intact:serve:production"
+                        }
+                    }
+                },
+                "cypress-open": {
+                    "builder": "@cypress/schematic:cypress",
+                    "options": {
+                        "watch": true,
+                        "headless": false,
+                        "configFile": "projects/intact/cypress/config/cypress.config.ts"
+                    }
+                }
+            }
+        },
+        "joe-fx": {
+            "projectType": "library",
+            "root": "projects/joe-fx",
+            "sourceRoot": "projects/joe-fx/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "project": "projects/joe-fx/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/joe-fx/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/joe-fx/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "test": {
+                    "builder": "@angular-builders/jest:run",
+                    "options": {
+                        "tsConfig": "tsconfig.spec.json",
+                        "rootDir": "projects/joe-fx",
+                        "verbose": true
+                    }
+                }
+            }
+        },
+        "joe-types": {
+            "projectType": "library",
+            "root": "projects/joe-types",
+            "sourceRoot": "projects/joe-types/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "tsConfig": "projects/joe-types/tsconfig.lib.json",
+                        "project": "projects/joe-types/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/joe-types/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/joe-types/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "test": {
+                    "builder": "@angular-builders/jest:run",
+                    "options": {
+                        "tsConfig": "tsconfig.spec.json",
+                        "rootDir": "projects/joe-types",
+                        "verbose": true
+                    }
+                }
+            }
+        },
+        "joe-viewmodels": {
+            "projectType": "library",
+            "root": "projects/joe-viewmodels",
+            "sourceRoot": "projects/joe-viewmodels/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "tsConfig": "projects/joe-viewmodels/tsconfig.lib.json",
+                        "project": "projects/joe-viewmodels/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/joe-viewmodels/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/joe-viewmodels/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "test": {
+                    "builder": "@angular-builders/jest:run",
+                    "options": {
+                        "tsConfig": "tsconfig.spec.json",
+                        "rootDir": "projects/joe-viewmodels",
+                        "verbose": true
+                    }
+                }
+            }
+        },
+        "joe-store-api": {
+            "projectType": "library",
+            "root": "projects/joe-store-api",
+            "sourceRoot": "projects/joe-store-api/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "tsConfig": "projects/joe-store-api/tsconfig.lib.json",
+                        "project": "projects/joe-store-api/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/joe-store-api/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/joe-store-api/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "test": {
+                    "builder": "@angular-builders/jest:run",
+                    "options": {
+                        "tsConfig": "tsconfig.spec.json",
+                        "rootDir": "projects/joe-store-api",
+                        "verbose": true
+                    }
+                }
+            }
+        },
+        "intact-models": {
+            "projectType": "library",
+            "root": "projects/intact-models",
+            "sourceRoot": "projects/intact-models/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "tsConfig": "projects/intact-models/tsconfig.lib.json",
+                        "project": "projects/intact-models/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/intact-models/tsconfig.lib.prod.json"
+                        }
+                    }
+                },
+                "test": {
+                    "builder": "@angular-builders/jest:run",
+                    "options": {
+                        "tsConfig": "tsconfig.spec.json",
+                        "rootDir": "projects/intact-models",
+                        "verbose": true
+                    }
+                }
+            }
+        },
+        "joe-models": {
+            "projectType": "library",
+            "root": "projects/joe-models",
+            "sourceRoot": "projects/joe-models/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "tsConfig": "projects/joe-models/tsconfig.lib.json",
+                        "project": "projects/joe-models/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/joe-models/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/joe-models/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "test": {
+                    "builder": "@angular-builders/jest:run",
+                    "options": {
+                        "tsConfig": "tsconfig.spec.json",
+                        "rootDir": "projects/joe-models",
+                        "verbose": true
+                    }
+                }
+            }
+        }
+    },
+    "cli": {
+        "analytics": false
+    }
+}

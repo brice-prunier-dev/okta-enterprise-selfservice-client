@@ -1,0 +1,169 @@
+@import '../../../styles/colors.scss';
+
+
+input.mat-mdc-chip-input {
+    width: 100%;
+    margin: 3px;
+    flex: 1 0 180px;
+}
+
+div.mat-mdc-chip-set-wrapper {
+    margin: 3px 0px !important;
+}
+
+.mat-mdc-chip.mat-mdc-standard-chip {
+    font-weight: 700;
+    line-height: 13px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 7px 6px 11px;
+    opacity: 0.8;
+    border-radius: 6px;
+    border: 1px solid $gray-200;
+
+    background-color: $gray-200;
+    color: $dark-primary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+   .mat-icon {
+        margin-top: -1px;
+        margin-right: 10px;
+    }
+}
+
+
+.mat-mdc-chip.mat-mdc-standard-chip .mat-mdc-chip-remove {
+    color: $gray-600;
+    opacity: 0.8;
+}
+
+
+
+div.app-content {
+    flex-direction: column;
+    /* box-sizing: border-box; */
+    display: flex;
+    flex: 100%;
+    background-color: white;
+    color: $dark-primary;
+    padding: 20px 0px 20px 20px;
+
+    div.section-data {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+        column-gap: 20px;
+        grid-column-gap: 20px;
+
+
+        div.column-25 {
+            margin-right: 20px;
+            flex-direction: column;
+            display: flex;
+            flex: 1 1 25%;
+
+        }
+
+        div.column-50 {
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 49%;
+            column-gap: 20px;
+
+            .mat-mdc-form-field {
+                flex: none !important;
+                margin-bottom: 10px;
+            }
+
+            div.url-container {
+                height: 100%;
+                max-height: 210px;
+                overflow-x: hidden;
+                overflow-y: auto;
+
+            }
+
+        }
+
+        div.column-75 {
+            margin-right: 20px;
+            flex-direction: row;
+            display: flex;
+            flex: 1 1 75%;
+
+
+
+        }
+    }
+
+    div.okta-url {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+
+        label {
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.54);
+        }
+
+        p {
+            margin-left: 10px;
+            line-height: 26px;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.54);
+        }
+
+        button {
+            margin-left: 2px;
+            width: 20px;
+            height: 20px;
+            .mat-icon{
+                font-size: 16px;
+                line-height: 10px;
+                color: rgba(0, 0, 0, 0.54);
+
+            }
+
+        }
+    }
+
+    div.section-action {
+        display: flex;
+        flex-direction: row-reverse;
+        column-gap: 20px;
+        grid-column-gap: 20px;
+    }
+
+    .app-label {
+        color: rgba(0, 0, 0, 0.54);
+        font-weight: 400;
+        line-height: 16px;
+        font-size: 12px;
+        font-family: Lato;
+    }
+
+    .granttype-selection {
+        border-left-color: rgba(0, 0, 0, 0.54);
+        border-left-width: 1px;
+        border-left-style: solid;
+        margin: 5px 0;
+
+        &:focus-within {
+            border-left-width: 2px;
+            border-bottom-width: 2px;
+            animation-name: cdk-text-field-autofill-start;
+        }
+
+       .mat-mdc-list-option {
+            height: 24px;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.925);
+            opacity: 0.8;
+        }
+    }
+}
+

@@ -1,0 +1,39 @@
+<div class="projects-bar">
+    <div class="section-title">
+        <mat-icon class="header" svgIcon="gem_menu"></mat-icon>
+        <h1>GEM's Projects</h1>
+    </div>
+    <div class="section-search">
+        <mat-form-field id="search-field" subscriptSizing="dynamic" >
+            <mat-autocomplete #auto="matAutocomplete"
+                              (optionSelected)='onSelection($event)'>
+                <mat-option *ngIf="searching" class="is-searching">
+                    <mat-spinner diameter="20"></mat-spinner>
+                </mat-option>
+                <ng-container *ngIf="!searching">
+                    <mat-option *ngFor="let proj of searchedProjects" [value]='proj'>
+                        <span>{{proj}}</span>
+                    </mat-option>
+                </ng-container>
+            </mat-autocomplete>
+            <input matInput #search
+                   type="text"
+                   [value]="searchText"
+                   [matAutocomplete]="auto"
+                   placeholder="Search..."
+                   (keyup)="onSearchTextChanged($event)">
+
+            <mat-icon matSuffix svgIcon="search"></mat-icon>
+        </mat-form-field>
+    </div>
+
+    <div class="section-action">
+        <span class="toolbar-filler"></span>
+
+        <a
+           [routerLink]='[ "/", { outlets: { help: ["guides", "gem_projects"] } }]'
+           routerLinkActive="active">
+            <mat-icon class=".offset-5 white-fg small" svgIcon="help"></mat-icon>
+        </a>
+    </div>
+</div>

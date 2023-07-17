@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="18px" viewBox="0 0 27 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>GB</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="25.2" height="18" rx="2"></rect>
+        <rect id="path-3" x="0.6" y="0.6" width="24" height="16.8" rx="1"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-13" transform="translate(-208.000000, 0.000000)">
+            <g id="GB" transform="translate(208.800000, 0.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="background" fill="#22438B" xlink:href="#path-1"></use>
+                <polygon id="band" fill="#FFFFFF" mask="url(#mask-2)" points="3.59999996 1.19999995 1.16835936 1.23164061 1.20000003 3.6 21.5781131 16.8337014 24.0225337 16.7892817 23.9781142 14.4337021"></polygon>
+                <polygon id="band" fill="#C7152A" mask="url(#mask-2)" points="2.40000003 1.20000002 1.19999996 2.39999993 22.7999993 16.7999995 24.0000008 15.6000005"></polygon>
+                <path d="M21.5999999,1.20000002 L24,1.19999999 L24.0000001,3.59999996 C24.0000001,3.59999996 9.90079505,12.4754547 3.62188582,16.833702 C3.54554839,16.8866885 1.22436196,16.8375157 1.22436196,16.8375157 L1.03776005,14.5532747 L21.5999999,1.20000002 L21.5999999,1.20000002 Z" id="band" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <polygon id="band" fill="#C7152A" mask="url(#mask-2)" points="22.8514252 1.1666041 24 2.39999999 2.39999964 16.8000003 1.20000001 15.6"></polygon>
+                <polygon id="cross" fill="#FFFFFF" mask="url(#mask-2)" points="9.6 1.2 15.6 1.2 15.6 6 24 6 24 12 15.6 12 15.6 16.8 9.6 16.8 9.6 12 1.2 12 1.2 6 9.6 6"></polygon>
+                <polygon id="cross" fill="#C7152A" mask="url(#mask-2)" points="10.8 1.2 14.4 1.2 14.4 7.2 24 7.2 24 10.8 14.4 10.8 14.4 16.8 10.8 16.8 10.8 10.8 1.2 10.8 1.2 7.2 10.8 7.2"></polygon>
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <use id="overlay" stroke-opacity="0.156646286" stroke="#2F343A" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>

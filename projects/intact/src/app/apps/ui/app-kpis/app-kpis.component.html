@@ -1,0 +1,19 @@
+<div *ngIf="initialized"
+     class="tab-page">
+    <main>
+        <div class="warnings">
+            <p *ngIf="getWarnings().missingCmdb?.noProject === true">
+                <strong>No cmdb</strong> set in the project
+            </p>
+            <p *ngIf="getWarnings().missingCmdb?.noProject === false">
+                <strong>Several cmdb</strong> in the project, but no cmdb in the application
+            </p>
+            <p *ngIf="getWarnings().unusedSince !== undefined">
+                Application has not been used since <strong>{{getWarnings().unusedSince | date: 'longDate'}}</strong>
+            </p>
+            <p *ngFor="let service of getWarnings().sharedService">
+                This application's client id has been used from <strong>{{service.ipCount}}</strong> different ip addresses the <strong>{{service.date | date: 'longDate'}}</strong>
+            </p>
+        </div>
+    </main>
+</div>

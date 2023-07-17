@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="50mm" height="50mm" viewBox="0 0 49.999997 50" version="1.1" id="svg8" inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)" sodipodi:docname="graph-app-web2.svg">
+   <defs id="defs9" />
+   <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="5.3104172" inkscape:cx="231.10171" inkscape:cy="76.714924" inkscape:document-units="mm" inkscape:current-layer="layer1" inkscape:document-rotation="0" showgrid="false" units="mm" width="50mm" inkscape:window-width="2400" inkscape:window-height="1271" inkscape:window-x="2391" inkscape:window-y="-3" inkscape:window-maximized="1" />
+   <metadata id="metadata5">
+      <rdf:RDF>
+         <cc:Work rdf:about="">
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+            <dc:title />
+         </cc:Work>
+      </rdf:RDF>
+   </metadata>
+   <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1">
+      <g id="g849" style="stroke:#006aac;stroke-opacity:1;stroke-width:4.22;stroke-miterlimit:4;stroke-dasharray:none">
+         <ellipse style="fill:#f3f5f6;fill-opacity:1;stroke:#006aac;stroke-width:4.22;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:18.0353;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:60, 5, 27, 5, 27, 5;stroke-dashoffset:18.0353;stroke-opacity:1;paint-order:stroke fill markers" id="path835" cx="-10.407919" cy="-33.656731" rx="21.241642" ry="21.241022" transform="rotate(152.10334)" />
+      </g>
+      <path d="m 22.629601,33.442336 v -6.999422 h 4.424327 v 6.999422 h 5.530421 v -9.332564 h 3.318245 L 24.841765,13.61064 13.780929,24.109772 h 3.318251 v 9.332564 z" id="path4" style="fill:#006aac;fill-opacity:1;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none" />
+   </g>
+</svg>

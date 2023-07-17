@@ -1,0 +1,67 @@
+<div class="running-flash"
+     *ngIf="loading">
+    <mat-progress-bar [color]="'warn'"
+                      [mode]="'indeterminate'"
+                      [value]="50"
+                      [bufferValue]="75"> </mat-progress-bar>
+    <span class="mat-caption">Loading</span>
+</div>
+
+<div class="main">
+    <main>
+        <div class="main-content">
+            <table mat-table *ngIf="withHistory" [dataSource]="records!" multiTemplateDataRows>
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Date Column -->
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell class="col" *matHeaderCellDef> When </th>
+                    <td mat-cell class="col date-col" *matCellDef="let rec"> {{rec.date | date:'short'}} </td>
+                </ng-container>
+
+                <!-- By Column -->
+                <ng-container matColumnDef="user">
+                    <th mat-header-cell class="col" *matHeaderCellDef> By </th>
+                    <td mat-cell class="col user-col" *matCellDef="let rec"> {{rec.user}} </td>
+                </ng-container>
+
+                <!-- Operation Column -->
+                <ng-container matColumnDef="operation">
+                    <th mat-header-cell class="col" *matHeaderCellDef> What </th>
+                    <td mat-cell class="col what-col" *matCellDef="let rec"> {{rec.operation}} </td>
+                </ng-container>
+
+                <!-- Detail Column -->
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell class="col" *matHeaderCellDef> Detail </th>
+                    <td mat-cell class="col desc-col" *matCellDef="let rec"> {{rec.description}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="expandedDetail">
+                    <td mat-cell *matCellDef="let rec" [attr.colspan]="displayedColumns.length">
+                      <div [@detailExpand]="rec === expandedRow && expandedRow.message ? 'expanded' : 'collapsed'">
+                        <div class="row-message">
+                          {{rec.message}}
+                        </div>
+                      </div>
+                    </td>
+                </ng-container>
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                
+                <tr mat-row *matRowDef="let rec; columns: displayedColumns;" 
+                    [ngClass]="{'border-info': !rec.failed && !rec.isException && rec.message, 'border-warning': rec.failed && !rec.isException && rec.message, 'border-error': rec.isException && rec.message}"
+                    (click)="expandedRow = expandedRow === rec ? null : rec">
+                </tr>
+
+                <tr mat-row class="detail-row" *matRowDef="let rec; columns: ['expandedDetail'];"
+                    [ngClass]="{'border-info': !rec.failed && !rec.isException && rec.message, 'border-warning': rec.failed && !rec.isException && rec.message, 'border-error': rec.isException && rec.message}">
+                </tr>
+
+            </table>
+            <H2 *ngIf="!loading && !withHistory">No result </H2>
+        </div>
+    </main>
+</div>

@@ -1,0 +1,44 @@
+<div class="header-box dialog-header dialog-title flex-row">
+  <mat-icon class="header-icon"
+            svgIcon="{{resourceType}}"></mat-icon>
+  <span class="header">{{resourceTypeLabel}} Definition</span>
+</div>
+<div class="dialog-subheader-runtimeinfos dialog-content-offset">
+  <mat-progress-bar *ngIf="running"
+                    [color]="'warn'"
+                    [mode]="'indeterminate'"
+                    [value]="50"
+                    [bufferValue]="75">
+  </mat-progress-bar>
+  <span *ngIf="running"
+        class="mat-caption">{{runningOp}}</span>
+  <iam-error [value]="error"></iam-error>
+</div>
+<mat-dialog-content *ngIf="!running && !error">
+
+  <div class="flex-align-end flex-row flex-column-lt-sm flex-wrap flex-gap-20 flex-gap-10-lt-md">
+    <mat-form-field style="flex-grow: 2; flex-basis: 367px">
+      <mat-label>Label</mat-label>
+      <input matInput
+             (keyup)="onInputChanged($event)"
+             [(ngModel)]="resource.label"
+             required />
+      <mat-hint *ngIf="resource.$validation.errors.label"
+                class="error">{{resource.$validation.errors.label|valmsg}}
+        <mat-hint *ngIf="withFormatHint">Input should be lowercase without space.</mat-hint>
+      </mat-hint>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions *ngIf="!running"
+                    align="end">
+  <button mat-stroked-button
+          (click)="cancel()">Cancel</button>
+  <button *ngIf="canBeSave"
+          mat-stroked-button
+          color="primary"
+          class="space-left"
+          (click)="ok()">Save</button>
+</mat-dialog-actions>

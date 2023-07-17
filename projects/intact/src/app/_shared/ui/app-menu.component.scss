@@ -1,0 +1,185 @@
+@import '../../../styles/colors.scss';
+
+$toolbar-heigth: 48px;
+// Navbar
+$nj-navbar-height: 96px !default;
+$nj-navbar-height-sm: 56px !default;
+
+$nj-navbar-padding-y: 0 !default;
+$nj-navbar-padding-x: $spacer * 2 !default;
+$nj-navbar-padding-x-sm: $spacer !default;
+
+$nj-navbar-nav-link-padding-x: $spacer * 2 !default;
+
+$nj-navbar-link-font-weight: $font-weight-base !default;
+$nj-navbar-link-font-size: 1rem !default;
+
+.font-white {
+    color: $primary-fg;
+}
+
+div.tool-bar {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0px 16px 0px 0px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    height: 48px;
+
+    font: 500 20px/32px Lato;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: $dark-primary;
+
+    div.nav {
+        display: flex;
+        width: 450px;
+
+        div.env {
+            margin-left: -4px;
+            display: grid;
+            align-content: center;
+
+            div.env-block {
+                display: grid;
+                height: 18px;
+                border-radius: 9px;
+                min-width: 40px;
+                text-align: center;
+                align-items: center;
+                font: 800 10px/9px Lato;
+            }
+        }
+    }
+
+    section {
+        height: 48px;
+
+        ul {
+            list-style: none;
+            padding-inline-start: 0px;
+        }
+
+        ul li {
+            list-style: none;
+            height: 48px;
+            padding: 0px 10px;
+            display: grid;
+            position: relative;
+            display: flex;
+            align-items: center !important;
+            font: 500 14px/17px Lato;
+            margin-bottom: -1px;
+
+            .mat-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                background: $white;
+                left: 0;
+                width: 100%; // stylelint-disable-line
+                bottom: 0;
+                height: 2px;
+                opacity: 0;
+                transition-property: opacity;
+                @include material-animation-fast-out-slow-in(0.3s);
+            }
+
+            &.active-link {
+                &::before {
+                    opacity: 1;
+                }
+
+                opacity: 1;
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            &:hover {
+                text-decoration: none;
+                //font-weight: 600;
+                background: -moz-linear-gradient(
+                    bottom,
+                    rgba(255, 255, 255, 0) 5%,
+                    rgba(255, 255, 255, 0) 100%
+                );
+                /* FF3.6-15 */
+                background: -webkit-linear-gradient(
+                    bottom,
+                    rgba(255, 255, 255, 0) 5%,
+                    rgba(255, 255, 255, 0) 100%
+                );
+                /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(
+                    to top,
+                    rgba(255, 255, 255, 0.2) 5%,
+                    rgba(255, 255, 255, 0) 100%
+                );
+
+                /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+
+        ul li a {
+            padding: 10px;
+            font-size: medium;
+            color: white;
+
+            &:hover {
+                text-decoration: none;
+                font-weight: 600;
+            }
+        }
+    }
+
+    div.menu-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        box-sizing: border-box;
+        height: 48px;
+
+        a {
+            display: inline;
+
+           .mat-icon.small {
+                height: fit-content;
+                width: 21px;
+                margin: 0 6px 0 15px;
+            }
+
+           .mat-icon {
+                height: 48px;
+                width: 48px;
+            }
+            .lh-35 {
+                line-height: 35px;
+            }
+        }
+
+        a.user {
+            line-height: 17px;
+        }
+    }
+
+    div.menu-item-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        height: 48px;
+
+        .mat-icon-button {
+            width: 24px;
+            height: fit-content;
+        }
+    }
+}

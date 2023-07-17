@@ -1,0 +1,19 @@
+@import '../../../../styles/colors';
+
+div.main main {
+    flex-direction: column;
+}
+
+div.main-content {
+    margin-top: 20px;
+    padding: 20px 50px;
+    width: 100%;
+
+    div {
+        width: 100%;
+    }
+}
+
+textarea {
+    min-height: 150px;
+}

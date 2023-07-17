@@ -1,0 +1,92 @@
+<div class="running-flash" *ngIf="running">
+    <mat-progress-bar
+                      [color]="'warn'"
+                      [mode]="'indeterminate'"
+                      [value]="50"
+                      [bufferValue]="75">
+    </mat-progress-bar>
+</div>
+<div *ngIf="initialized" class="tab-page">
+    <div class="main-content-title">
+        <label>Declared APIs ( EasyApi )</label>
+    </div>
+    <main>
+        <div class="main-content">
+            <div>
+                <iam-error [value]="appVm.error"></iam-error>
+            </div>
+            <div class="registration-container">
+                <mat-form-field
+                                id="apikey-input"
+                                hintLabel="Lowercase - no accent - use dash as separator"
+                                style="width: 300px"
+                                [floatLabel]="'always'"
+                                color="accent">
+                    <mat-autocomplete
+                                      #auto1="matAutocomplete"
+                                      (optionSelected)="apiSelectionAsyncEvent($event)">
+                        <ng-container>
+                            <mat-option
+                                        *ngFor="let api of searchApis"
+                                        [value]="api.oid">
+                                <div class="block">
+                                    <div class="search-option mat-body">
+                                        <iam-user-label-matcher
+                                                                [label]="api.oid"
+                                                                [searchText]="search.value">
+                                        </iam-user-label-matcher>
+                                    </div>
+                                    <div class="search-option mat-caption grey">
+                                        {{ api.label }}
+                                    </div>
+                                </div>
+                                <mat-icon class=".just-primary">
+                                    add_circle_outline</mat-icon>
+                            </mat-option>
+                        </ng-container>
+                    </mat-autocomplete>
+                    <mat-label>Add Internal User...</mat-label>
+                    <input
+                           #search
+                           matInput
+                           type="text"
+                           placeholder="Type the Api key + ENTER"
+                           [value]="apiQuery"
+                           [matAutocomplete]="auto1"
+                           [disabled]="!editable"
+                           (keyup)="apiSearchChanged($event)"
+                           (keydown.enter)="newApiAsyncRequest($event)" />
+                    <mat-hint *ngIf="apiQueryValidationState.withError()" class="error">{{
+                        apiQueryErrorMessage
+                    }}</mat-hint>
+                    <button
+                            mat-button
+                            *ngIf="apiQuery"
+                            matSuffix
+                            mat-icon-button
+                            aria-label="Clear"
+                            (click)="handleTextChanged('')">
+                        <mat-icon>close</mat-icon>
+                    </button>
+
+                    <!-- <mat-hint>{{addInternalTooltip}}</mat-hint> -->
+                </mat-form-field>
+                <div class="url-container">
+                    <mat-chip-set
+                                   #logoutList
+                                   class="mat-mdc-chip-set-stacked"
+                                   aria-orientation="vertical">
+                        <mat-chip
+                                  *ngFor="let api of appLink.apis"
+                                  [removable]="true"
+                                  (removed)="cmdRemoveApiAsync(api)">
+                            {{ api }}
+                            <mat-icon *ngIf="editable" matChipRemove>cancel</mat-icon>
+                        </mat-chip>
+                    </mat-chip-set>
+                </div>
+            </div>
+        </div>
+        <br />
+    </main>
+</div>

@@ -1,0 +1,93 @@
+<div class="main-content-title">
+       <label *ngIf="isSaml">SAML V2 Application</label>
+       <label *ngIf="!isSaml">Service Application</label>
+</div>
+<div *ngIf="isAssigned" class="app-content">
+       <div *ngIf="isUpdate" class="okta-url">
+              <label>Okta endpoint:</label>
+              <p>{{tokenUrl}}</p>
+              <button *ngIf="editable"
+                      mat-icon-button
+                      [cdkCopyToClipboard]="tokenUrl">
+                     <mat-icon>content_copy</mat-icon>
+              </button>
+       </div>
+       <div *ngIf="isUpdate" class="section-data">
+              <mat-form-field
+                              class="flex-grow"
+                              [floatLabel]="labelBehaviour()"
+                              color="accent">
+                     <mat-label>Client ID</mat-label>
+                     <input matInput
+                            [type]="hideClientId ? 'password' : 'text'"
+                            [(ngModel)]="app.client_id"
+                            readonly />
+                     <button *ngIf="editable"
+                             mat-icon-button
+                             matSuffix
+                             class="input-icon"
+                             (click)="hideClientId = !hideClientId"
+                             [attr.aria-label]="'Hide value'"
+                             [attr.aria-pressed]="hideClientId">
+                            <mat-icon>{{hideClientId ? 'visibility_off' : 'visibility'}}</mat-icon>
+                     </button>
+
+                     <button *ngIf="editable"
+                             mat-icon-button
+                             matSuffix
+                             class="input-icon"
+                             [cdkCopyToClipboard]="app.client_id"
+                             [attr.aria-label]="'Copy Client-Id'"
+                             [attr.aria-pressed]="app.client_id">
+                            <mat-icon>content_copy</mat-icon>
+                     </button>
+              </mat-form-field>
+              <mat-form-field *ngIf="editable && app.client_secret!==undefined"
+                              class="flex-grow"
+                              [floatLabel]="labelBehaviour()"
+                              color="accent">
+                     <mat-label>Client Secret</mat-label>
+                     <input matInput
+                            [type]="hideClientSecret ? 'password' : 'text'"
+                            [(ngModel)]="app.client_secret"
+                            readonly />
+                     <button *ngIf="editable"
+                             mat-icon-button
+                             matSuffix
+                             class="input-icon"
+                             (click)="hideClientSecret = !hideClientSecret"
+                             [attr.aria-label]="'Hide value'"
+                             [attr.aria-pressed]="hideClientSecret">
+                            <mat-icon>{{hideClientSecret ? 'visibility_off' : 'visibility'}}</mat-icon>
+                     </button>
+                     <button *ngIf="editable"
+                             mat-icon-button
+                             matSuffix
+                             class="input-icon"
+                             [cdkCopyToClipboard]="app.client_secret">
+                            <mat-icon>content_copy</mat-icon>
+                     </button>
+              </mat-form-field>
+
+       </div>
+       <div class="section-data">
+
+              <mat-form-field *ngIf="!isUpdate"
+                              class="flex-grow"
+                              [floatLabel]="labelBehaviour()"
+                              color="accent">
+                     <mat-label>Application Name</mat-label>
+                     <input matInput
+                            data-test-id="application-name"
+                            [(ngModel)]="app.client_name"
+                            required
+                            [disabled]="isUpdate||!editable"
+                            (blur)="validateClientName(app)" />
+                     <mat-hint *ngIf="app.$validation.errors.client_name"
+                               class="error">{{app.$validation.errors.client_name|valmsg}}</mat-hint>
+                     <mat-progress-spinner matPrefix diameter="16" *ngIf="validatingName" mode="indeterminate">
+                     </mat-progress-spinner>
+
+              </mat-form-field>
+       </div>
+</div>

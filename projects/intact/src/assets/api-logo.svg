@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="225px" height="155px" viewBox="0 0 225 155" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>illustration-api</title>
+    <defs>
+        <linearGradient x1="103.796889%" y1="32.3532285%" x2="44.8099976%" y2="51.6960667%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#425B67" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50.0284301%" y1="-4.84209231%" x2="49.9972572%" y2="55.2709837%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#425B67" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-10.2239525%" y1="33.0989724%" x2="77.9202277%" y2="64.7063278%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#425B67" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-10.2239525%" y1="32.7538423%" x2="77.9202277%" y2="65.0066407%" id="linearGradient-4">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#425B67" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#7794A0" offset="0%"></stop>
+            <stop stop-color="#425B67" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="API-catalog-open-Copy-3" transform="translate(-280.000000, -253.000000)">
+            <g id="Group-8" transform="translate(240.000000, 164.000000)">
+                <g id="illustration-api" transform="translate(40.000000, 89.000000)">
+                    <line x1="54.125" y1="126.5" x2="223.718424" y2="30" id="Path-4-Copy" stroke="url(#linearGradient-1)" stroke-linecap="round"></line>
+                    <line x1="125.625" y1="86.4482423" x2="126.125" y2="0.5" id="Path-4-Copy-2" stroke="url(#linearGradient-2)" stroke-linecap="round"></line>
+                    <line x1="35.625" y1="34" x2="207.125" y2="133.5" id="Path-4-Copy-3" stroke="url(#linearGradient-3)" stroke-linecap="round"></line>
+                    <line x1="0.75" y1="80.125" x2="125.5" y2="152.875" id="Path-4-Copy-4" stroke="url(#linearGradient-4)" stroke-linecap="round"></line>
+                    <polygon id="Path-4" fill="#A7F1D5" style="mix-blend-mode: multiply;" points="126.125 86 126.125 22 182.291667 54"></polygon>
+                    <polygon id="Path-5" fill="#FBC9A4" style="mix-blend-mode: multiply;" points="69.625 118.410962 125.625 86.4482423 182.291667 119 126.125 151"></polygon>
+                    <path d="M185.291667,51.7806633 L125.664688,17.5360707 L66.625,51.7894574 L66.625,120.141284 L125.958333,154.465833 L185.291667,120.141284 L185.291667,51.7806633 Z M125.679,24.463 L179.291,55.253 L179.291,116.681 L125.958,147.534 L72.624,116.68 L72.624,55.245 L125.679,24.463 Z" id="Path-10" fill="url(#linearGradient-5)" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,143 @@
+<div class="nav-page">
+    <div class="running-flash" *ngIf="running">
+        <mat-progress-bar
+                          [color]="'warn'"
+                          [mode]="'indeterminate'"
+                          [value]="50"
+                          [bufferValue]="75"></mat-progress-bar>
+        <span class="mat-caption"> {{ runningOp }} </span>
+    </div>
+    <header>
+        <article *ngIf="vm && vm.loaded">
+            <div>
+                <iam-error [value]="vm.error"></iam-error>
+            </div>
+            <div class="flex-row flex-sm-column flex-wrap flex-gap-20 flex-gap-10-lt-md">
+                <div class="flex-column flex-49">
+                    <div class="main-content-title">
+                        <label>PROJECT DESCRIPTION</label>
+                    </div>
+                    <mat-form-field id="description-field">
+                        <textarea
+                                  matInput
+                                  [(ngModel)]="vm.view.description"></textarea>
+                        <mat-hint
+                                  *ngIf="vm.view.$validation.errors.description"
+                                  class="error">
+                            {{
+                                vm.view.$validation.errors.description | valmsg
+                            }}
+                        </mat-hint>
+                    </mat-form-field>
+                </div>
+                <div id="cmdbs" class="flex-column flex-49">
+                    <div class="main-content-title">
+                        <label>CMDB REFERENCES</label>
+                    </div>
+                    <mat-form-field id="cmdbs-field">
+                        <mat-chip-grid #cmdbList>
+                              <mat-chip-row
+                                *ngFor="let cmdb of vm.view.cmdbs"
+                                [removable]="true"
+                                (removed)="vm.view.cmdbs.remove(cmdb)">
+                                {{ cmdb.label }}
+                                <mat-icon matChipRemove>cancel</mat-icon>
+                              </mat-chip-row>
+                        </mat-chip-grid>
+                        <input
+                               #cmdbInput
+                               [(ngModel)]="cmdbSearch"
+                               [matAutocomplete]="cmdbauto"
+                               [matChipInputFor]="cmdbList"
+                               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                               (matChipInputTokenEnd)="cmdAddCmdbSelection($event)" />
+                        <mat-autocomplete
+                                          #cmdbauto="matAutocomplete"
+                                          (optionSelected)="cmdAddCmdbSelection($event)">
+                            <ng-container>
+                                <mat-option
+                                            *ngFor="let ref of searchCmdbApps"
+                                            [value]="ref">
+                                    <div class="block">
+                                        <div class="search-option mat-body">
+                                            <iam-user-label-matcher
+                                                                    [label]="ref.name"
+                                                                    [searchText]="cmdbInput.value">
+                                            </iam-user-label-matcher>
+                                        </div>
+                                        <div
+                                             class="
+                                                search-option
+                                                mat-caption
+                                                grey
+                                            ">
+                                            {{ ref.short_description }}
+                                        </div>
+                                    </div>
+                                    <mat-icon class="just-primary topright">
+                                        add_circle_outline</mat-icon>
+                                </mat-option>
+                            </ng-container>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div
+                 *ngIf="editable && initialized && vm.view.$isEditing"
+                 class="flex-row flex-center fill">
+                <div>
+                    <button
+                            matSuffix
+                            mat-icon-button
+                            color="primary"
+                            class="space-left right"
+                            [disabled]="!canSave"
+                            (click)="cmdCancel()">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                    <button
+                            matSuffix
+                            mat-icon-button
+                            color="primary"
+                            class="space-left right"
+                            [disabled]="!canSave"
+                            (click)="cmdSaveAsync()">
+                        <mat-icon>save</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </article>
+    </header>
+    <main>
+        <mat-tab-group
+                       #main_tabs
+                       mat-stretch-tabs="false"
+                       mat-align-tabs="end"
+                       [selectedIndex]="selectedIndex">
+            <mat-tab label="Runtime" data-test-id="project-home-tab-runtime">
+                <ng-template matTabContent>
+                    <iam-project-runtime
+                                         [vm]="vm"
+                                         [projListVm]="projListVm">
+                    </iam-project-runtime>
+                </ng-template>
+            </mat-tab>
+            <mat-tab label="Ownership" data-test-id="project-home-tab-ownership">
+                <ng-template matTabContent>
+                    <iam-project-ownership [vm]="vm">
+                    </iam-project-ownership>
+                </ng-template>
+            </mat-tab>
+            <mat-tab label="History" data-test-id="project-home-tab-history">
+                <ng-template matTabContent>
+                    <iam-project-history [vm]="vm"> </iam-project-history>
+                </ng-template>
+            </mat-tab>
+            <mat-tab label="Admin" data-test-id="project-home-tab-admin">
+                <ng-template matTabContent>
+                    <iam-project-admins [vm]="vm"> </iam-project-admins>
+                </ng-template>
+            </mat-tab>
+        </mat-tab-group>
+    </main>
+</div>

@@ -1,0 +1,51 @@
+<div mat-dialog-title class="header-box dialog-header dialog-title flex-row">
+  <mat-icon svgIcon="prj" class="header-icon"></mat-icon>
+  <span class="header">New Project</span>
+</div>
+
+<div mat-dialog-content class="flex-column flex-gap-20">
+  <h3>Project informations</h3>
+
+
+  <mat-form-field class="flex-grow" [floatLabel]="'always'">
+
+    <mat-label>Project Key</mat-label>
+    <input matInput
+           placeholder="Enter a token value"
+           [(ngModel)]="newProject.oid"
+           data-test-id="project-key"/>
+    <mat-hint *ngIf="newProject.$validation.errors.oid"
+              class="error">{{newProject.$validation.errors.oid|valmsg}}</mat-hint>
+
+  </mat-form-field>
+  <p>Project identifier should be <b>token</b>. A <b>token</b> is a meaningfull identifier lower case without spaces and
+    any special characters to avoid any comparaison issue. Use a dash ('-' ) as word separator when necessary. Token
+    format makes identifier easy to use and to read in urls. </p>
+
+  <mat-form-field class="flex-grow"
+                  [floatLabel]="'always'">
+
+    <mat-label>Project Description</mat-label>
+    <textarea matInput placeholder="Enter your project definition" rows="3"
+              [(ngModel)]="newProject.description"
+              data-test-id="project-description"> </textarea>
+    <mat-hint *ngIf="newProject.$validation.errors.description"
+              class="error">{{newProject.$validation.errors.description|valmsg}}</mat-hint>
+  </mat-form-field>
+  <p>Project description is mandatory. A text with a minimum of 15 characters is required to provide a meaning full
+    definition. </p>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-stroked-button
+          cdkFocusInitial
+          class="space-left"
+          (click)="cmdCancel()">Cancel</button>
+  <button *ngIf="isValid"
+          mat-stroked-button
+          color="primary"
+          class="space-left"
+          (click)="cmdSave()"
+          data-test-id="new-project-save">Save</button>
+</div>

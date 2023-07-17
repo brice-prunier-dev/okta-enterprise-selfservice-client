@@ -1,0 +1,31 @@
+@import '../../../../styles/colors';
+
+div.head-error {
+    margin-bottom: 10 px;
+}
+
+mat-form-field {
+    min-width: 250px;
+}
+
+mat-dialog-actions {
+    align-content: flex-end;
+}
+
+span.sub-title {
+    font: 500 20px/32px Lato, 'Helvetica Neue', sans-serif;
+    margin: 5px;
+    display: flex;
+}
+
+mat-dialog-content {
+    margin-top: 10px;
+}
+
+.not {
+    text-decoration: line-through;
+}
+
+div.sub-title span:last-child {
+    margin-right: 20px;
+}

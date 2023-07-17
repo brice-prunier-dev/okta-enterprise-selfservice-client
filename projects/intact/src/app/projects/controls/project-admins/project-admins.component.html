@@ -1,0 +1,23 @@
+<div class="main-content">
+  <div class="main-content-title">
+    <iam-validation [element]="vm.view"></iam-validation>
+    <div class="header-box dialog-header flex-row">
+      <img mat-card-avatar
+           class="header-icon"
+           src="/assets/scope-1.svg">
+      <span class=" header">Admins Groups</span>
+    </div>
+  </div>
+
+
+  <div class="main-section">
+    <mat-selection-list (selectionChange)="admindGroupsChanged($event)">
+      <mat-list-option *ngFor="let grp of viewGroups"
+                       [value]="grp.oid"
+                       [selected]="isSelected(grp.oid)"
+                       [disabled]="!editable">
+        {{grp.label}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>

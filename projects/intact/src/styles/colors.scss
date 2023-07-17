@@ -1,0 +1,711 @@
+$nav-main-marging: 30px !default;
+$nav-main-2Xmarging: 60px !default;
+$full-frame-marging: 150px !default;
+$full-frame-2Xmarging: 300px !default;
+$main-width-offset: 150px !default;
+$main-large-marging: 150px !default;
+$main-width-large-offset: 300px !default;
+
+$nj-alpha-20: 0.24 !default;
+$nj-alpha-50: 0.54 !default;
+$nj-alpha-80: 0.84 !default;
+
+//
+// Color system
+//
+
+$white: #fff !default;
+$black: #000 !default;
+
+// Black opacity
+$black-100: rgba($black, 0.12) !default;
+$black-200: rgba($black, 0.26) !default;
+$black-300: rgba($black, 0.38) !default;
+$black-500: rgba($black, 0.54) !default;
+$black-800: rgba($black, 0.87) !default;
+// White opacity
+$white-100: rgba($white, 0.12) !default;
+$white-300: rgba($white, 0.3) !default;
+$white-500: rgba($white, 0.5) !default;
+$white-700: rgba($white, 0.7) !default;
+$white-800: rgba($white, 0.87) !default;
+$black-87-opacity: rgba($black, 0.87) !default;
+$white-87-opacity: rgba($white, 0.87) !default;
+$contrast: (
+    50: $black-800,
+    100: $black-800,
+    200: $black-800,
+    300: $black-800,
+    400: $black-800,
+    500: $white,
+    600: $white,
+    700: $white,
+    800: $white-800,
+    900: $white-800,
+    A100: $white-800,
+    A200: $white,
+    A400: $white,
+    A700: $white
+);
+// TODO clean this part
+$inverse: rgba($white, 1) !default;
+$inverse-light: rgba($white, $nj-alpha-80) !default;
+$inverse-lighter: rgba($white, $nj-alpha-50) !default;
+
+// Grays
+$gray-50: #fbfbfa !default;
+$gray-100: #f7f7f7 !default;
+$gray-200: #eee !default;
+$gray-300: #e0e0e0 !default;
+$gray-400: #bdbdbd !default;
+$gray-500: #9e9e9e !default;
+$gray-600: #757575 !default;
+$gray-700: #616161 !default;
+$gray-800: #424242 !default;
+$gray-900: #212121 !default;
+$primary-gray: #3b5c68 !default;
+
+$grays: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(
+    (
+        '100': $gray-100,
+        '200': $gray-200,
+        '300': $gray-300,
+        '400': $gray-400,
+        '500': $gray-500,
+        '600': $gray-600,
+        '700': $gray-700,
+        '800': $gray-800,
+        '900': $gray-900
+    ),
+    $grays
+);
+
+// Naming : http://chir.ag/projects/name-that-color
+$accent-palette: (
+    50: #e0f1e7,
+    100: #b3dbc3,
+    200: #80c39b,
+    300: #4dab73,
+    400: #269955,
+    500: #008737,
+    600: #007f31,
+    700: #00742a,
+    800: #006a23,
+    900: #005716,
+    A100: #50e3c2,
+    A200: #58f7d4,
+    A400: #32f8cd,
+    A700: #00fdc6,
+    contrast: (
+        50: $black-87-opacity,
+        100: $black-87-opacity,
+        200: $black-87-opacity,
+        300: $black-87-opacity,
+        400: $white-87-opacity,
+        500: $white-87-opacity,
+        600: $white-87-opacity,
+        700: $white-87-opacity,
+        800: $white-87-opacity,
+        900: $white-87-opacity,
+        A100: $black-87-opacity,
+        A200: $black-87-opacity,
+        A400: $black-87-opacity,
+        A700: $black-87-opacity
+    )
+);
+
+$primary-palette: (
+    50: #e0edf4,
+    100: #b3d2e5,
+    200: #80b4d3,
+    300: #4d96c1,
+    400: #2680b4,
+    500: #0069a7,
+    600: #00619f,
+    700: #005696,
+    800: #004c8c,
+    900: #15395f,
+    A100: #a9cbff,
+    A200: #76acff,
+    A400: #438dff,
+    A700: #2a7eff,
+    contrast: (
+        50: $black-87-opacity,
+        100: $black-87-opacity,
+        200: $black-87-opacity,
+        300: $black-87-opacity,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: $white-87-opacity,
+        900: $white-87-opacity,
+        A100: $black-87-opacity,
+        A200: $black-87-opacity,
+        A400: white,
+        A700: white
+    )
+);
+
+$dark-primary-palette: (
+    50: #e7ebed,
+    100: #c4ced2,
+    200: #9daeb4,
+    300: #768d95,
+    400: #58747f,
+    500: #3b5c68,
+    600: #355460,
+    700: #2d4a55,
+    800: #26414b,
+    900: #19303a,
+    A100: #e5eef3,
+    A200: #48c6ff,
+    A400: #15b6ff,
+    A700: #00adfb,
+    contrast: (
+        50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #000000,
+        400: #ffffff,
+        500: #ffffff,
+        600: #ffffff,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff,
+        A100: #000000,
+        A200: #000000,
+        A400: #000000,
+        A700: #000000
+    )
+);
+
+$warn-palette: (
+    50: #fbe9e7,
+    100: #ffccbc,
+    200: #ffab91,
+    300: #ff8a65,
+    400: #ff7043,
+    500: #ff5722,
+    600: #f4511e,
+    700: #e64a19,
+    800: #d84315,
+    900: #bf360c,
+    A100: #ff9e80,
+    A200: #ff6e40,
+    A400: #ff3d00,
+    A700: #dd2c00,
+    contrast: (
+        50: $black-87-opacity,
+        100: $black-87-opacity,
+        200: $black-87-opacity,
+        300: $black-87-opacity,
+        400: $black-87-opacity,
+        500: $black-87-opacity,
+        600: white,
+        700: white,
+        800: $white-87-opacity,
+        900: $white-87-opacity,
+        A100: $black-87-opacity,
+        A200: $black-87-opacity,
+        A400: white,
+        A700: white
+    )
+);
+
+$hover: #eaf1f5 !default;
+// Primary
+$blue-corporate: #0af !default;
+$white-corporate: #fff !default; // TODO for the dark mode
+// Secondary
+$blue-allports: #0069a7 !default;
+$blue-venice: #075091 !default;
+$blue-cello: #233365 !default;
+$blue-fiord: #425b67 !default;
+
+// Accent
+$red: #e10019 !default;
+$orange: #f18f09 !default;
+$green: #69af23 !default;
+$yellow: #ffc300 !default;
+
+// Additionals
+$violet-eggplant: #910f7d !default;
+$violet: #552382 !default;
+$cerise: #e62b87 !default;
+$yellow-energy: #f4d958 !default;
+$green-fun: #50e3c2 !default;
+$green-riogrande: #becd00 !default;
+$blue-pelorous: #37b9c3 !default;
+$blue-sky: #6ac7ea !default;
+$blue-rhino: #2d485c !default;
+$blue-bigstone: #142532 !default;
+$gray-tower: #b0bec5 !default;
+
+$dark-primary-backend: #205264 !default;
+$dark-primary-frontend: #1d6d5c !default;
+$dark-primary: rgb(59, 92, 104) !default;
+$dark-primary-darker: #2d4a55 !default;
+$primary-darker: #005485 !default;
+// $dark-primary-over: #3e6574 !default;
+$dark-primary-over: rgba($black, 0.05) !default;
+$primary-btn-bg: #f3f5f61a !default;
+$primary-fg: white !default;
+$app-fg: #96f4df !default;
+$grp-fg: #eea0aa !default;
+$scp-fg: #add3ff !default;
+$api-fg: #feffb6e5 !default;
+$app-fg-focused: #3ebba0 !default;
+$grp-fg-focused: #c74657 !default;
+$scp-fg-focused: #4380c7 !default;
+$api-fg-focused: #f2f56a !default;
+
+// Gradients
+$gradient-corpo-sky: linear-gradient(0deg, $blue-corporate 0%, $blue-sky 100%) !default;
+$gradient-pelorous-sky: linear-gradient(0deg, $blue-pelorous 0%, $blue-sky 100%) !default;
+$gradient-cello-violet: linear-gradient(0deg, $blue-cello 0%, $violet 100%) !default;
+$gradient-cello-venice: linear-gradient(0deg, $blue-cello 0%, $blue-venice 100%) !default;
+
+$colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(
+    (
+        /* Primary*/ 'blue-corporate': $blue-corporate,
+        'white': $white,
+        /* Secondary*/ 'blue-allports': $blue-allports,
+        'blue-venice': $blue-venice,
+        'blue-cello': $blue-cello,
+        'blue-fiord': $blue-fiord,
+        /* Accent*/ 'red': $red,
+        'green': $green,
+        'orange': $orange,
+        'yellow': $yellow,
+        /* Additionals*/ 'violet-eggplant': $violet-eggplant,
+        'violet': $violet,
+        'cerise': $cerise,
+        'yellow-energy': $yellow-energy,
+        'green-fun': $green-fun,
+        'green-riogrande': $green-riogrande,
+        'blue-pelorous': $blue-pelorous,
+        'blue-sky': $blue-sky,
+        'blue-rhino': $blue-rhino,
+        'blue-bigstone': $blue-bigstone,
+        'gray-tower': $gray-tower
+    ),
+    $colors
+);
+
+$gradients: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$gradients: map-merge(
+    (
+        'corpo-sky': $gradient-corpo-sky,
+        'pelorous-sky': $gradient-pelorous-sky,
+        'cello-violet': $gradient-cello-violet,
+        'cello-venice': $gradient-cello-venice
+    ),
+    $gradients
+);
+
+$primary: map-get($primary-palette, 500) !default;
+$secondary: $blue-venice !default;
+$success: $green !default;
+$info: $blue-sky !default;
+$warning: $orange !default;
+$danger: #ff5722 !default;
+$light: $gray-100 !default;
+$dark: $gray-900 !default;
+
+$theme-colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+    (
+        'primary': $primary,
+        'success': $success,
+        'warning': $warning,
+        'danger': $danger,
+        'light': $white-corporate
+    ),
+    $theme-colors
+);
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval: 8% !default;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 190 !default;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: $gray-900 !default;
+$yiq-text-light: $white !default;
+$yiq-text-primary: $primary !default;
+
+// stylelint-disable
+$spacer: 1rem;
+$spacers: ();
+$spacers: map-merge(
+    (
+        0: 0,
+        1: $spacer * 0.5,
+        // 8px
+        2: $spacer,
+        // 16px
+        3: $spacer * 1.5,
+        // 24px
+        4: $spacer * 2,
+        // 32px
+        5: $spacer * 3,
+        // 48px
+        6: $spacer * 4,
+        // 64px
+        7: $spacer * 6 // 96px
+    ),
+    $spacers
+);
+
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: () !default;
+$sizes: map-merge(
+    (
+        25: 25%,
+        50: 50%,
+        75: 75%,
+        100: 100%,
+        auto: auto
+    ),
+    $sizes
+);
+
+$fs-map: (
+    'peta': 4.75rem,
+    // 76px
+    'tera': 3.375rem,
+    // 54px
+    'giga': 2.25rem,
+    // 36px
+    'mega': 1.75rem,
+    // 28px
+    'kilo': 1.5rem,
+    // 24px
+    'hecto': 1.25rem,
+    // 20px
+    'deca': 1.125rem,
+    // 18px
+    'base': 1rem,
+    // 16px
+    'deci': 0.875rem,
+    // 14px
+    'centi': 0.75rem // 12px
+) !default;
+
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg: map-get($fs-map, 'hecto') !default;
+$font-size-md: map-get($fs-map, 'deci') !default;
+$font-size-sm: map-get($fs-map, 'centi') !default;
+
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+$font-weight-black: 900 !default;
+
+$font-weight-base: $font-weight-normal !default;
+$line-height-base: 1.5 !default;
+
+$h1-font-size: map-get($fs-map, 'peta') !default;
+$h2-font-size: map-get($fs-map, 'tera') !default;
+$h3-font-size: map-get($fs-map, 'giga') !default;
+$h4-font-size: map-get($fs-map, 'kilo') !default;
+$h5-font-size: map-get($fs-map, 'base') !default;
+$h6-font-size: map-get($fs-map, 'deci') !default;
+
+$headings-margin-bottom: $spacer !default;
+$headings-line-height: 1.2 !default;
+$headings-color: inherit !default;
+
+$heading1-weight: 700 !default;
+$heading2-weight: 700 !default;
+$heading3-weight: 400 !default;
+$heading4-weight: 400 !default;
+$heading5-weight: 700 !default;
+$heading6-weight: 400 !default;
+
+$line-height-lg: 1.5 !default;
+$line-height-sm: 1.5 !default;
+
+$border-width: 1px !default;
+$border-color: $black-100 !default;
+
+$border-radius: 0.25rem !default;
+$border-radius-lg: 0.5rem !default;
+$border-radius-sm: 0.125rem !default;
+
+$component-active-color: $white !default;
+$component-active-bg: theme-color('primary') !default;
+
+$caret-width: 0.3em !default;
+
+$transition-base: all 0.2s ease-in-out !default;
+$transition-fade: opacity 0.15s linear !default;
+$transition-collapse: height 0.35s ease !default;
+
+$lead-font-size: map-get($fs-map, 'hecto') !default;
+$lead-font-weight: $font-weight-normal !default;
+
+$small-font-size: map-get($fs-map, 'centi') !default;
+$text-muted: $gray-600 !default;
+
+$blockquote-small-color: $gray-900 !default;
+$blockquote-font-size: map-get($fs-map, 'kilo') !default;
+$blockquote-font-weight: 300 !default;
+
+$hr-border-color: $black-100, $white !default;
+$hr-border-width: $border-width !default;
+$hr-margin-y: $spacer !default;
+
+$mark-padding: 0.2em !default;
+
+$dt-font-weight: $font-weight-bold !default;
+
+$kbd-box-shadow: inset 0 -0.1rem 0 rgba($black, 0.25) !default;
+$nested-kbd-font-weight: $font-weight-bold !default;
+
+$list-inline-padding: 1rem !default;
+
+$mark-bg: #fcf8e3 !default;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    x2: 1550px
+) !default;
+// Breakpoint viewport sizes and media queries.
+//
+// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//
+//    (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+//
+// The map defined in the `$grid-breakpoints` globals variable is used as the `$breakpoints` argument by default.
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+//    md
+@function breakpoint-next(
+    $name,
+    $breakpoints: $grid-breakpoints,
+    $breakpoint-names: map-keys($breakpoints)
+) {
+    $n: index($breakpoint-names, $name);
+    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    576px
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+    $min: map-get($breakpoints, $name);
+    @return if($min !=0, $min, null);
+}
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+// The maximum value is calculated as the minimum of the next one less 0.02px
+// to work around the limitations of `min-` and `max-` prefixes and viewports with fractional widths.
+// See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
+// See https://bugs.webkit.org/show_bug.cgi?id=178261
+//
+//    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    767.98px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+    $next: breakpoint-next($name, $breakpoints);
+    @return if($next, breakpoint-min($next, $breakpoints) - 0.02px, null);
+}
+
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
+// Useful for making responsive utilities.
+//
+//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    ""  (Returns a blank string)
+//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    "-sm"
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+    @return if(breakpoint-min($name, $breakpoints) ==null, '', '-#{$name}');
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+    $max: breakpoint-max($name, $breakpoints);
+
+    @if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($lower, $breakpoints);
+    $max: breakpoint-max($upper, $breakpoints);
+
+    @if $min !=null and $max !=null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max==null {
+        @include media-breakpoint-up($lower, $breakpoints) {
+            @content;
+        }
+    } @else if $min==null {
+        @include media-breakpoint-down($upper, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    $max: breakpoint-max($name, $breakpoints);
+
+    @if $min !=null and $max !=null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max==null {
+        @include media-breakpoint-up($name, $breakpoints) {
+            @content;
+        }
+    } @else if $min==null {
+        @include media-breakpoint-down($name, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+// Animations (from mdl http://www.getmdl.io/)
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;
+
+@mixin material-animation-fast-out-slow-in($duration: 0.2s) {
+    transition-duration: $duration;
+    transition-timing-function: $animation-curve-fast-out-slow-in;
+}
+
+@mixin material-animation-linear-out-slow-in($duration: 0.2s) {
+    transition-duration: $duration;
+    transition-timing-function: $animation-curve-linear-out-slow-in;
+}
+
+@mixin material-animation-fast-out-linear-in($duration: 0.2s) {
+    transition-duration: $duration;
+    transition-timing-function: $animation-curve-fast-out-linear-in;
+}
+
+@mixin material-animation-default($duration: 0.2s) {
+    transition-duration: $duration;
+    transition-timing-function: $animation-curve-default;
+}
+
+// Shadows (originally from Material https://www.material.io/develop/web/components/elevation/)
+$nj-shadow-ambient-opacity: 0.1 !default;
+$nj-shadow-penumbra-opacity: 0.06 !default;
+$nj-shadow-umbra-opacity: 0.06 !default;
+
+$nj-shadow-2dp: 0 1px 5px 0 rgba(0, 0, 0, $nj-shadow-ambient-opacity),
+    0 2px 2px 0 rgba(0, 0, 0, $nj-shadow-penumbra-opacity),
+    0 3px 1px -2px rgba(0, 0, 0, $nj-shadow-umbra-opacity) !default;
+
+$nj-shadow-4dp: 0 1px 10px 0 rgba(0, 0, 0, $nj-shadow-ambient-opacity),
+    0 4px 5px 0 rgba(0, 0, 0, $nj-shadow-penumbra-opacity),
+    0 2px 4px -1px rgba(0, 0, 0, $nj-shadow-umbra-opacity) !default;
+
+$nj-shadow-6dp: 0 1px 18px 0 rgba(0, 0, 0, $nj-shadow-ambient-opacity),
+    0 6px 10px 0 rgba(0, 0, 0, $nj-shadow-penumbra-opacity),
+    0 3px 5px -1px rgba(0, 0, 0, $nj-shadow-umbra-opacity) !default;
+
+$nj-shadow-8dp: 0 3px 14px 2px rgba(0, 0, 0, $nj-shadow-ambient-opacity),
+    0 8px 10px 1px rgba(0, 0, 0, $nj-shadow-penumbra-opacity),
+    0 5px 5px -3px rgba(0, 0, 0, $nj-shadow-umbra-opacity) !default;
+
+$nj-shadow-16dp: 0 6px 30px 5px rgba(0, 0, 0, $nj-shadow-ambient-opacity),
+    0 16px 24px 2px rgba(0, 0, 0, $nj-shadow-penumbra-opacity),
+    0 8px 10px -5px rgba(0, 0, 0, $nj-shadow-umbra-opacity) !default;
+
+$nj-shadow-24dp: 0 11px 15px -7px rgba(0, 0, 0, $nj-shadow-ambient-opacity),
+    0 9px 46px 8px rgba(0, 0, 0, $nj-shadow-penumbra-opacity),
+    0 24px 38px 3px rgba(0, 0, 0, $nj-shadow-umbra-opacity) !default;
+
+$nj-shadows: (
+    '2dp': $nj-shadow-2dp,
+    '4dp': $nj-shadow-4dp,
+    '6dp': $nj-shadow-6dp,
+    '8dp': $nj-shadow-8dp,
+    '16dp': $nj-shadow-16dp,
+    '24dp': $nj-shadow-24dp
+) !default;
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+
+    &-item {
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: $list-inline-padding;
+        }
+    }
+}
+
+@mixin card-borders {
+    border-left-style: solid;
+    border-top: $color-separator;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-right-color: $color-separator;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-bottom: $color-separator;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    // box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}

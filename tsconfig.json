@@ -1,0 +1,64 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": false,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "es2022",
+    "types": [
+      "jest",
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2022",
+      "dom"
+    ],
+    "paths": {
+      "joe-fx": [
+        "dist/joe-fx/joe-fx",
+        "dist/joe-fx"
+      ],
+      "joe-types": [
+        "dist/joe-types/joe-types",
+        "dist/joe-types"
+      ],
+      "joe-models": [
+        "dist/joe-models/joe-models",
+        "dist/joe-models"
+      ],
+      "joe-viewmodels": [
+        "dist/joe-viewmodels/joe-viewmodels",
+        "dist/joe-viewmodels"
+      ],
+      "joe-store-api": [
+        "dist/joe-store-api/joe-store-api",
+        "dist/joe-store-api"
+      ],
+      "intact-models": [
+        "dist/intact-models/intact-models",
+        "dist/intact-models"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

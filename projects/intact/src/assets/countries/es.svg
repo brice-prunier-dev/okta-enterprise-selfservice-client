@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="18px" viewBox="0 0 26 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ES Copy</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="25.2" height="18" rx="2"></rect>
+        <filter x="-2.0%" y="-2.8%" width="104.0%" height="105.6%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowSpreadInner1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.121659873 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <rect id="path-4" x="0.6" y="0.6" width="24" height="16.8" rx="1"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-13" transform="translate(-174.000000, 0.000000)">
+            <g id="ES-Copy" transform="translate(174.000000, 0.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="background">
+                    <use fill="#FFD128" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-1"></use>
+                </g>
+                <rect id="bottom" fill="#CF3F4F" mask="url(#mask-2)" x="0" y="13.2" width="25.2" height="4.8"></rect>
+                <rect id="top" fill="#CF3F4F" mask="url(#mask-2)" x="0" y="0" width="25.2" height="4.8"></rect>
+                <path d="M8.60922203,6 C9.14902482,6 9.6,6.44358641 9.6,6.99077797 L9.6,6.99077797 L9.6,11.009222 C9.6,11.5490248 9.15641359,12 8.60922203,12 L8.60922203,12 L4.59077797,12 C4.05097518,12 3.6,11.5564136 3.6,11.009222 L3.6,11.009222 L3.6,6.99077797 C3.6,6.45097518 4.04358641,6 4.59077797,6 L4.59077797,6 Z M4.8,7.2 L4.8,10.8 L6,10.8 L6,7.2 L4.8,7.2 Z M7.2,10.8 L8.4,10.8 L8.4,7.2 L7.2,7.2 L7.2,10.8 Z" id="symbol" fill="#CF3F4F" mask="url(#mask-2)"></path>
+                <path d="M8.4,8.4 L8.4,9.6 L7.2,9.6 L7.2,8.4 L8.4,8.4 Z M6,7.2 L6,8.4 L4.8,8.4 L4.8,7.2 L6,7.2 Z" id="circles" fill="#DC6943" mask="url(#mask-2)"></path>
+                <mask id="mask-5" fill="white">
+                    <use xlink:href="#path-4"></use>
+                </mask>
+                <use id="overlay" stroke-opacity="0.156646286" stroke="#2F343A" xlink:href="#path-4"></use>
+            </g>
+        </g>
+    </g>
+</svg>

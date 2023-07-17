@@ -1,0 +1,52 @@
+<div class="nav-page">
+    <div class="running-flash"
+         [ngStyle]="{'visibility': running ? 'visible' : 'hidden'  }">
+        <mat-progress-bar [color]="'warn'"
+                          [mode]="'indeterminate'"
+                          [value]="50"
+                          [bufferValue]="75"></mat-progress-bar>
+    </div>
+    <header *ngIf="initialized">
+        <caption>Group</caption>
+        <h3>{{vm.group.label }}</h3>
+    </header>
+
+    <main *ngIf="initialized">
+        <nav mat-stretch-tabs="false"
+             mat-align-tabs="end"
+             [tabPanel]="tabPanel"
+             mat-tab-nav-bar>
+
+            <a mat-tab-link [routerLink]="'warnings'" routerLinkActive #warnings="routerLinkActive"
+               [active]="warnings.isActive" class="warnings-tab"
+               *ngIf="hasWarning()">
+                Warnings
+            </a>
+
+            <a mat-tab-link
+               [routerLink]="'details'"
+               routerLinkActive
+               #details="routerLinkActive"
+               [active]="details.isActive">
+                Details
+            </a>
+            <a mat-tab-link
+               [routerLink]="'defs'"
+               routerLinkActive
+               #defs="routerLinkActive"
+               [active]="defs.isActive">
+                Definition
+            </a>
+            <a mat-tab-link
+               [routerLink]="'admins'"
+               routerLinkActive
+               #admins="routerLinkActive"
+               [active]="admins.isActive">
+                Admins
+            </a>
+        </nav>
+        <mat-tab-nav-panel #tabPanel>
+            <router-outlet></router-outlet>
+        </mat-tab-nav-panel>
+    </main>
+</div>

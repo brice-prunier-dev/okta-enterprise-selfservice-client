@@ -1,0 +1,58 @@
+@import '../../../../styles/colors.scss';
+
+:host {
+    overflow: auto;
+}
+
+.graphlabel {
+    font: 600 12px/22px Lato;
+}
+div.graphRuntimeHeader {
+    border: 1px solid $gray-300;
+    border-left-style: none;
+    border-right-style: none;
+    color: $dark-primary;
+    background: $gray-100;
+
+    height: 28px;
+    display: inline-flex;
+    font: 600 12px/22px Lato;
+
+    .graph-item {
+        display: flex;
+        min-width: 220px;
+        align-items: center;
+
+        span {
+            text-align: center;
+            width: 100%;
+        }
+
+        &:nth-child(2) {
+            min-width: 260px;
+        }
+
+        &:nth-child(3) {
+            min-width: 125px;
+        }
+
+        &:nth-child(4) {
+            min-width: 230px;
+        }
+
+        &:nth-child(5) {
+            min-width: 250px;
+        }
+
+        &:last-child {
+            flex: 100%;
+        }
+    }
+}
+
+div.graphRuntimeContainer {
+    place-content: initial;
+    display: flex;
+    background-color: white;
+    padding: 10px 0px;
+}

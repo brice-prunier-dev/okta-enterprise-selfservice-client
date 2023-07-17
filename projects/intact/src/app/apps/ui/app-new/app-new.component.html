@@ -1,0 +1,207 @@
+<div class="running-flash"
+     *ngIf="running">
+    <mat-progress-bar [color]="'warn'"
+                      [mode]="'indeterminate'"
+                      [value]="50"
+                      [bufferValue]="75"> </mat-progress-bar>
+    <span class="mat-caption">{{runningOp}}</span>
+</div>
+<div class="nav-page">
+
+    <main>
+        <div class="main-content">
+
+            <div>
+                <iam-error [value]="vm.error"></iam-error>
+            </div>
+            <div class="main-content-title">
+                <label class="mat-h2">Add New Application</label>
+            </div>
+            <div class="full-width">
+                <mat-stepper [linear]="true"
+                             #stepper>
+                    <mat-step>
+                        <div>
+                            <ng-template matStepLabel>Select your Auth flow</ng-template>
+                            <div class="full-width flex-column flex-gap-5">
+                                <div class="full-width">
+                                    <div class="flex-column flex-center">
+                                        <mat-button-toggle-group [(ngModel)]="flowSelection"
+                                                                 name="flowSelection"
+                                                                 aria-label="flowSelection">
+                                            <mat-button-toggle data-test-id="spa-application-button" value="browser">
+                                                <div class="button-toggle-title mat-caption flex-row flex-center">
+                                                    SPA Application
+                                                </div>
+                                                <mat-icon>web_asset</mat-icon>
+                                                <div class="button-toggle-label mat-caption flex-row flex-center">
+                                                    The application is running in a browser
+                                                </div>
+                                                <div class="button-toggle-description mat-caption flex-row flex-wrap flex-center">
+                                                    The application is user driven but don't have any secure storage (
+                                                    Angular, React,Vue ...)
+                                                </div>
+                                            </mat-button-toggle>
+                                            <mat-button-toggle id="swagger-application-button" value="swagger">
+                                                <div class="button-toggle-title mat-caption flex-row flex-center">
+                                                    Swagger
+                                                </div>
+                                                <mat-icon>language</mat-icon>
+                                                <div class="button-toggle-label mat-caption flex-row flex-center">
+                                                    The application is running in a browser
+                                                </div>
+                                                <div class="button-toggle-description mat-caption flex-row flex-wrap flex-center">
+                                                    The application is user driven and don't have any secure storage
+                                                    as Browser app.
+                                                </div>
+                                            </mat-button-toggle>
+                                            <mat-button-toggle id="native-application-button" value="native">
+                                                <div class="button-toggle-title mat-caption flex-row flex-center">
+                                                    Native Application
+                                                </div>
+                                                <mat-icon>settings_cell</mat-icon>
+                                                <div class="button-toggle-label mat-caption flex-row flex-center">
+                                                    The application is deployed.
+                                                </div>
+                                                <div class="button-toggle-description mat-caption flex-row flex-center">
+                                                    The application is running on a device or on a laptop on behalf of a
+                                                    user:
+                                                    device owner or session account.
+                                                </div>
+                                            </mat-button-toggle>
+                                            <mat-button-toggle id="webserver-application-button" value="web">
+                                                <div class="button-toggle-title mat-caption flex-row flex-center">
+                                                    Web server
+                                                </div>
+                                                <mat-icon>home</mat-icon>
+                                                <div class="button-toggle-label mat-caption flex-row flex-center">
+                                                    Web site managing user context on server side
+                                                </div>
+                                                <div class="button-toggle-description mat-caption flex-row flex-wrap flex-center">
+                                                    Standart MVC application with user profile to manage
+                                                    behaviors </div>
+                                            </mat-button-toggle>
+                                            <mat-button-toggle data-test-id="service-application-button"
+                                                               value="service">
+                                                <div class="button-toggle-title mat-caption flex-row flex-center">
+                                                    Service Application
+                                                </div>
+                                                <mat-icon>settings</mat-icon>
+                                                <div class="button-toggle-label mat-caption flex-row flex-center">
+                                                    The application is running on its behalf
+                                                </div>
+                                                <div class="button-toggle-description mat-caption flex-row flex-center">
+                                                    Authentication on application start.
+                                                </div>
+                                                <div class="button-toggle-description mat-caption flex-row flex-center">
+                                                    No user context.
+                                                </div>
+                                            </mat-button-toggle>
+                                        </mat-button-toggle-group>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="appFlow"
+                             class="top-offset full-width">
+                            <button class="right"
+                                    mat-raised-button
+                                    color="primary"
+                                    matStepperNext>
+                                Next
+                            </button>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <div>
+                            <ng-template matStepLabel>Fill out your data</ng-template>
+                            <iam-app-browser *ngIf="vm.appType==='browser'||vm.appType==='swagger'"
+                                             [app]="viewAsUserApp"
+                                             [editable]="editable">
+                            </iam-app-browser>
+                            <iam-app-service *ngIf="vm.appType==='service'"
+                                             [app]="viewAsService"
+                                             [editable]="editable">
+                            </iam-app-service>
+                            <iam-app-web *ngIf="vm.appType==='web'"
+                                         [app]="viewAsUserApp"
+                                         [editable]="editable"></iam-app-web>
+                            <iam-app-native *ngIf="vm.appType==='native'"
+                                            [app]="viewAsUserApp"
+                                            [editable]="editable">
+                            </iam-app-native>
+
+                            <div *ngIf="appFlow"
+                                 class="top-offset full-width">
+                                <button data-test-id="fill-data-next-button"
+                                        class="right"
+                                        mat-raised-button
+                                        color="primary"
+                                        matStepperNext>
+                                    Next
+                                </button>
+                                <button mat-stroked-button
+                                        color="primary"
+                                        class="space-left right"
+                                        matStepperPrevious>Back</button>
+
+                            </div>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <div>
+                            <ng-template matStepLabel>Describe your App</ng-template>
+                            <mat-form-field *ngIf="vm.view"
+                                            class="full-width">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput
+                                          data-test-id="application-description"
+                                          [(ngModel)]="vm.view.description"
+                                          placeholder="Please don't write blabla..."></textarea>
+                            </mat-form-field>
+                            <div *ngIf="appFlow"
+                                 class="top-offset full-width">
+                                <button data-test-id="description-next-button"
+                                        class="right"
+                                        mat-raised-button
+                                        color="primary"
+                                        matStepperNext>
+                                    Next
+                                </button>
+                                <button mat-stroked-button
+                                        color="primary"
+                                        class="space-left right"
+                                        matStepperPrevious>Back</button>
+
+                            </div>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <div>
+                            <ng-template matStepLabel>Select admins's groups</ng-template>
+                            <iam-item-admin-list [view]="vm.appLinkView"
+                                                 [groups]="vm.projectGroups"
+                                                 [editable]="editable">
+                            </iam-item-admin-list>
+                            <div class="top-offset right-offset right">
+                                <button *ngIf="editable"
+                                        data-test-id="save-new-application-button"
+                                        mat-raised-button
+                                        matStepperNext
+                                        color="primary"
+                                        class="space-left right"
+                                        [disabled]="vm.view.$validation.withError()"
+                                        (click)="save()">Save</button>
+                                <button mat-stroked-button
+                                        color="primary"
+                                        class="space-left right"
+                                        matStepperPrevious>Back</button>
+
+                            </div>
+                        </div>
+                    </mat-step>
+                </mat-stepper>
+            </div>
+        </div>
+    </main>
+</div>

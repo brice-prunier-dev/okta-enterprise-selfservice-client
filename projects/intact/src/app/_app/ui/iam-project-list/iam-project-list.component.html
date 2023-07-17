@@ -1,0 +1,35 @@
+<iam-projects-bar [projListVm]="projectsVm" style="z-index: 10;"></iam-projects-bar>
+<div class="root-full">
+  <div class="running-flash"
+       *ngIf="running">
+    <mat-progress-bar [color]="'warn'"
+                      [mode]="'indeterminate'"
+                      [value]="50"
+                      [bufferValue]="75"> </mat-progress-bar>
+    <span class="mat-caption">{{runningOp}}</span>
+  </div>
+  <div class="error-box">
+    <iam-error [value]="vm.error"></iam-error>
+  </div>
+  <div class="frame">
+    <main>
+      <h2>Global KPIs (In construction...)</h2>
+      <div class="kpis">
+        <div *ngFor="let kpi of vm.viewAsync | async" class="kpi">
+          <div class="kpi-header">
+            <mat-icon [svgIcon]="vm.getIcon(kpi)"></mat-icon>
+            <div class="label">
+                {{kpi.label}}
+            </div>
+          </div>
+          <div class="performance">
+            {{vm.getPerformanceValue(kpi)}}
+          </div>
+          <div class="lastUpdated">
+            Last data from {{vm.formatUpdated(kpi)}}
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
