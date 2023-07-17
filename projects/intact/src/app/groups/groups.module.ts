@@ -19,19 +19,12 @@ import { GroupKpisComponent } from './ui/group-kpis/group-kpis.component';
 // ────────────────────────────────────────────────────────────────────────────────
 
 @NgModule({
-    imports: [CommonModule, SharedModule, GroupsRoutingModule, ProjectsNavModule],
-    exports: [UserEditorDialog],
-    declarations: [
-        GroupDetailComponent,
+    imports: [CommonModule, SharedModule, GroupsRoutingModule, ProjectsNavModule, GroupDetailComponent,
         GroupHomeComponent,
         UserEditorDialog,
         GroupNewComponent,
         GroupAboutComponent,
-        GroupKpisComponent,
-    ]
+        GroupKpisComponent],
+    exports: [UserEditorDialog]
 })
-export class GroupsModule {
-    constructor() {
-        JoeLogger.header('GroupsModule');
-    }
-}
+export class GroupsModule {}

@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { MarkdownService } from 'ngx-markdown';
-import { ActivatedRoute } from '@angular/router';
+import { MarkdownService, MarkdownModule } from 'ngx-markdown';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { JoeLogger } from 'joe-fx';
+import { NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 // tslint:disable:max-line-length
 @Component({
     selector: 'iam-help',
     templateUrl: './iam-help.component.html',
-    styleUrls: ['./iam-help.component.scss']
+    styleUrls: ['./iam-help.component.scss'],
+    standalone: true,
+    imports: [RouterLink, MatIconModule, NgIf, MarkdownModule]
 })
 export class IamHelpComponent implements OnInit {
     private readonly markdownPath = '/guides/';

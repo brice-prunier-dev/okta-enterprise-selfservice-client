@@ -9,7 +9,8 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
         <span style="color: inherit;">{{ suffix }}</span>
     `,
     styles: ['highlight {color: green; }'],
-    changeDetection: ChangeDetectionStrategy.Default
+    changeDetection: ChangeDetectionStrategy.Default,
+    standalone: true
 })
 export class UserLabelHighlightComponent implements OnInit {
     // #region Properties (5)

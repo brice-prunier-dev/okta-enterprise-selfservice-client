@@ -6,19 +6,31 @@ import {
     ChangeDetectorRef,
     Inject
 } from '@angular/core';
-import { FloatLabelType } from '@angular/material/form-field';
-import { MatSelectionListChange } from '@angular/material/list';
+import { FloatLabelType, MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectionListChange, MatListModule } from '@angular/material/list';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { AuthConfig } from 'angular-oauth2-oidc';
 import { isStringAssigned, ValidationScopes } from 'joe-fx';
 import { DefaultAppDocView, GRANT_TYPE, WEB_GRANT_TYPE_VALUES } from 'intact-models';
 import { IAM_CONFIG } from '../../../_core';
+import { ValidationMessagePipe } from '../../../_shared/pipes/valmsg.pipe';
+import { ValidationComponent } from '../../../_shared/ui/app-validation.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
     selector: 'iam-app-web',
     templateUrl: './app-web.component.html',
     styleUrls: ['../app.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatButtonModule, ClipboardModule, MatIconModule, MatFormFieldModule, MatInputModule, FormsModule, MatProgressSpinnerModule, MatListModule, NgFor, MatChipsModule, ValidationComponent, ValidationMessagePipe]
 })
 export class AppWebComponent implements OnInit {
     // #region Properties (3)

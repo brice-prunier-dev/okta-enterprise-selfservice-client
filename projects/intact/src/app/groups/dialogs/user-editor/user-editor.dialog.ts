@@ -42,14 +42,30 @@ import {
     isBlank,
     DataObj
 } from 'joe-fx';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {MatSelectionListChange} from '@angular/material/list';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { MatSelectionListChange, MatListModule } from '@angular/material/list';
 import {UsersService} from '../../data/users.service';
 import {GlobalState, GroupMembersViewModel} from '../../../_core';
-import {MatSlideToggleChange} from '@angular/material/slide-toggle';
+import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {BOUNTY_LOGING_DOMAIN, USER_TYPES_BOUNTY} from 'projects/intact-models/src';
 import {BehaviorSubject, catchError, debounceTime, EMPTY, filter, map, Observable, Subscription, switchMap} from 'rxjs';
 import {AppViewModel} from '../../../apps';
+import { ValidationMessagePipe } from '../../../_shared/pipes/valmsg.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { ValidationComponent } from '../../../_shared/ui/app-validation.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UserLabelHighlightComponent } from '../../../projectsnav/controls/user-label-highlight.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgClass, NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 export type UserEditorDialogInput = [
     UserDocData,
@@ -64,7 +80,9 @@ export type UserEditorDialogInput = [
     selector: 'iam-user-editor-dialog',
     templateUrl: './user-editor.dialog.html',
     styleUrls: ['./user-editor.dialog.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [MatCardModule, NgClass, NgIf, MatProgressBarModule, ErrorComponent, MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatSelectModule, NgFor, MatOptionModule, MatAutocompleteModule, UserLabelHighlightComponent, MatProgressSpinnerModule, ValidationComponent, MatSlideToggleModule, MatListModule, MatDividerModule, MatButtonModule, AsyncPipe, ValidationMessagePipe]
 })
 export class UserEditorDialog implements OnInit, OnDestroy {
     private _subs = new Subscription();

@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectorRef, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/material/autocomplete';
 import {ENTER} from '@angular/cdk/keycodes';
 import {Subject, Observable, from} from 'rxjs';
 import {switchMap, debounceTime} from 'rxjs/operators';
@@ -20,12 +20,23 @@ import {GlobalState} from '../../../_core';
 import {ConfirmService} from '../../../_shared';
 import {ProjectDetailViewModel} from '../../../projectsnav';
 import {AppApisService} from '../../data/appapis.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { MatChipsModule } from '@angular/material/chips';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 // ────────────────────────────────────────────────────────────────────────────────
 
 @Component({
     selector: 'iam-scopes-subscriptions-dialog',
     templateUrl: './scopes-subscriptions.dialog.html',
-    styleUrls: ['./scopes-subscriptions.dialog.scss']
+    styleUrls: ['./scopes-subscriptions.dialog.scss'],
+    standalone: true,
+    imports: [MatIconModule, NgIf, MatProgressBarModule, MatDialogModule, ErrorComponent, MatChipsModule, NgFor, NgClass, MatAutocompleteModule, MatOptionModule, MatFormFieldModule, MatInputModule, MatButtonModule, AsyncPipe]
 })
 export class ScopesSubscriptionDialog implements OnInit {
     // #region Properties (13)

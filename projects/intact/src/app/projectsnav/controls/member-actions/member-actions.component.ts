@@ -24,19 +24,30 @@ import {
     S_ENGIE_MAIL,
     USER_TYPES_CUSTOMER
 } from 'intact-models';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/material/autocomplete';
 import {isStringAssigned, isEmptyString, isBlank, ArrayViewFactory} from 'joe-fx';
 import {tap, debounceTime, switchMap} from 'rxjs/operators';
 import {GlobalState, ProjectsService} from '../../../_core';
 import {StoreManager} from 'joe-viewmodels';
 import {isArrayAssigned} from 'projects/joe-fx/src';
 import {IS_INTERNAL} from 'projects/intact-models/src';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { UserLabelHighlightComponent } from '../user-label-highlight.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatOptionModule } from '@angular/material/core';
+import { NgIf, NgFor, NgClass } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
     selector: 'iam-member-actions',
     templateUrl: './member-actions.component.html',
     styleUrls: ['./member-actions.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [MatFormFieldModule, MatAutocompleteModule, NgIf, MatOptionModule, MatProgressSpinnerModule, NgFor, NgClass, UserLabelHighlightComponent, MatIconModule, MatTooltipModule, MatInputModule, MatButtonModule]
 })
 export class UserProvisionningComponent implements OnInit, OnDestroy {
     // #region Properties (13)

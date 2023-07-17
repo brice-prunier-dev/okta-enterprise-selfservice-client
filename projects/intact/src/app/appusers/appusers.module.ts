@@ -14,22 +14,16 @@ import {AppUserListComponent} from './ui/appuser-list.component';
 // ────────────────────────────────────────────────────────────────────────────────
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    AppUsersRoutingModule,
-    ProjectsModule,
-    ProjectsNavModule,
-    AppsModule,
-    GroupsModule,
-    ProjectsNavModule,
-  ],
-  declarations: [
-    AppUserListComponent,
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        AppUsersRoutingModule,
+        ProjectsModule,
+        ProjectsNavModule,
+        AppsModule,
+        GroupsModule,
+        ProjectsNavModule,
+        AppUserListComponent,
+    ]
 })
-export class AppUsersModule {
-  constructor() {
-    JoeLogger.header('AppUsers Module');
-  }
-}
+export class AppUsersModule {}

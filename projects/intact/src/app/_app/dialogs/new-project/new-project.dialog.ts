@@ -1,11 +1,18 @@
 import {Component, Inject, OnDestroy} from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import {ProjectDocData} from 'intact-models';
 import {t} from 'joe-types';
 import {DataObj, IViewElement, ObjectDef, Objview, sameString, Tobject} from 'joe-fx';
 
 import {OdefinitionData, OidDef} from 'joe-models';
 import { } from 'angular-oauth2-oidc';
+import { ValidationMessagePipe } from '../../../_shared/pipes/valmsg.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 const ProjectDefinitionType: Tobject<OdefinitionData> = t.object.as({
     type: 'object',
@@ -46,7 +53,9 @@ export type NewProjectDialogOutput = [boolean, string | undefined, string | unde
 @Component({
     selector: 'iam-new-project-dialog',
     templateUrl: './new-project.dialog.html',
-    styleUrls: ['./new-project.dialog.scss']
+    styleUrls: ['./new-project.dialog.scss'],
+    standalone: true,
+    imports: [MatDialogModule, MatIconModule, MatFormFieldModule, MatInputModule, FormsModule, NgIf, MatButtonModule, ValidationMessagePipe]
 })
 export class NewProjectDialog implements OnDestroy {
     private _projects: ProjectDocData[];

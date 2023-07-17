@@ -1,8 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-@Pipe( {
+@Pipe({
     name: 'emptylist',
-    pure: false
-} )
+    pure: false,
+    standalone: true
+})
 export class EmptyListPipe implements PipeTransform {
     transform( value: any, index: string ) {
         if ( value ) {

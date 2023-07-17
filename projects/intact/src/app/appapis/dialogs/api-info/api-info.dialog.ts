@@ -8,11 +8,11 @@ import {
     OnInit,
     Inject
 } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { of, Subscription } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { startWith, map, finalize, debounceTime, mergeMap } from 'rxjs/operators';
@@ -29,13 +29,27 @@ import { AppApisService } from '../../data/appapis.service';
 import { ApiInfoView, IS_INTERNAL, UserDocData } from 'intact-models';
 import { ApiDetailViewModel } from '../../data/api-detail.viewmodel';
 import { APIS_TYPEDEF } from '../../data/api-doc.model';
+import { ValidationMessagePipe } from '../../../_shared/pipes/valmsg.pipe';
+import { ValidationComponent } from '../../../_shared/ui/app-validation.component';
+import { UserLabelHighlightComponent } from '../../../projectsnav/controls/user-label-highlight.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 // ────────────────────────────────────────────────────────────────────────────────
 
 @Component({
     selector: 'iam-api-info',
     templateUrl: './api-info.dialog.html',
     styleUrls: ['./api-info.dialog.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [MatIconModule, NgIf, MatProgressBarModule, MatDialogModule, ErrorComponent, NgFor, MatChipsModule, MatFormFieldModule, MatInputModule, FormsModule, MatTooltipModule, MatButtonModule, MatAutocompleteModule, ReactiveFormsModule, MatOptionModule, NgClass, UserLabelHighlightComponent, ValidationComponent, AsyncPipe, ValidationMessagePipe]
 })
 export class ApiInfoDialog implements OnInit, OnDestroy {
     @ViewChild('contactInput') contactInput!: ElementRef<HTMLInputElement>;

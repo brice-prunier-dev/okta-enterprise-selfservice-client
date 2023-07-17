@@ -19,20 +19,11 @@ import { ScopeWarningsComponent } from './ui/scope-warnings.component';
 // ────────────────────────────────────────────────────────────────────────────────
 
 @NgModule( {
-    imports: [ CommonModule, SharedModule, ScopesRoutingModule, ProjectsNavModule ],
-    declarations: [
-        ScopeHomeComponent,
+    imports: [CommonModule, SharedModule, ScopesRoutingModule, ProjectsNavModule, ScopeHomeComponent,
         ScopeDetailComponent,
         ScopeNewComponent,
         ScopeAboutComponent,
-        ScopeWarningsComponent,
-    ]
-    // ,providers: [
-    //     ScopesService,
-    //     ScopeNewResolver,
-    //     ScopeListResolver,
-    //     ScopeResolver,
-    // ]
+        ScopeWarningsComponent]
 } )
 export class ScopesModule {
     constructor() {

@@ -8,12 +8,6 @@ import { SharedModule } from '../_shared/shared.module';
 import { ProjectsNavModule } from '../projectsnav/projectsnav.module';
 
 @NgModule( {
-  imports: [ CommonModule, SharedModule, AdminsRoutingModule, ProjectsNavModule ],
-  declarations: [ AdminListComponent ]
+    imports: [CommonModule, SharedModule, AdminsRoutingModule, ProjectsNavModule, AdminListComponent]
 } )
-export class AdminsModule {
-  constructor() {
-    JoeLogger.header( 'AdminsModule' );
-  }
-}
-
+export class AdminsModule {}

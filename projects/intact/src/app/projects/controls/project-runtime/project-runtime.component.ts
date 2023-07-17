@@ -22,7 +22,8 @@ const graph_width = 1242;
     selector: 'iam-project-runtime',
     templateUrl: './project-runtime.component.html',
     styleUrls: ['./project-runtime.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true
 })
 export class ProjectRuntimeComponent implements OnChanges, OnInit, OnDestroy {
     private static _runtimeGraphDataCreation(vm: ProjectDetailViewModel): GraphData {

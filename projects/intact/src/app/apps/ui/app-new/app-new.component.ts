@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {Router, ActivatedRoute, Data} from '@angular/router';
-import {MatStepper} from '@angular/material/stepper';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import {PartialObserver, Subscription} from 'rxjs';
 // ────────────────────────────────────────────────────────────────────────────
 import {RuntimeMessage, MessageDomain, JoeLogger} from 'joe-fx';
@@ -26,13 +26,25 @@ import {AppBrowserComponent} from '../../controls/app-browser/app-browser.compon
 import {AppServiceComponent} from '../../controls/app-service/app-service.component';
 import {AppWebComponent} from '../../controls/app-web/app-web.component';
 import {AppNativeComponent} from '../../controls/app-native/app-native.component';
+import { ItemAdminListComponent } from '../../../projectsnav/controls/item-admin-list/item-admin-list.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 // ────────────────────────────────────────────────────────────────────────────
 
 @Component({
     selector: 'iam-app-new',
     templateUrl: './app-new.component.html',
     styleUrls: ['./app-new.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, ErrorComponent, MatStepperModule, MatButtonToggleModule, FormsModule, MatIconModule, MatButtonModule, AppBrowserComponent, AppServiceComponent, AppWebComponent, AppNativeComponent, MatFormFieldModule, MatInputModule, ItemAdminListComponent]
 })
 export class AppNewComponent implements OnInit, OnDestroy {
     @ViewChild('stepper') private stepper!: MatStepper;

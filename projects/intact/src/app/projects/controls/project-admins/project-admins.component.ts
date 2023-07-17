@@ -15,15 +15,20 @@ import {
 } from 'intact-models';
 import { Setview } from 'joe-fx';
 import { GlobalState, NotifierService, ProjectsService } from '../../../_core';
-import { MatSelectionListChange } from '@angular/material/list';
+import { MatSelectionListChange, MatListModule } from '@angular/material/list';
 import { ProjectDetailViewModel } from '../../../projectsnav';
 import { Subscription } from 'rxjs';
 import { StoreManager } from 'joe-viewmodels';
+import { NgFor } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { ValidationComponent } from '../../../_shared/ui/app-validation.component';
 
 @Component({
     selector: 'iam-project-admins',
     templateUrl: './project-admins.component.html',
-    styleUrls: ['./project-admins.component.scss']
+    styleUrls: ['./project-admins.component.scss'],
+    standalone: true,
+    imports: [ValidationComponent, MatCardModule, MatListModule, NgFor]
 })
 export class ProjectAdminsComponent implements OnChanges, OnDestroy {
     public _sub = new Subscription();

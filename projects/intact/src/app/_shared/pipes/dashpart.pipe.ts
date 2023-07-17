@@ -1,8 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-@Pipe( {
+@Pipe({
     name: 'dashpart',
-    pure: true
-} )
+    pure: true,
+    standalone: true
+})
 export class DashPartPipe implements PipeTransform {
     // #region Public Methods (1)
 

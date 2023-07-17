@@ -22,13 +22,18 @@ import { AppNativeComponent } from '../../controls/app-native/app-native.compone
 import { AppBrowserComponent } from '../../controls/app-browser/app-browser.component';
 import { AppViewModel } from '../../data/app.viewmodel';
 import { AppDataInput } from '../../data/types';
+import { MatButtonModule } from '@angular/material/button';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { NgIf } from '@angular/common';
 // ────────────────────────────────────────────────────────────────────────────
 
 @Component({
     selector: 'iam-app-detail',
     templateUrl: './app-detail.component.html',
     styleUrls: ['./app-detail.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, ErrorComponent, AppBrowserComponent, AppServiceComponent, AppSamlComponent, AppNativeComponent, AppWebComponent, MatButtonModule]
 })
 export class AppDetailComponent implements OnInit, OnDestroy {
     // #region Properties (7)

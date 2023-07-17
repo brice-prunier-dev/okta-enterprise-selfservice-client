@@ -14,12 +14,41 @@ import { ProjectsViewModel, GlobalState, NotifierService } from '../../../_core'
 import { ProjectDetailViewModel } from '../../../projectsnav';
 import { GroupNewViewModel } from '../../data/group-new.viewmodel';
 import { GroupsService } from '../../data/groups.service';
+import { ValidationMessagePipe } from '../../../_shared/pipes/valmsg.pipe';
+import { ItemAdminListComponent } from '../../../projectsnav/controls/item-admin-list/item-admin-list.component';
+import { MatButtonModule } from '@angular/material/button';
+import { ValidationComponent } from '../../../_shared/ui/app-validation.component';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatStepperModule } from '@angular/material/stepper';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'iam-group-new',
     templateUrl: './group-new.component.html',
     styleUrls: ['./group-new.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        NgIf,
+        MatProgressBarModule,
+        ErrorComponent,
+        MatStepperModule,
+        MatCheckboxModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        TextFieldModule,
+        ValidationComponent,
+        MatButtonModule,
+        ItemAdminListComponent,
+        ValidationMessagePipe,
+    ],
 })
 export class GroupNewComponent implements OnInit, OnDestroy {
     //

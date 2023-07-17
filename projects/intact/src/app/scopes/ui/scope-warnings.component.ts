@@ -4,9 +4,10 @@ import { Subscription } from "rxjs";
 import { ProjectDetailViewModel } from "../../projectsnav";
 import { MyKpiListViewModel } from "../../_app/data/my-kpi-list.viewmodel";
 import { ProjectsViewModel } from "../../_core";
+import { NgIf } from "@angular/common";
 
 @Component({
-  styles: [`
+    styles: [`
     @import '../../../styles/colors';
 
     div.tab-page {
@@ -24,7 +25,7 @@ import { ProjectsViewModel } from "../../_core";
       border-bottom: solid $gray-300 1px;
     }
   `],
-  template: `
+    template: `
     <div *ngIf="initialized" class="tab-page">
       <div class="warnings">
         <p *ngIf="getWarnings().uselessScope">
@@ -33,7 +34,9 @@ import { ProjectsViewModel } from "../../_core";
       </div>
     </div>
   `,
-  selector:'scope-warnings',
+    selector: 'scope-warnings',
+    standalone: true,
+    imports: [NgIf],
 })
 export class ScopeWarningsComponent implements OnDestroy {
   private _subscriptions = new Subscription();

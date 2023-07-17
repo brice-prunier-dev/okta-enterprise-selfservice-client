@@ -9,11 +9,21 @@ import {ScopesService} from '../data/scopes.service';
 import {ProjectsViewModel, NotifierService, GlobalState} from '../../_core';
 import {ProjectDetailViewModel} from '../../projectsnav';
 import {ScopeSubscriberType} from '../data/types';
+import { ValidationMessagePipe } from '../../_shared/pipes/valmsg.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ErrorComponent } from '../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'iam-scope-about',
     templateUrl: './scope-about.component.html',
-    styleUrls: ['./scope-about.component.scss']
+    styleUrls: ['./scope-about.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, ErrorComponent, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, ValidationMessagePipe]
 })
 export class ScopeAboutComponent implements OnInit, OnDestroy {
     private _sub = new Subscription();

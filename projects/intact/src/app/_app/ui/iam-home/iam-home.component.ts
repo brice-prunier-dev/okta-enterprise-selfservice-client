@@ -5,12 +5,17 @@ import {JoeLogger} from 'joe-fx';
 import {DetailDataModel} from 'joe-viewmodels';
 import {Observer, Subscription} from 'rxjs';
 import {GlobalState} from '../../../_core';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgClass, NgIf, JsonPipe } from '@angular/common';
 
 @Component({
     selector: 'iam-home',
     templateUrl: './iam-home.component.html',
     styleUrls: ['./iam-home.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgClass, NgIf, MatProgressBarModule, MatDividerModule, JsonPipe]
 })
 export class IamHomeComponent implements OnDestroy {
     // #region Properties (7)

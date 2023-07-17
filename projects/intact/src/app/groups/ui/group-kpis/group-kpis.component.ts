@@ -12,12 +12,15 @@ import {GroupMembersViewModel, ProjectsViewModel} from '../../../_core';
 import {ProjectDetailViewModel} from '../../../projectsnav';
 import {MyKpiListViewModel} from '../../../_app/data/my-kpi-list.viewmodel';
 import {sameString} from 'joe-fx';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'iam-group-kpis',
     templateUrl: './group-kpis.component.html',
     styleUrls: ['./group-kpis.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, NgFor, DatePipe]
 })
 export class GroupKpisComponent implements OnDestroy {
     // #region Properties (7)

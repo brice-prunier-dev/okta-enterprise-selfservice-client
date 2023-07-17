@@ -7,7 +7,7 @@ import {
     Input
 } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/material/autocomplete';
 import {Subject, Subscription} from 'rxjs';
 import {debounceTime, tap} from 'rxjs/operators';
 // ────────────────────────────────────────────────────────────────────────────────
@@ -30,12 +30,24 @@ import {ProjectDetailViewModel} from '../../../projectsnav';
 import {AppViewModel} from '../../../apps';
 import {ApiRefData, AppApisService} from '../../data/appapis.service';
 import {ApiInfoDialog} from '../../dialogs/api-info/api-info.dialog';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { UserLabelHighlightComponent } from '../../../projectsnav/controls/user-label-highlight.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf, NgFor } from '@angular/common';
 // ────────────────────────────────────────────────────────────────────────────────
 
 @Component({
     selector: 'iam-swagger-apis',
     templateUrl: './swagger-apis.component.html',
-    styleUrls: ['./swagger-apis.component.scss', '../../ui/app-apis.page.scss']
+    styleUrls: ['./swagger-apis.component.scss', '../../ui/app-apis.page.scss'],
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, ErrorComponent, MatFormFieldModule, MatAutocompleteModule, NgFor, MatOptionModule, UserLabelHighlightComponent, MatIconModule, MatInputModule, MatButtonModule, MatChipsModule]
 })
 export class AppSwaggerApisComponent implements OnChanges, OnDestroy {
     // #region Properties

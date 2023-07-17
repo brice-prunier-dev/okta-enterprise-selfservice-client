@@ -26,9 +26,7 @@ import { AppUsagesDetailComponent } from './ui/app-usages-detail.component';
         SharedModule,
         NgChartsModule,
         ProjectsNavModule,
-        AppUsagesRoutingModule
-    ],
-    declarations: [
+        AppUsagesRoutingModule,
         AppUsagesDailyComponent,
         AppUsagesMonthlyComponent,
         AppUsagesHourlyComponent,
@@ -38,8 +36,4 @@ import { AppUsagesDetailComponent } from './ui/app-usages-detail.component';
         UserUsagesHourlyComponent
     ]
 })
-export class AppUsagesModule {
-    constructor() {
-        JoeLogger.action('MODULE', 'AppUsages');
-    }
-}
+export class AppUsagesModule {}

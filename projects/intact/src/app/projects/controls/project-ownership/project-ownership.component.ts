@@ -22,7 +22,8 @@ import {CommandNotification} from 'joe-viewmodels';
     selector: 'iam-project-ownership',
     templateUrl: './project-ownership.component.html',
     styleUrls: ['./project-ownership.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true
 })
 export class ProjectOwnershipComponent implements OnChanges, OnInit, OnDestroy {
     private static _adminGraphDataCreation(vm: ProjectDetailViewModel): GraphData {

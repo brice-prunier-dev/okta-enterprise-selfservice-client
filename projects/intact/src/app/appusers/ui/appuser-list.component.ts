@@ -37,6 +37,17 @@ import {AppDataInput} from '../../apps';
 import {GlobalState, GroupMembersViewModel} from '../../_core';
 import {UserEditorDialog} from '../../groups';
 import {USER_TYPES_BOUNTY} from 'projects/intact-models/src';
+import { FilterPipe } from '../../_shared/pipes/filter';
+import { UserTypePipe } from '../../_shared/pipes/usrtyp.pipe';
+import { ArrayLabelPipe } from '../../_shared/pipes/arraylabel.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf } from '@angular/cdk/scrolling';
+import { ErrorComponent } from '../../_shared/ui/app-error.component';
+import { UserProvisionningComponent } from '../../projectsnav/controls/member-actions/member-actions.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 
 type UserDialogInput = [
     UserDocData,
@@ -50,7 +61,9 @@ type UserDialogInput = [
     selector: 'iam-appusers-list',
     templateUrl: './appuser-list.component.html',
     styleUrls: ['./appuser-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, UserProvisionningComponent, ErrorComponent, CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf, MatIconModule, MatTooltipModule, MatButtonModule, ArrayLabelPipe, UserTypePipe, FilterPipe]
 })
 export class AppUserListComponent implements OnInit, OnDestroy {
     private _subs = new Subscription();

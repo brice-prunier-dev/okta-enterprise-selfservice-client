@@ -9,6 +9,9 @@ import { ProjectsService, ProjectHistory } from '../../../_core';
 import { ProjectDetailViewModel } from '../../../projectsnav';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { BehaviorSubject, Subject, switchMap, takeUntil } from 'rxjs';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf, NgClass, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'iam-project-history',
@@ -17,11 +20,19 @@ import { BehaviorSubject, Subject, switchMap, takeUntil } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [
         trigger('detailExpand', [
-          state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
-          state('expanded', style({height: '*'})),
-          transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+            state('collapsed', style({ height: '0px', minHeight: '0', display: 'none' })),
+            state('expanded', style({ height: '*' })),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
         ]),
-      ],   
+    ],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatProgressBarModule,
+        MatTableModule,
+        NgClass,
+        DatePipe,
+    ],
 })
 export class ProjectHistoryComponent implements OnChanges {
     @Input() public vm!: ProjectDetailViewModel;

@@ -14,12 +14,21 @@ import {GroupLinkView, ResourceLinkData} from 'intact-models';
 import {ProjectsViewModel, GlobalState, NotifierService} from '../../../_core';
 import {ProjectDetailViewModel} from '../../../projectsnav';
 import {GroupsService} from '../../data/groups.service';
+import { ValidationMessagePipe } from '../../../_shared/pipes/valmsg.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'iam-admin-list',
     templateUrl: './group-about.component.html',
     styleUrls: ['./group-about.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, ValidationMessagePipe]
 })
 export class GroupAboutComponent implements OnInit, OnDestroy {
     private _sub = new Subscription();

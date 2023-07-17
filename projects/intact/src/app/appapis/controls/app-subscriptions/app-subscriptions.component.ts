@@ -19,12 +19,22 @@ import {ConfirmService} from '../../../_shared';
 import {ProjectDetailViewModel} from '../../../projectsnav';
 import {AppApisViewModel, ApplicationService, AppViewModel} from '../../../apps';
 import {ScopesSubscriptionDialog} from '../../dialogs/scopes-subscriptions/scopes-subscriptions.dialog';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf, NgFor, NgClass } from '@angular/common';
 // ────────────────────────────────────────────────────────────────────────────────
 
 @Component({
     selector: 'iam-app-subscriptions',
     templateUrl: './app-subscriptions.component.html',
-    styleUrls: ['./app-subscriptions.component.scss', '../../ui/app-apis.page.scss']
+    styleUrls: ['./app-subscriptions.component.scss', '../../ui/app-apis.page.scss'],
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, MatButtonModule, MatTooltipModule, MatIconModule, ErrorComponent, MatExpansionModule, NgFor, MatChipsModule, NgClass]
 })
 export class AppSubscriptionsComponent implements OnChanges, OnDestroy {
     private _subs = new Subscription();

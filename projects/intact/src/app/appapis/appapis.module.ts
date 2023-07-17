@@ -25,20 +25,14 @@ import { AppSubscriptionsPage } from './ui/app-apis.page';
         AppApisRoutingModule,
         ProjectsNavModule,
         ProjectsModule,
-        AppsModule
-    ],
-    exports: [AppSubscriptionsComponent],
-    declarations: [
+        AppsModule,
         AppSubscriptionsPage,
         AppGroupSubscriptionsComponent,
         AppSubscriptionsComponent,
         AppSwaggerApisComponent,
         ScopesSubscriptionDialog,
         ApiInfoDialog
-    ]
+    ],
+    exports: [AppSubscriptionsComponent]
 })
-export class AppApisModule {
-    constructor() {
-        JoeLogger.header('AppApis Module');
-    }
-}
+export class AppApisModule {}

@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { isBlank } from 'joe-fx';
 
 @Pipe({
-  name: 'default'
+    name: 'default',
+    standalone: true
 })
 export class DefaultPipe implements PipeTransform {
 

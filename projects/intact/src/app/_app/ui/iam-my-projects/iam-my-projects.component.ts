@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, ActivatedRoute, Data } from '@angular/router';
+import { Router, ActivatedRoute, Data, RouterLinkActive, RouterLink } from '@angular/router';
 import { PartialObserver, Subscription } from 'rxjs';
 import { isArrayAssigned, isString, JoeLogger } from 'joe-fx';
 import { CommandNotification } from 'joe-viewmodels';
@@ -14,11 +14,19 @@ import {
 import { MyKpiListViewModel } from '../../data/my-kpi-list.viewmodel';
 import { environment } from 'projects/intact/src/environments/environment';
 import { ProjectDocData } from 'intact-models';
+import { PascalCasePipe } from '../../../_shared/pipes/pascal-case.pipe';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgStyle, NgIf, NgFor, NgClass } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'iam-my-projects',
     templateUrl: './iam-my-projects.component.html',
-    styleUrls: ['./iam-my-projects.component.scss']
+    styleUrls: ['./iam-my-projects.component.scss'],
+    standalone: true,
+    imports: [MatIconModule, MatButtonModule, NgStyle, RouterLinkActive, RouterLink, NgIf, MatProgressBarModule, ErrorComponent, NgFor, NgClass, PascalCasePipe]
 })
 export class IamMyProjectsComponent implements OnInit, OnDestroy {
     // #region Private Fields

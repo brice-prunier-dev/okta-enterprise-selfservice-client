@@ -1,5 +1,5 @@
 import {Component, OnInit, ChangeDetectorRef, OnDestroy} from '@angular/core';
-import {ActivatedRoute, Data} from '@angular/router';
+import { ActivatedRoute, Data, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {PartialObserver, Subscription} from 'rxjs';
 import {sameString} from 'joe-fx';
@@ -10,11 +10,16 @@ import {
 import {ProjectDetailViewModel} from '../../../projectsnav';
 import {MyKpiListViewModel} from '../../../_app/data/my-kpi-list.viewmodel';
 import {environment} from 'projects/intact/src/environments/environment';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgStyle, NgIf } from '@angular/common';
 
 @Component({
     selector: 'iam-app-home',
     templateUrl: './group-home.component.html',
-    styleUrls: ['./group-home.component.scss']
+    styleUrls: ['./group-home.component.scss'],
+    standalone: true,
+    imports: [NgStyle, MatProgressBarModule, NgIf, MatTabsModule, RouterLinkActive, RouterLink, RouterOutlet]
 })
 export class GroupHomeComponent implements OnInit, OnDestroy {
     private _sub = new Subscription();

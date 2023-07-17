@@ -24,12 +24,18 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Data } from '@angular/router';
 import { OidData } from 'joe-models';
 import { AdminListInput } from '../data/types';
+import { ItemAdminListComponent } from '../../projectsnav/controls/item-admin-list/item-admin-list.component';
+import { ErrorComponent } from '../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'iam-admin-list',
     templateUrl: './admin-list.component.html',
     styleUrls: ['./admin-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, ErrorComponent, ItemAdminListComponent]
 })
 export class AdminListComponent implements OnInit, OnDestroy {
     constructor(

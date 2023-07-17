@@ -14,12 +14,26 @@ import { AppUsagesContext } from '../data/app-usages.context';
 import { AppUsagesDataInput } from '../data/types';
 import { UserUsagesContext } from '../data/user-usage.context';
 import { ProjectDetailViewModel } from '../../projectsnav';
+import { UserUsagesHourlyComponent } from '../controls/user-usages-hourly/user-usages-hourly.component';
+import { UserUsagesDailyComponent } from '../controls/user-usages-daily/user-usages-daily.component';
+import { UserUsagesMonthlyComponent } from '../controls/user-usages-monthly/user-usages-monthly.component';
+import { AppUsagesHourlyComponent } from '../controls/app-usages-hourly/app-usages-hourly.component';
+import { AppUsagesDailyComponent } from '../controls/app-usages-daily/app-usages-daily.component';
+import { AppUsagesMonthlyComponent } from '../controls/app-usages-monthly/app-usages-monthly.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ErrorComponent } from '../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'iam-app-usages-detail',
     templateUrl: './app-usages-detail.component.html',
     styleUrls: ['./app-usages-detail.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, ErrorComponent, MatTabsModule, MatIconModule, MatTooltipModule, AppUsagesMonthlyComponent, AppUsagesDailyComponent, AppUsagesHourlyComponent, UserUsagesMonthlyComponent, UserUsagesDailyComponent, UserUsagesHourlyComponent]
 })
 export class AppUsagesDetailComponent implements OnInit {
     public error: any;

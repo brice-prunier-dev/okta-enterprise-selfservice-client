@@ -8,8 +8,7 @@ import {OktaProfileComponent} from './ui/okta-profile.component';
 // ────────────────────────────────────────────────────────────────────────────────
 
 @NgModule({
-    imports: [LoginRoutingModule, CommonModule, SharedModule],
-    exports: [OktaProfileComponent],
-    declarations: [OktaProfileComponent]
+    imports: [LoginRoutingModule, CommonModule, SharedModule, OktaProfileComponent],
+    exports: [OktaProfileComponent]
 })
 export class LoginModule {}

@@ -6,17 +6,27 @@ import {
     ChangeDetectorRef,
     Inject
 } from '@angular/core';
-import { FloatLabelType } from '@angular/material/form-field';
+import { FloatLabelType, MatFormFieldModule } from '@angular/material/form-field';
 import { AuthConfig } from 'angular-oauth2-oidc';
 import { ServiceAppDocView, APPLICATION_TYPE } from 'intact-models';
 import { isStringAssigned, ValidationScopes } from 'joe-fx';
 import { GlobalState, IAM_CONFIG } from '../../../_core';
+import { ValidationMessagePipe } from '../../../_shared/pipes/valmsg.pipe';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'iam-app-service',
     templateUrl: './app-service.component.html',
     styleUrls: ['../app.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatButtonModule, ClipboardModule, MatIconModule, MatFormFieldModule, MatInputModule, FormsModule, MatProgressSpinnerModule, ValidationMessagePipe]
 })
 export class AppServiceComponent implements OnInit {
     // #region Properties (2)

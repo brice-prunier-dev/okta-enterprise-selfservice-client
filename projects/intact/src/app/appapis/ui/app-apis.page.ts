@@ -8,11 +8,19 @@ import { AppLinkData } from 'intact-models';
 import { ProjectsViewModel } from '../../_core';
 import { ProjectDetailViewModel } from '../../projectsnav';
 import { AppViewModel, AppDataInput } from '../../apps';
+import { AppSwaggerApisComponent } from '../controls/swagger-apis/swagger-apis.component';
+import { AppGroupSubscriptionsComponent } from '../controls/group-subscriptions/group-subscriptions.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AppSubscriptionsComponent } from '../controls/app-subscriptions/app-subscriptions.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'iam-app-apis',
     templateUrl: './app-apis.page.html',
-    styleUrls: ['./app-apis.page.scss']
+    styleUrls: ['./app-apis.page.scss'],
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, AppSubscriptionsComponent, MatTabsModule, AppGroupSubscriptionsComponent, AppSwaggerApisComponent]
 })
 export class AppSubscriptionsPage implements OnInit, OnDestroy {
     // #region Properties (4)

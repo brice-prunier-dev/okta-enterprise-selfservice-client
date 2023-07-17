@@ -33,13 +33,25 @@ import {
     UserEditorDialogInput
 } from '../../dialogs/user-editor/user-editor.dialog';
 import {I} from '@angular/cdk/keycodes';
+import { FilterPipe } from '../../../_shared/pipes/filter';
+import { UserTypePipe } from '../../../_shared/pipes/usrtyp.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf } from '@angular/cdk/scrolling';
+import { UserProvisionningComponent } from '../../../projectsnav/controls/member-actions/member-actions.component';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf, NgStyle } from '@angular/common';
 
 
 @Component({
     selector: 'iam-user-list',
     templateUrl: './group-detail.component.html',
     styleUrls: ['./group-detail.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, ErrorComponent, UserProvisionningComponent, NgStyle, CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf, MatIconModule, MatTooltipModule, MatButtonModule, UserTypePipe, FilterPipe]
 })
 export class GroupDetailComponent implements OnInit, OnDestroy {
     // #region Properties (12)

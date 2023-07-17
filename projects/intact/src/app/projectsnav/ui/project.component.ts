@@ -26,13 +26,27 @@ import { CommandNotification } from 'joe-viewmodels';
 import { environment } from 'projects/intact/src/environments/environment';
 import { AppLinkData } from 'intact-models';
 import { MyKpiListViewModel } from '../../_app/data/my-kpi-list.viewmodel';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ProjectSelectorComponent } from '../controls/project-selector/project-selector.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgClass, NgStyle, NgIf, NgFor } from '@angular/common';
 // ────────────────────────────────────────────────────────────────────────────
 
 @Component({
     selector: 'iam-project',
     templateUrl: './project.component.html',
     styleUrls: ['./project.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgClass, NgStyle, MatProgressBarModule, NgIf, ProjectSelectorComponent, MatExpansionModule, MatIconModule, MatFormFieldModule, MatButtonModule, MatTooltipModule, MatListModule, NgFor, MatMenuModule, ClipboardModule, MatBadgeModule]
 })
 export class ProjectComponent implements OnInit, OnDestroy {
     // #region Properties (14)

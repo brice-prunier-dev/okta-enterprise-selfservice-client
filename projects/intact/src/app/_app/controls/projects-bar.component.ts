@@ -1,7 +1,7 @@
-import { Router } from '@angular/router';
+import { Router, RouterLinkActive, RouterLink } from '@angular/router';
 import { Subject, Subscription, from } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/material/autocomplete';
 // ────────────────────────────────────────────────────────────────────────────
 import { JoeLogger, isStringAssigned, isBlank } from 'joe-fx';
 import {
@@ -13,13 +13,21 @@ import {
     ChangeDetectorRef
 } from '@angular/core';
 import { ProjectsViewModel, GlobalState, NotifierService, ProjectsService } from '../../_core';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatOptionModule } from '@angular/material/core';
+import { NgIf, NgFor } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 // ────────────────────────────────────────────────────────────────────────────
 @Component({
     selector: 'iam-projects-bar',
     templateUrl: './projects-bar.component.html',
     styleUrls: ['./projects-bar.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [MatIconModule, MatFormFieldModule, MatAutocompleteModule, NgIf, MatOptionModule, MatProgressSpinnerModule, NgFor, MatInputModule, RouterLinkActive, RouterLink]
 })
 export class ProjectsBarComponent implements OnInit, OnDestroy {
     // #region Properties (10)

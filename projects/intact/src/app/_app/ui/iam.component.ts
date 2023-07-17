@@ -3,14 +3,17 @@ import { Component, NgModule, Output, EventEmitter, Input } from '@angular/core'
 import { JoeLogger } from 'joe-fx';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { ViewModelManager } from 'joe-viewmodels';
+import { AppMenuComponent } from '../../_shared/ui/app-menu.component';
 
 @Component({
     selector: 'iam-root',
     templateUrl: './iam.component.html',
-    styleUrls: ['./iam.component.scss']
+    styleUrls: ['./iam.component.scss'],
+    standalone: true,
+    imports: [AppMenuComponent, RouterOutlet]
 })
 export class IamComponent {
     title = 'IAM APIs';

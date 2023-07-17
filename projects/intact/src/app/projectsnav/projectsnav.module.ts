@@ -12,16 +12,12 @@ import { UserProvisionningComponent } from './controls/member-actions/member-act
 import { UserLabelHighlightComponent } from './controls/user-label-highlight.component';
 
 @NgModule({
-    imports: [CommonModule, SharedModule, ProjectsNavRoutingModule],
-    declarations: [
-        ItemAdminListComponent,
+    imports: [CommonModule, SharedModule, ProjectsNavRoutingModule, ItemAdminListComponent,
         UserProvisionningComponent,
         ProjectComponent,
         ProjectSelectorComponent,
         RenamingDialogComponent,
-        UserLabelHighlightComponent
-    ],
-
+        UserLabelHighlightComponent],
     exports: [
         ItemAdminListComponent,
         UserProvisionningComponent,
@@ -30,8 +26,4 @@ import { UserLabelHighlightComponent } from './controls/user-label-highlight.com
         UserLabelHighlightComponent
     ]
 })
-export class ProjectsNavModule {
-    constructor() {
-        JoeLogger.action('MODULE', 'ProjectsNav');
-    }
-}
+export class ProjectsNavModule {}

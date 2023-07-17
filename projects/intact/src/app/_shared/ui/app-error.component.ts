@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 // ────────────────────────────────────────────────────────────────────────────
 import { isBlank, isString, JsonObj } from 'joe-fx';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgIf, JsonPipe } from '@angular/common';
 // ────────────────────────────────────────────────────────────────────────────
 
 @Component({
@@ -20,7 +24,9 @@ import { isBlank, isString, JsonObj } from 'joe-fx';
             </mat-expansion-panel>
         </div>
     `,
-    changeDetection: ChangeDetectionStrategy.Default
+    changeDetection: ChangeDetectionStrategy.Default,
+    standalone: true,
+    imports: [NgIf, MatExpansionModule, MatButtonModule, MatIconModule, JsonPipe]
 })
 export class ErrorComponent {
     // #region Properties (2)

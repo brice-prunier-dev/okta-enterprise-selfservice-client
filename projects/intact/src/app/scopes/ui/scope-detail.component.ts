@@ -9,7 +9,7 @@ import {ProjectsViewModel, NotifierService} from '../../_core';
 import {GlobalState} from '../../_core';
 import {PartialObserver, Subscription} from 'rxjs';
 import {Title} from '@angular/platform-browser';
-import {ActivatedRoute, Data} from '@angular/router';
+import { ActivatedRoute, Data, RouterLink } from '@angular/router';
 import {SubscriptionDocData, ProjectDocView, SubscriptionResponseData} from 'intact-models';
 import {ProjectDetailViewModel} from '../../projectsnav';
 import {ScopeSubscriberType} from '../data/types';
@@ -18,6 +18,18 @@ import {ScopesService} from '../data/scopes.service';
 import {isStringAssigned, sameString, ArrayViewFactory, isArrayAssigned} from 'joe-fx';
 import {CommandNotification} from 'joe-viewmodels';
 import {SubscriptionRequestData} from 'projects/intact-models/src';
+import { PascalCasePipe } from '../../_shared/pipes/pascal-case.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgIf, NgFor, NgStyle } from '@angular/common';
 
 type SubscriptionHistory = SubscriptionRequestData | SubscriptionResponseData;
 
@@ -25,7 +37,9 @@ type SubscriptionHistory = SubscriptionRequestData | SubscriptionResponseData;
     selector: 'iam-scope-detail',
     templateUrl: './scope-detail.component.html',
     styleUrls: ['./scope-detail.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatExpansionModule, NgFor, MatIconModule, NgStyle, MatProgressBarModule, MatTooltipModule, RouterLink, MatFormFieldModule, MatInputModule, FormsModule, MatProgressSpinnerModule, MatDividerModule, MatButtonModule, PascalCasePipe]
 })
 export class ScopeDetailComponent implements OnInit, OnDestroy {
 

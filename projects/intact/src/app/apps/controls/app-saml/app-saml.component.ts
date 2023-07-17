@@ -6,16 +6,20 @@ import {
     ChangeDetectorRef,
     OnChanges
 } from '@angular/core';
-import { FloatLabelType } from '@angular/material/form-field';
+import { FloatLabelType, MatFormFieldModule } from '@angular/material/form-field';
 import { SamlAppDocView } from 'intact-models';
 import { GlobalState } from '../../../_core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
     selector: 'iam-app-saml',
     templateUrl: './app-saml.component.html',
     styleUrls: ['../app.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatFormFieldModule, MatInputModule, FormsModule]
 })
 export class AppSamlComponent implements OnInit, OnChanges {
     // #region Properties (2)

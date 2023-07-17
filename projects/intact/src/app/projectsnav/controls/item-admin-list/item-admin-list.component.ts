@@ -3,12 +3,17 @@ import type { AdministratedItemData, AppLinkView, ReferenceChangesData } from 'i
 import { GroupLinkView } from 'intact-models';
 import { isBlank, Objview, Setview } from 'joe-fx';
 import { GlobalState } from '../../../_core';
-import { MatSelectionListChange } from '@angular/material/list';
+import { MatSelectionListChange, MatListModule } from '@angular/material/list';
+import { NgFor, NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { ValidationComponent } from '../../../_shared/ui/app-validation.component';
 
 @Component({
     selector: 'iam-item-admin-list',
     templateUrl: './item-admin-list.component.html',
-    styleUrls: ['./item-admin-list.component.scss']
+    styleUrls: ['./item-admin-list.component.scss'],
+    standalone: true,
+    imports: [ValidationComponent, MatIconModule, MatListModule, NgFor, NgIf]
 })
 export class ItemAdminListComponent {
     @Input() public view!: Objview & AdministratedItemData;

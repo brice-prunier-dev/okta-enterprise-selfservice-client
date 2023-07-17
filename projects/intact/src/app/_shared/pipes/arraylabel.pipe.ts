@@ -1,10 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { isArrayAssigned } from 'joe-fx';
 import { pascalCase } from 'joe-types';
-@Pipe( {
+@Pipe({
     name: 'listlabel',
-    pure: true
-} )
+    pure: true,
+    standalone: true
+})
 export class ArrayLabelPipe implements PipeTransform {
     // #region Public Methods (1)
 

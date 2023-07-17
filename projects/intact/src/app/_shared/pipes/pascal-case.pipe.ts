@@ -2,9 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { pascalCase } from 'joe-types';
 import { isStringAssigned } from 'joe-fx';
 
-@Pipe( {
-    name: 'pascalCase'
-} )
+@Pipe({
+    name: 'pascalCase',
+    standalone: true
+})
 export class PascalCasePipe implements PipeTransform {
 
     transform( value: any, args?: any ): any {

@@ -20,9 +20,25 @@ import {ConfirmService} from '../../_shared';
 import {debounceTime, switchMap, tap} from 'rxjs/operators';
 import {isArrayAssigned, isStringAssigned, sameString} from 'joe-fx';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/material/autocomplete';
 import {OitemData, OitemView} from 'joe-models';
-import {MatChipInputEvent} from '@angular/material/chips';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
+import { ValidationMessagePipe } from '../../_shared/pipes/valmsg.pipe';
+import { ProjectAdminsComponent } from '../controls/project-admins/project-admins.component';
+import { ProjectHistoryComponent } from '../controls/project-history/project-history.component';
+import { ProjectOwnershipComponent } from '../controls/project-ownership/project-ownership.component';
+import { ProjectRuntimeComponent } from '../controls/project-runtime/project-runtime.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { UserLabelHighlightComponent } from '../../projectsnav/controls/user-label-highlight.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ErrorComponent } from '../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf, NgFor } from '@angular/common';
 
 const lineDash = [4, 2, 1, 2];
 registerEdge(
@@ -71,7 +87,9 @@ registerEdge(
     selector: 'iam-project-home',
     templateUrl: './project-home.component.html',
     styleUrls: ['./project-home.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, ErrorComponent, MatFormFieldModule, MatInputModule, FormsModule, MatChipsModule, NgFor, MatIconModule, MatAutocompleteModule, MatOptionModule, UserLabelHighlightComponent, MatButtonModule, MatTabsModule, ProjectRuntimeComponent, ProjectOwnershipComponent, ProjectHistoryComponent, ProjectAdminsComponent, ValidationMessagePipe]
 })
 export class ProjectHomeComponent implements OnInit, OnDestroy {
     private _subs = new Subscription();

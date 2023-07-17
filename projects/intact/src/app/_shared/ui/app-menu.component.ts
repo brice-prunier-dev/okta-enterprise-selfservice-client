@@ -1,5 +1,5 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Location } from '@angular/common';
+import { Location, NgClass, NgIf } from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -8,13 +8,17 @@ import {
     Inject,
     OnInit
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLinkActive, RouterLink } from '@angular/router';
 import { GlobalState, APP_VERSION } from '../../_core';
 import { trigger, state, style } from '@angular/animations';
 import { environment } from '../../../environments/environment';
 import { ViewModelManager } from 'joe-viewmodels';
 import { JoeLogger } from 'joe-fx';
 import { Subscription } from 'rxjs';
+import { PascalCasePipe } from '../pipes/pascal-case.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'iam-menu',
@@ -26,7 +30,9 @@ import { Subscription } from 'rxjs';
             state('nolabel', style({ display: 'none' })),
             state('labeled', style({ display: 'flex' }))
         ])
-    ]
+    ],
+    standalone: true,
+    imports: [NgClass, RouterLinkActive, MatIconModule, RouterLink, NgIf, MatMenuModule, MatButtonModule, PascalCasePipe]
 })
 export class AppMenuComponent implements OnInit, OnDestroy {
     // #region Properties Internal (2)

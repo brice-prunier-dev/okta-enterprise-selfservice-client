@@ -15,12 +15,22 @@ import { GlobalState, ProjectsViewModel } from '../../../_core';
 import { AppViewModel } from '../../../apps';
 import { ProjectDetailViewModel } from '../../../projectsnav';
 import { ScopesSubscriptionDialog } from '../../dialogs/scopes-subscriptions/scopes-subscriptions.dialog';
+import { PascalCasePipe } from '../../../_shared/pipes/pascal-case.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf, NgFor } from '@angular/common';
 // ────────────────────────────────────────────────────────────────────────────────
 
 @Component({
     selector: 'iam-group-subscriptions',
     templateUrl: './group-subscriptions.component.html',
-    styleUrls: ['./group-subscriptions.component.scss', '../../ui/app-apis.page.scss']
+    styleUrls: ['./group-subscriptions.component.scss', '../../ui/app-apis.page.scss'],
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, NgFor, MatCardModule, MatIconModule, MatChipsModule, MatTooltipModule, MatButtonModule, PascalCasePipe]
 })
 export class AppGroupSubscriptionsComponent implements OnChanges, OnDestroy {
     // #region Properties (10)

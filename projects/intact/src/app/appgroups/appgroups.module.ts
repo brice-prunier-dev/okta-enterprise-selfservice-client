@@ -13,24 +13,17 @@ import { ProjectsNavModule } from '../projectsnav/projectsnav.module';
 // ────────────────────────────────────────────────────────────────────────────────
 
 @NgModule( {
-
     imports: [
         CommonModule,
         SharedModule,
         AppGroupsRoutingModule,
         ProjectsNavModule,
         ProjectsModule,
-        AppsModule
+        AppsModule,
+        AppGroupLinkComponent
     ],
     exports: [
         AppGroupLinkComponent
-    ],
-    declarations: [
-        AppGroupLinkComponent
     ]
 } )
-export class AppGroupsModule {
-    constructor() {
-        JoeLogger.header( 'AppGroupsModule' );
-    }
-}
+export class AppGroupsModule {}

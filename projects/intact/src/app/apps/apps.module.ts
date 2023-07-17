@@ -19,10 +19,7 @@ import { AppKpisComponent } from './ui/app-kpis/app-kpis.component';
 // ────────────────────────────────────────────────────────────────────────────
 
 @NgModule({
-    imports: [CommonModule, SharedModule, AppsRoutingModule, ProjectsNavModule],
-    exports: [AppDetailComponent, AppHomeComponent],
-    declarations: [
-        AppDetailComponent,
+    imports: [CommonModule, SharedModule, AppsRoutingModule, ProjectsNavModule, AppDetailComponent,
         AppNewComponent,
         AppServiceComponent,
         AppSamlComponent,
@@ -31,14 +28,10 @@ import { AppKpisComponent } from './ui/app-kpis/app-kpis.component';
         AppWebComponent,
         AppAboutComponent,
         AppHomeComponent,
-        AppKpisComponent,
-    ],
+        AppKpisComponent],
+    exports: [AppDetailComponent, AppHomeComponent],
     providers: [
         DatePipe
     ]
 })
-export class AppsModule {
-    constructor() {
-        JoeLogger.action('MODULE', 'Apps');
-    }
-}
+export class AppsModule {}

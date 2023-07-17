@@ -19,13 +19,24 @@ import {ProjectDetailViewModel} from '../../../projectsnav';
 import {ApplicationService} from '../../data/apps.service';
 import {AppViewModel} from '../../data/app.viewmodel';
 import {AppDataInput} from '../../data/types';
+import { ValidationMessagePipe } from '../../../_shared/pipes/valmsg.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf, NgFor } from '@angular/common';
 // ────────────────────────────────────────────────────────────────────────────
 
 @Component({
     selector: 'iam-admin-list',
     templateUrl: './app-about.component.html',
     styleUrls: ['./app-about.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, MatFormFieldModule, MatInputModule, FormsModule, MatSelectModule, MatOptionModule, NgFor, MatButtonModule, ValidationMessagePipe]
 })
 export class AppAboutComponent implements OnInit, OnDestroy {
     // #region Properties (8)

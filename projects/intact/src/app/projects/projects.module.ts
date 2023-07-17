@@ -11,17 +11,10 @@ import { ProjectOwnershipComponent } from './controls/project-ownership/project-
 import { ProjectHistoryComponent } from './controls/project-history/project-history.component';
 
 @NgModule({
-    declarations: [
-        ProjectHomeComponent,
+    imports: [CommonModule, SharedModule, ProjectsRoutingModule, ProjectsNavModule, ProjectHomeComponent,
         ProjectAdminsComponent,
         ProjectRuntimeComponent,
         ProjectOwnershipComponent,
-        ProjectHistoryComponent
-    ],
-    imports: [CommonModule, SharedModule, ProjectsRoutingModule, ProjectsNavModule]
+        ProjectHistoryComponent]
 })
-export class ProjectsModule {
-    constructor() {
-        JoeLogger.action('MODULE', 'Projects');
-    }
-}
+export class ProjectsModule {}

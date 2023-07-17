@@ -1,16 +1,21 @@
 import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { PartialObserver, Subscription } from 'rxjs';
 import { ProjectsViewModel } from '../../_core';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute, Data, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import { ProjectDetailViewModel } from '../../projectsnav';
 import { ScopeSubscriberType } from '../data/types';
 import { MyKpiListViewModel } from '../../_app/data/my-kpi-list.viewmodel';
 import { environment } from 'projects/intact/src/environments/environment';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'iam-app-home',
     templateUrl: './scope-home.component.html',
-    styleUrls: ['./scope-home.component.scss']
+    styleUrls: ['./scope-home.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, MatTabsModule, RouterLinkActive, RouterLink, RouterOutlet]
 })
 export class ScopeHomeComponent implements OnDestroy {
     private _subscriptions = new Subscription();

@@ -1,6 +1,6 @@
 import {Component, ChangeDetectorRef, OnInit, OnDestroy} from '@angular/core';
 import {Title} from '@angular/platform-browser';
-import {ActivatedRoute, Data} from '@angular/router';
+import { ActivatedRoute, Data, RouterLink } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {MatCheckboxChange} from '@angular/material/checkbox';
 import {PartialObserver, Subscription} from 'rxjs';
@@ -21,13 +21,17 @@ import {ArrayViewFactory, sameString} from 'joe-fx';
 import {AppViewModel, ApplicationService} from '../../apps';
 import {AppDataInput} from '../../apps';
 import {GlobalState, NotifierService} from '../../_core';
-import {MatSlideToggleChange} from '@angular/material/slide-toggle';
+import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {ConfirmService} from '../../_shared';
+import { ErrorComponent } from '../../_shared/ui/app-error.component';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
     selector: 'iam-appgroup-link',
     templateUrl: './appgroup-link.component.html',
-    styleUrls: ['./appgroup-link.component.scss']
+    styleUrls: ['./appgroup-link.component.scss'],
+    standalone: true,
+    imports: [NgIf, ErrorComponent, NgFor, MatSlideToggleModule, RouterLink]
 })
 export class AppGroupLinkComponent implements OnInit, OnDestroy {
     private _sub = new Subscription();

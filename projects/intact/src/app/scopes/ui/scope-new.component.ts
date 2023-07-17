@@ -14,12 +14,25 @@ import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ResourceLinkData } from 'intact-models';
 import { ProjectDetailViewModel } from '../../projectsnav';
+import { ValidationMessagePipe } from '../../_shared/pipes/valmsg.pipe';
+import { ItemAdminListComponent } from '../../projectsnav/controls/item-admin-list/item-admin-list.component';
+import { MatButtonModule } from '@angular/material/button';
+import { ValidationComponent } from '../../_shared/ui/app-validation.component';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import { ErrorComponent } from '../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'iam-scope-new',
     templateUrl: './scope-new.component.html',
     styleUrls: ['./scope-new.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, MatProgressBarModule, ErrorComponent, MatStepperModule, MatFormFieldModule, MatInputModule, FormsModule, ValidationComponent, MatButtonModule, ItemAdminListComponent, ValidationMessagePipe]
 })
 export class ScopeNewComponent implements OnInit, OnDestroy {
     // #region Properties Internal (2)

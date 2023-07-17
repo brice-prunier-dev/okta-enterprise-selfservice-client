@@ -114,7 +114,21 @@ import { InputDialogComponent } from './ui/input-dialog.component';
         ReactiveFormsModule,
         ClipboardModule,
         ScrollingModule,
-        PlatformModule
+        PlatformModule,
+        AppMenuComponent,
+        ErrorComponent,
+        ValidationComponent,
+        DashPartPipe,
+        DefaultPipe,
+        EmptyListPipe,
+        FilterPipe,
+        ValidationMessagePipe,
+        ValidationMessageListPipe,
+        ArrayLabelPipe,
+        UserTypePipe,
+        PascalCasePipe,
+        ConfirmDialogComponent,
+        InputDialogComponent
     ],
     exports: [
         RouterModule,
@@ -173,26 +187,6 @@ import { InputDialogComponent } from './ui/input-dialog.component';
         ValidationComponent,
         ConfirmDialogComponent
     ],
-    declarations: [
-        AppMenuComponent,
-        ErrorComponent,
-        ValidationComponent,
-        DashPartPipe,
-        DefaultPipe,
-        EmptyListPipe,
-        FilterPipe,
-        ValidationMessagePipe,
-        ValidationMessageListPipe,
-        ArrayLabelPipe,
-        UserTypePipe,
-        PascalCasePipe,
-        ConfirmDialogComponent,
-        InputDialogComponent
-    ],
     providers: [ConfirmService, InputService]
 })
-export class SharedModule {
-    constructor() {
-        JoeLogger.action('MODULE', 'SharedModule');
-    }
-}
+export class SharedModule {}

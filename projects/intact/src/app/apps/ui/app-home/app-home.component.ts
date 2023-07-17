@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute, Data, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import { PartialObserver, Subscription } from 'rxjs';
 // ────────────────────────────────────────────────────────────────────────────
 import { isArrayAssigned } from 'joe-fx';
@@ -13,12 +13,17 @@ import { AppViewModel } from '../../data/app.viewmodel';
 import { AppDataInput } from '../../data/types';
 import { MyKpiListViewModel } from '../../../_app/data/my-kpi-list.viewmodel';
 import { environment } from 'projects/intact/src/environments/environment';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgStyle, NgIf } from '@angular/common';
 // ────────────────────────────────────────────────────────────────────────────
 
 @Component({
     selector: 'iam-app-home',
     templateUrl: './app-home.component.html',
-    styleUrls: ['./app-home.component.scss']
+    styleUrls: ['./app-home.component.scss'],
+    standalone: true,
+    imports: [NgStyle, MatProgressBarModule, NgIf, MatTabsModule, RouterLinkActive, RouterLink, RouterOutlet]
 })
 export class AppHomeComponent implements OnInit, OnDestroy {
     // #region Properties (7)

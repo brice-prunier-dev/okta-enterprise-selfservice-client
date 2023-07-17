@@ -1,9 +1,10 @@
 import { PipeTransform, Pipe } from '@angular/core';
 
-@Pipe( {
+@Pipe({
     name: 'filter',
-    pure: false
-} )
+    pure: false,
+    standalone: true
+})
 export class FilterPipe implements PipeTransform {
     transform( items: any[], filterFn: ( item: any, stmt: string ) => boolean, stmt: string ): any {
         if ( !items || !filterFn ) {

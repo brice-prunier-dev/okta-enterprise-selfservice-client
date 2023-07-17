@@ -10,12 +10,19 @@ import { ActivatedRoute, Data, Router } from '@angular/router';
 import { PartialObserver, Subscription } from 'rxjs';
 import { ProjectsViewModel } from '../../../_core';
 import { KpiListViewModel } from '../../data/kpi-list.viewmodel';
+import { MatIconModule } from '@angular/material/icon';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { ProjectsBarComponent } from '../../controls/projects-bar.component';
 
 @Component({
     selector: 'iam-project-list',
     templateUrl: './iam-project-list.component.html',
     styleUrls: ['./iam-project-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [ProjectsBarComponent, NgIf, MatProgressBarModule, ErrorComponent, NgFor, MatIconModule, AsyncPipe]
 })
 export class IamProjectListComponent implements OnInit, OnDestroy {
     private _sub = new Subscription();

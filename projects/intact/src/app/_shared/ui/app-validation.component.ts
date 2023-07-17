@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 // ────────────────────────────────────────────────────────────────────────────
 import { IViewElement, RuntimeSummary, Objview } from 'joe-fx';
+import { MatListModule } from '@angular/material/list';
+import { NgIf, NgFor } from '@angular/common';
 // ────────────────────────────────────────────────────────────────────────────
 
 @Component({
@@ -11,7 +13,9 @@ import { IViewElement, RuntimeSummary, Objview } from 'joe-fx';
         </mat-list>
     `,
     styles: ['.error { color: red; }'],
-    changeDetection: ChangeDetectionStrategy.Default
+    changeDetection: ChangeDetectionStrategy.Default,
+    standalone: true,
+    imports: [NgIf, MatListModule, NgFor]
 })
 export class ValidationComponent implements OnInit {
     @Input('element') public element!: IViewElement;

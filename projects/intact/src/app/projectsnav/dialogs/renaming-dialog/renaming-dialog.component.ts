@@ -2,12 +2,23 @@ import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
 import { PROJECTITEM_TYPE, ResourceLinkData } from 'intact-models';
 import { isAssigned, IViewElement } from 'joe-fx';
 import { ProjectsService } from '../../../_core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { ValidationMessagePipe } from '../../../_shared/pipes/valmsg.pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ErrorComponent } from '../../../_shared/ui/app-error.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'iam-renaming-dialog',
     templateUrl: './renaming-dialog.component.html',
-    styleUrls: ['./renaming-dialog.component.scss']
+    styleUrls: ['./renaming-dialog.component.scss'],
+    standalone: true,
+    imports: [MatIconModule, NgIf, MatProgressBarModule, ErrorComponent, MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, ValidationMessagePipe]
 })
 export class RenamingDialogComponent implements OnInit {
     private _invalidKeys = [

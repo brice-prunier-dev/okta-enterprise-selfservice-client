@@ -13,12 +13,15 @@ import { ProjectDetailViewModel } from '../../../projectsnav';
 import { AppViewModel } from '../../data/app.viewmodel';
 import { AppDataInput } from '../../data/types';
 import { MyKpiListViewModel } from '../../../_app/data/my-kpi-list.viewmodel';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'iam-app-kpis',
     templateUrl: './app-kpis.component.html',
     styleUrls: ['./app-kpis.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [NgIf, NgFor, DatePipe]
 })
 export class AppKpisComponent implements OnDestroy {
     // #region Properties (7)

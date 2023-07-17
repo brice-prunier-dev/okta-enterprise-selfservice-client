@@ -14,6 +14,13 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { GlobalState, APP_VERSION } from '../../_core';
 import { HttpClient } from '@angular/common/http';
 import { JoeLogger, JsonObj, StringMap } from 'joe-fx';
+import { MatIconModule } from '@angular/material/icon';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 interface Claim {
     claim: string;
@@ -23,7 +30,9 @@ interface Claim {
 @Component({
     selector: 'iam-okta-profile',
     templateUrl: './okta-profile.component.html',
-    styleUrls: ['./okta-profile.component.css']
+    styleUrls: ['./okta-profile.component.css'],
+    standalone: true,
+    imports: [MatSlideToggleModule, FormsModule, NgFor, MatDividerModule, MatButtonModule, ClipboardModule, MatIconModule]
 })
 export class OktaProfileComponent implements OnInit {
     claims: Claim[] = [];

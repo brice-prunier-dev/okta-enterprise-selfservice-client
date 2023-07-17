@@ -1,6 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { isStringAssigned } from 'joe-fx';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 interface InputDialogData {
     title: string;
@@ -50,7 +56,9 @@ interface InputDialogData {
                 padding-top: 20px;
             }
         `
-    ]
+    ],
+    standalone: true,
+    imports: [MatCardModule, MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, NgIf, MatButtonModule]
 })
 export class InputDialogComponent implements OnInit {
     private _invalidKeys = [
