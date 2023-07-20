@@ -1,5 +1,7 @@
 /// <reference types='cypress' />
 
+import {group} from "@angular/animations";
+
 describe('adding a new project, a new service app, a new scope, subscribe and unsubscribe to the scope', () => {
     const baseUrl = Cypress.env('base_url');
     const projectName = 'project-e2e';
@@ -41,9 +43,9 @@ describe('adding a new project, a new service app, a new scope, subscribe and un
 
     it('adding a new project, a new service app, a new scope, subscribe and unsubscribe to the scope', () => {
         cy.createProject(projectName);
-        cy.createApplication(projectName, 'service', appName);
+        cy.createApplication(projectName, 'Service', appName);
         cy.createScope(projectName, scopeSuffix);
-        cy.subscribeToScope(projectName, scopeName);
+        cy.subscribeToScope(projectName, appName, scopeName);
         cy.unsubscribeToScope(projectName, scopeName);
     });
 });

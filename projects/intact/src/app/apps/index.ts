@@ -5,3 +5,5 @@ export * from './data/appapi-list.viewmodel';
 export * from './data/swaggergroupscopes-list.viewmodel';
 export * from './data/app.resolver';
 export * from './data/apps.service';
+export * from './ui/app-home/app-home.component';
+export * from './ui/app-detail/app-detail.component';

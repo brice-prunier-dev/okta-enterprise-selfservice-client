@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router, ActivatedRoute, Data, RouterLinkActive, RouterLink } from '@angular/router';
 import { PartialObserver, Subscription } from 'rxjs';
 import { isArrayAssigned, isString, JoeLogger } from 'joe-fx';
@@ -26,7 +26,19 @@ import { MatIconModule } from '@angular/material/icon';
     templateUrl: './iam-my-projects.component.html',
     styleUrls: ['./iam-my-projects.component.scss'],
     standalone: true,
-    imports: [MatIconModule, MatButtonModule, NgStyle, RouterLinkActive, RouterLink, NgIf, MatProgressBarModule, ErrorComponent, NgFor, NgClass, PascalCasePipe]
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        MatDialogModule,
+        NgStyle,
+        RouterLinkActive,
+        RouterLink,
+        NgIf,
+        MatProgressBarModule,
+        ErrorComponent,
+        NgFor,
+        NgClass,
+        PascalCasePipe]
 })
 export class IamMyProjectsComponent implements OnInit, OnDestroy {
     // #region Private Fields

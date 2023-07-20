@@ -30,8 +30,8 @@ export default defineConfig({
       "api.iam.projects.commands",
       "api.iam.kpis"
     ],
-    "base_url": "https://iamapi-client-beta.ase.ncd.infrasys16.com",
-    "base_api_url": "https://iamapi-beta.ase.ncd.infrasys16.com"
+    "base_url": "https://iamapi-client-beta-next.ase.ncd.infrasys16.com",
+    "base_api_url": "https://iamapi-beta-next.ase.ncd.infrasys16.com"
   },
   e2e: {
     // We've imported your old cypress plugins here.

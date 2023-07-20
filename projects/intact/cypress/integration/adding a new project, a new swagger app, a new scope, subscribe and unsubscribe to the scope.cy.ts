@@ -12,7 +12,6 @@ describe('adding a new project, a new SPA app, a new scope, subscribe and unsubs
 
     beforeEach(() => {
         cy.oktaLogin();
-        cy.wait(1000);
         cy.cleanE2e([
             {
                 id: projectName,
@@ -27,7 +26,6 @@ describe('adding a new project, a new SPA app, a new scope, subscribe and unsubs
                 scopes: [scopeName]
             }
         ]);
-        cy.wait(1000);
         // cy.deleteProject(projectName);
         // cy.clearCache();
 
@@ -51,17 +49,16 @@ describe('adding a new project, a new SPA app, a new scope, subscribe and unsubs
     it('adding a new project, a new SPA app, a new scope, subscribe and unsubscribe to the scope', () => {
         cy.createProject(projectName);
 
-        cy.createApplication(projectName, 'SPA', appName);
+        cy.createApplication(projectName, 'Swagger', appName);
 
         cy.createScope(projectName, scopeSuffix);
-
-        cy.subscribeToScope(projectName, appName, scopeName);
+        cy.subscribeToScope(projectName, appName, scopeName, 'Client scopes');
         cy.createGroup(projectName, groupName);
         cy.addUserToGroup(projectName, groupName, username);
         cy.subscribeGroupToApp(projectName, groupName, appName);
+        cy.subscribeToScopeForGroup(projectName, appName, scopeName, groupName);
 
         cy.unsubscribeToScope(projectName, scopeName);
-        cy.unsubscribeGroupToApp(projectName, groupName,appName);
-
+        cy.unsubscribeGroupToApp(projectName, groupName, appName);
     });
 });

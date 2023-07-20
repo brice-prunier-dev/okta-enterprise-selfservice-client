@@ -26,11 +26,17 @@ declare namespace Cypress {
         displayUserProjects(): Chainable<Element>;
         displayProjectHome(projectName: string): Chainable<Element>;
         createProject(projectName: string): Chainable<Element>;
-        createApplication(projectName: string, type: string, appName: string): Chainable<Element>;
+        createApplication(projectName: string, type: ApplicationType, appName: string): Chainable<Element>;
         createScope(projectName: string, scopeSuffix: string): Chainable<Element>;
-        subscribeToScope(projectName: string, scopeName: string): Chainable<Element>;
+        subscribeToScope(projectName: string, appName: string, scopeName: string, scopeType?:string): Chainable<Element>;
+        subscribeToScopeForGroup(projectName: string, appName: string, scopeName: string, groupName:string): Chainable<Element>;
+        unsubscribeToScopeForGroup(projectName: string, appName: string, scopeName: string, groupName:string): Chainable<Element>;
+        createGroup(projectName: string, groupName: string): Chainable<Element>;
         unsubscribeToScope(projectName: string, scopeName: string): Chainable<Element>;
+        subscribeGroupToApp(projectName: string, groupName: string, appName: string): Chainable<Element>;
+        unsubscribeGroupToApp(projectName: string, groupName: string, appName: string): Chainable<Element>;
+        addUserToGroup(projectName: string,groupName: string, userName:string): Chainable<Element>;
     }
+    type ApplicationType = 'SPA' | 'Swagger' | 'Service'
 }
-
 

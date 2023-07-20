@@ -1,16 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '../_core';
-import { AppResolver } from './data/app.resolver';
-import { AppNewResolver } from './data/app-new.resolver';
-import { AppDetailComponent } from './ui/app-detail/app-detail.component';
-import { AppAboutComponent } from './ui/app-about/app-about.component';
-import { AppHomeComponent } from './ui/app-home/app-home.component';
-import { AppNewComponent } from './ui/app-new/app-new.component';
-import { AppKpisComponent } from './ui/app-kpis/app-kpis.component';
-import { MyKpiResolver } from '../_app/data/my-kpi-list.resolver';
+import {Routes} from '@angular/router';
+import {MyKpiResolver} from '../_app';
+import {AuthGuard} from '../_core';
+import {AppNewResolver} from './data/app-new.resolver';
+import {AppResolver} from './data/app.resolver';
+import {AppAboutComponent} from './ui/app-about/app-about.component';
+import {AppDetailComponent} from './ui/app-detail/app-detail.component';
+import {AppHomeComponent} from './ui/app-home/app-home.component';
+import {AppKpisComponent} from './ui/app-kpis/app-kpis.component';
+import {AppNewComponent} from './ui/app-new/app-new.component';
 
-const routes: Routes = [
+export const APPS_ROUTES: Routes = [
     {
         path: 'new',
         component: AppNewComponent,
@@ -32,19 +31,19 @@ const routes: Routes = [
             {
                 path: 'groups',
                 loadChildren: () =>
-                    import('../appgroups/appgroups.module').then((m) => m.AppGroupsModule),
+                    import('../appgroups/appgroups.routes').then((m) => m.APPGROUPS_ROUTES),
                 canActivate: [AuthGuard]
             },
             {
                 path: 'users',
                 loadChildren: () =>
-                    import('../appusers/appusers.module').then((m) => m.AppUsersModule),
+                    import('../appusers/appusers.routes').then((m) => m.APPUSERS_ROUTES),
                 canActivate: [AuthGuard]
             },
             {
                 path: 'apis',
                 loadChildren: () =>
-                    import('../appapis/appapis.module').then((m) => m.AppApisModule),
+                    import('../appapis/appapis.routes').then((m) => m.APPAPIS_ROUTES),
                 canActivate: [AuthGuard]
             },
             {
@@ -55,13 +54,13 @@ const routes: Routes = [
             },
             {
                 path: 'admins',
-                loadChildren: () => import('../admins/admins.module').then((m) => m.AdminsModule),
+                loadChildren: () => import('../admins/admins.routes').then((m) => m.ADMINS_ROUTES),
                 canActivate: [AuthGuard]
             },
             {
                 path: 'appusages',
                 loadChildren: () =>
-                    import('../appusages/appusages.module').then((m) => m.AppUsagesModule),
+                    import('../appusages/appusages.routes').then((m) => m.APPUSAGES_ROUTES),
                 canActivate: [AuthGuard]
             },
             {
@@ -73,9 +72,3 @@ const routes: Routes = [
         ]
     }
 ];
-
-@NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
-})
-export class AppsRoutingModule {}

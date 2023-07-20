@@ -21,8 +21,8 @@ describe('adding a new project, a new service app, a new scope, subscribe and un
     }];
 
     beforeEach(() => {
-        cy.cleanE2e(e2eCleaningPayload);
         cy.oktaLogin();
+        cy.cleanE2e(e2eCleaningPayload);
         // cy.loginByOktaApi();
     });
 
